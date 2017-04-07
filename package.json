@@ -1,0 +1,13 @@
+{
+  "name": "react-workbench",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "repository": "git@github.com:Zenika/react-workbench.git",
+  "license": "MIT",
+  "bin": {
+    "react-workbench": "./src/index.js"
+  },
+  "dependencies": {
+    "bluebird": "^3.5.0"
+  }
+}
