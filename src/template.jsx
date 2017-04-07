@@ -5,13 +5,13 @@ import { Provider } from 'react-redux'
 import Component from '/* react-workbench-insert import */'
 
 /// --- REDUX
-const reducer = (state = {}, { type, payload } => {
+const reducer = (state = {}, { type, payload }) => {
   switch(type) {
     case 'SET_STATE': return payload
     case 'INIT_STATE': return {}
     default: return state
   }
-})
+}
 
 const store = createStore(
   reducer,
