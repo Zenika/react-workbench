@@ -3,14 +3,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-function getEntrySources() {
-  const entries = []
-
-  entries.push('./src')
-
-  return entries
-}
-
 module.exports = {
   devtool: 'eval',
   entry: {
