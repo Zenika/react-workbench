@@ -10,6 +10,7 @@
   "dependencies": {
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
+    "babel-plugin-react-docgen": "^1.4.2",
     "babel-plugin-syntax-class-properties": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.0",
@@ -19,7 +20,9 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "bluebird": "^3.5.0",
+    "hoc-react-datgui": "Zenika/hoc-react-datgui",
     "html-webpack-plugin": "^2.28.0",
+    "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
@@ -29,6 +32,7 @@
   },
   "babel": {
     "plugins": [
+      "react-docgen",
       "transform-class-properties",
       "transform-object-rest-spread"
     ],
