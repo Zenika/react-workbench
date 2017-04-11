@@ -1,18 +1,16 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
   entry: {
-    app: [
-      path.resolve(__dirname, '..', 'tmp', 'index.jsx'),
-    ],
+    app: [path.resolve(__dirname, '..', 'tmp', 'index.jsx')],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: '[name].js',
+    path: '/',
+    filename: 'bundle.js',
     publicPath: '/',
   },
   resolve: {
@@ -29,11 +27,9 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: [
-          /node_modules/,
-        ],
+        exclude: [/node_modules/],
         use: ['babel-loader'],
       },
     ],
   },
-}
+};
