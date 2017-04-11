@@ -5,6 +5,7 @@
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
   "scripts": {
+    "install": "npm install node-sass@4.3.0",
     "lint:js": "eslint --ext js,jsx src",
     "lint": "npm-run-all --parallel lint:*"
   },
@@ -23,11 +24,14 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "bluebird": "^3.5.0",
+    "css-loader": "^0.28.0",
     "html-webpack-plugin": "^2.28.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   },
