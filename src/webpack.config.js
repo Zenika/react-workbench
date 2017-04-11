@@ -7,7 +7,7 @@ module.exports = {
   devtool: 'eval',
   entry: {
     app: [
-      path.resolve(__dirname, '..', 'tmp', 'index.jsx')
+      path.resolve(__dirname, '..', 'tmp', 'index.jsx'),
     ],
   },
   output: {

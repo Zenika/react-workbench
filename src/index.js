@@ -3,7 +3,6 @@
 const path = require('path')
 const Promise = require('bluebird')
 const fs = Promise.promisifyAll(require('fs'))
-const mkdirp = Promise.promisifyAll(require('mkdirp'))
 const webpackDevServer = require('./webpack')
 
 const start = async (component) => {

@@ -4,6 +4,10 @@
   "main": "src/index.js",
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
+  "scripts": {
+    "lint:js": "eslint --ext js,jsx src",
+    "lint": "npm-run-all --parallel lint:*"
+  },
   "bin": {
     "react-workbench": "./src/index.js"
   },
@@ -27,6 +31,36 @@
     "webpack": "^2.3.3",
     "webpack-dev-server": "^2.4.2"
   },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": [
+      "airbnb"
+    ],
+    "plugins": [
+      "babel"
+    ],
+    "globals": {
+      "fetch": false
+    },
+    "env": {
+      "browser": true
+    },
+    "rules": {
+      "semi": [
+        2,
+        "never"
+      ],
+      "arrow-body-style": 0,
+      "import/prefer-default-export": 0,
+      "react/forbid-prop-types": 0,
+      "import/no-extraneous-dependencies": 0,
+      "import/no-unresolved": 0,
+      "import/extensions": 0,
+      "func-names": 0,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "react/no-danger": 0
+    }
+  },
   "babel": {
     "plugins": [
       "transform-class-properties",
@@ -49,5 +83,15 @@
         ]
       }
     }
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.2.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "npm-run-all": "^4.0.2"
   }
 }

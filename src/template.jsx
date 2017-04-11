@@ -2,11 +2,13 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore, compose } from 'redux'
 import { Provider } from 'react-redux'
+
+// eslint-disable-next-line import/no-absolute-path
 import Component from '/* react-workbench-insert import */'
 
-/// --- REDUX
+// --- REDUX
 const reducer = (state = {}, { type, payload }) => {
-  switch(type) {
+  switch (type) {
     case 'SET_STATE': return payload
     case 'INIT_STATE': return {}
     default: return state
@@ -19,7 +21,7 @@ const store = createStore(
     window.devToolsExtension ? window.devToolsExtension() : f => f,
   ),
 )
-/// --- !! REDUX
+// --- !! REDUX
 
 const App = () => (
   <Provider store={store}>
