@@ -16,7 +16,7 @@ module.exports = {
     publicPath: '/',
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.scss'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -33,6 +33,13 @@ module.exports = {
           /node_modules/,
         ],
         use: ['babel-loader'],
+      },
+      {
+        test: /\.scss?$/,
+        exclude: [
+          /node_modules/,
+        ],
+        use: ['style-loader', 'css-loader?modules', 'sass-loader'],
       },
     ],
   },
