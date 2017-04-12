@@ -5,6 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devtool: 'eval',
+  context: path.resolve(__dirname, '..'),
   entry: {
     app: [
       path.resolve(__dirname, '..', 'tmp', 'index.jsx'),
@@ -35,7 +36,28 @@ module.exports = {
         exclude: [
           /node_modules/,
         ],
-        use: ['babel-loader'],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [
+              /* eslint-disable global-require */
+              require('babel-plugin-react-docgen').default,
+              require('babel-plugin-transform-class-properties'),
+              require('babel-plugin-transform-object-rest-spread'),
+              /* eslint-enable global-require */
+            ],
+            presets: [
+              'es2017',
+              [
+                'es2015',
+                {
+                  modules: false,
+                },
+              ],
+              'react',
+            ],
+          },
+        },
       },
       {
         test: /\.scss?$/,
