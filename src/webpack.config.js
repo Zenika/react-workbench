@@ -1,7 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   devtool: 'eval',
@@ -12,8 +11,8 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: '[name].js',
+    path: '/',
+    filename: 'bundle.js',
     publicPath: '/',
   },
   resolve: {
@@ -22,13 +21,6 @@ module.exports = {
       'node_modules',
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
-      inject: true,
-      hash: true,
-    }),
-  ],
   module: {
     rules: [
       {
