@@ -2,6 +2,8 @@ import React from 'react'
 import { render } from 'react-dom'
 import { createStore, compose } from 'redux'
 import { Provider } from 'react-redux'
+import mapValues from 'lodash/mapValues'
+import { withDatGui } from 'hoc-react-datgui'
 
 // eslint-disable-next-line import/no-absolute-path
 import Component from '/* react-workbench-insert import */'
@@ -23,9 +25,21 @@ const store = createStore(
 )
 // --- !! REDUX
 
+/* eslint-disable no-underscore-dangle, no-eval */
+// get component info and generate datgui
+const model = mapValues(
+  Component.__docgenInfo.props,
+  value => ({
+    type: value.type.name,
+    defaultValue: eval(value.defaultValue && value.defaultValue.value),
+  }),
+)
+const WrappedComponent = withDatGui(Component, model)
+/* eslint-enable no-underscore-dangle, no-eval */
+
 const App = () => (
   <Provider store={store}>
-    <Component />
+    <WrappedComponent />
   </Provider>
 )
 
