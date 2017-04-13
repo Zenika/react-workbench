@@ -10,7 +10,9 @@ const start = (paths) => {
   config.resolve.modules = config.resolve.modules.concat(paths)
 
   const compiler = webpack(config)
-  const server = new WebpackDevServer(compiler, { lazy: true, filename: 'bundle.js' })
+
+  const { filename } = config.output
+  const server = new WebpackDevServer(compiler, { contentBase: __dirname, lazy: true, filename })
   server.listen(WEBPACK_PORT, 'localhost', () => {
     console.info(`react-workbench server started on http://localhost:${WEBPACK_PORT}`)
   })
