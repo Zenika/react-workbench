@@ -14,7 +14,9 @@ const start = (paths) => {
   const { filename } = config.output
   const server = new WebpackDevServer(compiler, { contentBase: __dirname, lazy: true, filename })
   server.listen(WEBPACK_PORT, 'localhost', () => {
+    /* eslint-disable no-console */
     console.info(`react-workbench server started on http://localhost:${WEBPACK_PORT}`)
+    /* eslint-enable no-console */
   })
 }
 
