@@ -27,7 +27,6 @@
     "bluebird": "^3.5.0",
     "css-loader": "^0.28.0",
     "hoc-react-datgui": "^0.0.2",
-    "html-webpack-plugin": "^2.28.0",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
