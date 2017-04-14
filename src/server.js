@@ -1,14 +1,13 @@
-const path = require('path')
 const express = require('express')
-const { PORT } = require('./constants')
-const webpack = require('./webpack')
+const { PORT, PUBLIC_FOLDER } = require('./constants')
+const webpack = require('./webpack/webpack')
 
 const start = () => {
   // Create a new express server
   const app = express()
 
   // serve static files
-  app.use(express.static(path.resolve(__dirname, '..', 'public')))
+  app.use(express.static(PUBLIC_FOLDER))
 
   // serve webpack
   webpack.connect(app)

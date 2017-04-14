@@ -2,6 +2,8 @@ const path = require('path')
 
 const PORT = 8080
 
+const PUBLIC_FOLDER = path.resolve(__dirname, '..', 'public')
+
 const COMPONENT = process.argv[2]
 const COMPONENT_ABSOLUTE_PATH = path.resolve(process.env.PWD, COMPONENT)
 const COMPONENT_RELATIVE_PATH = path.relative(__dirname, COMPONENT_ABSOLUTE_PATH)
@@ -11,4 +13,5 @@ module.exports = {
   COMPONENT_ABSOLUTE_PATH,
   COMPONENT_RELATIVE_PATH,
   PORT,
+  PUBLIC_FOLDER,
 }

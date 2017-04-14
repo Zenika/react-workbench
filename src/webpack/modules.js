@@ -1,12 +1,9 @@
 const path = require('path')
 const Promise = require('bluebird')
 const fs = Promise.promisifyAll(require('fs'))
-const webpack = require('webpack')
-const webpackMiddleware = require('webpack-dev-middleware')
-const config = require('./webpack.config.js')
-const { COMPONENT_ABSOLUTE_PATH, PORT } = require('./constants')
+const { COMPONENT_ABSOLUTE_PATH } = require('../constants')
 
-const getModules = async () => {
+const get = async () => {
   const paths = []
   let previousPath = path.dirname(COMPONENT_ABSOLUTE_PATH)
   let files = await fs.readdirAsync(previousPath)
@@ -31,28 +28,6 @@ const getModules = async () => {
   return paths
 }
 
-const connect = async (app) => {
-  // patch config
-  config.resolve.modules = config.resolve.modules.concat(await getModules())
-
-  // webpack compiler
-  const compiler = webpack(config)
-
-  // get ouput filename (js bundle)
-  const { filename } = config.output
-
-  // add middleware
-  app.use(webpackMiddleware(
-    compiler,
-    {
-      contentBase: __dirname,
-      lazy: true,
-      filename,
-      serverSideRender: false,
-    }
-  ))
-}
-
 module.exports = {
-  connect,
+  get,
 }
