@@ -1362,9 +1362,9 @@ dashdash@^1.12.0:
   dependencies:
     assert-plus "^1.0.0"
 
-dat.gui@dataarts/dat.gui:
+"dat.gui@github:dataarts/dat.gui":
   version "0.6.4"
-  resolved "https://codeload.github.com/dataarts/dat.gui/tar.gz/44713d2c78c4026205e2f6a347f640acd2eef10d"
+  resolved "https://codeload.github.com/dataarts/dat.gui/tar.gz/191eb65b3af51519a6f36e00af2fcc596445b3f8"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -2196,9 +2196,9 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoc-react-datgui@^0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/hoc-react-datgui/-/hoc-react-datgui-0.0.2.tgz#bc93785c2c4df124efca614c68a1d880c6c7fe95"
+hoc-react-datgui@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/hoc-react-datgui/-/hoc-react-datgui-0.0.4.tgz#920dc9c8e57694217fbca3c35565cb0e1340b8e6"
   dependencies:
     dat.gui dataarts/dat.gui
     lodash "^4.17.4"
