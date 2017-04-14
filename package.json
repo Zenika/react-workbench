@@ -26,6 +26,7 @@
     "babel-preset-react": "^6.23.0",
     "bluebird": "^3.5.0",
     "css-loader": "^0.28.0",
+    "express": "^4.15.2",
     "hoc-react-datgui": "^0.0.4",
     "lodash": "^4.17.4",
     "react": "^15.4.2",
@@ -35,7 +36,7 @@
     "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.3",
-    "webpack-dev-server": "^2.4.2"
+    "webpack-dev-middleware": "^1.10.1"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
@@ -65,7 +66,8 @@
       "func-names": 0,
       "jsx-a11y/no-static-element-interactions": 0,
       "react/no-danger": 0,
-      "no-await-in-loop": 0
+      "no-await-in-loop": 0,
+      "comma-dangle": 0
     }
   },
   "devDependencies": {
