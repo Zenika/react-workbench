@@ -2196,9 +2196,9 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
-hoc-react-datgui@^0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/hoc-react-datgui/-/hoc-react-datgui-0.0.3.tgz#91f7b214bfd587a220ed0d6ecd2d51cdcb479748"
+hoc-react-datgui@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/hoc-react-datgui/-/hoc-react-datgui-0.0.4.tgz#920dc9c8e57694217fbca3c35565cb0e1340b8e6"
   dependencies:
     dat.gui dataarts/dat.gui
     lodash "^4.17.4"
