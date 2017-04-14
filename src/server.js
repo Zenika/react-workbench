@@ -1,6 +1,7 @@
 const express = require('express')
 const { PORT, PUBLIC_FOLDER } = require('./constants')
 const webpack = require('./webpack/webpack')
+const api = require('./api')
 
 const start = () => {
   // Create a new express server
@@ -11,6 +12,9 @@ const start = () => {
 
   // serve webpack
   webpack.connect(app)
+
+  // serve api
+  api.connect(app)
 
   // listen
   app.listen(PORT, () => {
