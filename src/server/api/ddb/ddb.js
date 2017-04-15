@@ -1,7 +1,7 @@
 // TODO : these two lines are duplicate everywhere
 const Promise = require('bluebird')
 const fs = Promise.promisifyAll(require('fs'))
-const { COMPONENT_CONFIG_DIR } = require('../../constants')
+const { COMPONENT_CONFIG_DIR } = require('./constants')
 
 const init = (name) => {
   const DATABASE_PATH = `${COMPONENT_CONFIG_DIR}/${name}.json`

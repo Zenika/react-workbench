@@ -1,6 +1,6 @@
 const express = require('express')
 const { PORT, PUBLIC_FOLDER } = require('./constants')
-const webpack = require('./webpack/webpack')
+const webpack = require('./webpack')
 const api = require('./api')
 
 const start = () => {

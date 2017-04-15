@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser')
-const { API_BASE_CONTEXT } = require('../constants')
+const { API_BASE_CONTEXT } = require('../../constants')
 const state = require('./models/state')
 
 const genPath = resource => `${API_BASE_CONTEXT}/${resource.NAME}`

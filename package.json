@@ -1,7 +1,7 @@
 {
   "name": "zenika-react-workbench",
   "version": "0.0.1",
-  "main": "src/index.js",
+  "main": "src/script/index.js",
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "npm-run-all --parallel lint:*"
   },
   "bin": {
-    "react-workbench": "./src/index.js"
+    "react-workbench": "./src/script/index.js"
   },
   "dependencies": {
     "babel-core": "^6.24.0",

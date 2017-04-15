@@ -1,7 +1,7 @@
 const path = require('path')
 const Promise = require('bluebird')
 const fs = Promise.promisifyAll(require('fs'))
-const { COMPONENT_ABSOLUTE_PATH_DIR } = require('../constants')
+const { COMPONENT_ABSOLUTE_PATH_DIR } = require('../../constants')
 
 const get = async () => {
   const paths = []

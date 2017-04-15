@@ -7,7 +7,7 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
     app: [
-      path.resolve(__dirname, '..', 'tmp', 'index.jsx'),
+      path.resolve(__dirname, '..', '..', '..', 'tmp', 'index.jsx'),
     ],
   },
   output: {
