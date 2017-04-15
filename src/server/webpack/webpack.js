@@ -20,7 +20,7 @@ const connect = async (app) => {
       contentBase: __dirname,
       lazy: true,
       filename,
-    }
+    }  // eslint-disable-line comma-dangle
   ))
 }
 

@@ -1,6 +1,5 @@
 const path = require('path')
-const Promise = require('bluebird')
-const fs = Promise.promisifyAll(require('fs'))
+const fs = require('fs')
 
 const COMPONENT = process.argv[2]
 const COMPONENT_ABSOLUTE_PATH = path.resolve(process.env.PWD, COMPONENT)

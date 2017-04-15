@@ -67,8 +67,7 @@
       "func-names": 0,
       "jsx-a11y/no-static-element-interactions": 0,
       "react/no-danger": 0,
-      "no-await-in-loop": 0,
-      "comma-dangle": 0
+      "no-await-in-loop": 0
     }
   },
   "devDependencies": {

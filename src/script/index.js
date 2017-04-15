@@ -1,7 +1,11 @@
 #!/usr/bin/env node
+
+// Bluebird to the rescue (for all the project (script+server))
+require('./bluebird')
+
+// Script can continue like nothing happens
+const fs = require('fs')
 const path = require('path')
-const Promise = require('bluebird')
-const fs = Promise.promisifyAll(require('fs'))
 const { COMPONENT_ABSOLUTE_PATH } = require('../constants')
 const server = require('../server')
 
@@ -14,7 +18,7 @@ const start = async () => {
   const output = { dir: path.resolve(__dirname, '..', '..', 'tmp'), file: 'index.jsx' }
   const appFileContent = template.replace(
     '/* react-workbench-insert import */',
-    path.relative(output.dir, COMPONENT_ABSOLUTE_PATH)
+    path.relative(output.dir, COMPONENT_ABSOLUTE_PATH) // eslint-disable-line comma-dangle
   )
 
   // 3. Write it into a tmp folder
