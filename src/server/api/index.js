@@ -10,6 +10,16 @@ const connect = (app) => {
 
   // connects services
   // 1. State
+  app.get(genPath(state), async (req, res) => {
+    try {
+      res.send(await state.read())
+    } catch (ex) {
+      // TODO
+      // eslint-disable-next-line no-console
+      console.error(ex)
+      res.sendStatus(500)
+    }
+  })
   app.post(genPath(state), async (req, res) => {
     try {
       await state.create(req.body)
