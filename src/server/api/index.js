@@ -4,33 +4,29 @@ const state = require('./models/state')
 
 const genPath = resource => `${API_BASE_CONTEXT}/${resource.NAME}`
 
+const errorHandler = callback => async (req, res, ...args) => {
+  try {
+    const content = await callback(req, res, ...args)
+    if (content) {
+      res.send(content)
+    } else {
+      res.sendStatus(200)
+    }
+  } catch (ex) {
+    // eslint-disable-next-line no-console
+    console.error(ex)
+    res.status(500).send({ ex })
+  }
+}
+
 const connect = (app) => {
   // use json for api
   app.use(API_BASE_CONTEXT, bodyParser.json())
 
   // connects services
   // 1. State
-  app.get(genPath(state), async (req, res) => {
-    try {
-      res.send(await state.read())
-    } catch (ex) {
-      // TODO
-      // eslint-disable-next-line no-console
-      console.error(ex)
-      res.sendStatus(500)
-    }
-  })
-  app.post(genPath(state), async (req, res) => {
-    try {
-      await state.create(req.body)
-      res.sendStatus(200)
-    } catch (ex) {
-      // TODO
-      // eslint-disable-next-line no-console
-      console.error(ex)
-      res.sendStatus(500)
-    }
-  })
+  app.get(genPath(state), errorHandler(() => state.read()))
+  app.post(genPath(state), errorHandler(req => state.create(req.body)))
 }
 
 module.exports = {
