@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
-const config = require('../webpack.config.js')
+const config = require('./webpack.config.js')
 const modules = require('./modules')
 
 const connect = async (app) => {
@@ -20,7 +20,7 @@ const connect = async (app) => {
       contentBase: __dirname,
       lazy: true,
       filename,
-    }
+    }  // eslint-disable-line comma-dangle
   ))
 }
 

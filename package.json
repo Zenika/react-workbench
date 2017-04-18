@@ -1,7 +1,7 @@
 {
   "name": "zenika-react-workbench",
   "version": "0.0.1",
-  "main": "src/index.js",
+  "main": "src/script/index.js",
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
   "scripts": {
@@ -10,7 +10,7 @@
     "lint": "npm-run-all --parallel lint:*"
   },
   "bin": {
-    "react-workbench": "./src/index.js"
+    "react-workbench": "./src/script/index.js"
   },
   "dependencies": {
     "babel-core": "^6.24.0",
@@ -25,6 +25,7 @@
     "babel-preset-es2017": "^6.22.0",
     "babel-preset-react": "^6.23.0",
     "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
     "css-loader": "^0.28.0",
     "express": "^4.15.2",
     "hoc-react-datgui": "^0.0.4",
@@ -66,8 +67,7 @@
       "func-names": 0,
       "jsx-a11y/no-static-element-interactions": 0,
       "react/no-danger": 0,
-      "no-await-in-loop": 0,
-      "comma-dangle": 0
+      "no-await-in-loop": 0
     }
   },
   "devDependencies": {

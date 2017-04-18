@@ -1,11 +1,10 @@
 const path = require('path')
-const Promise = require('bluebird')
-const fs = Promise.promisifyAll(require('fs'))
-const { COMPONENT_ABSOLUTE_PATH } = require('../constants')
+const fs = require('fs')
+const { COMPONENT_ABSOLUTE_PATH_DIR } = require('../../constants')
 
 const get = async () => {
   const paths = []
-  let previousPath = path.dirname(COMPONENT_ABSOLUTE_PATH)
+  let previousPath = COMPONENT_ABSOLUTE_PATH_DIR
   let files = await fs.readdirAsync(previousPath)
 
   // looking for the first directory with a 'package.json' file
