@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 const { API_BASE_CONTEXT } = require('../../constants')
 const state = require('./models/state')
+const fs = require('./models/fs')
 
 const genPath = resource => `${API_BASE_CONTEXT}/${resource.NAME}`
 
@@ -24,9 +25,12 @@ const connect = (app) => {
   app.use(API_BASE_CONTEXT, bodyParser.json())
 
   // connects services
-  // 1. State
+  // - state
   app.get(genPath(state), errorHandler(() => state.read()))
   app.post(genPath(state), errorHandler(req => state.create(req.body)))
+  // - fs
+  app.get(genPath(fs), errorHandler(() => fs.ls('/')))
+  app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.ls(`/${req.params.path}/${req.params[0]}`)))
 }
 
 module.exports = {
