@@ -14,11 +14,21 @@ const start = async () => {
   const filePath = path.resolve(__dirname, 'template.jsx')
   const template = await fs.readFileAsync(filePath, 'utf-8')
 
-  // 2. Replace what needs to be replaced
+  // 2. Get relative path
   const output = { dir: path.resolve(__dirname, '..', '..', 'tmp'), file: 'index.jsx' }
+  let relativePath = path.relative(output.dir, COMPONENT_ABSOLUTE_PATH)
+  // 2bis -
+  // this handle the case of index.jsx (template) and tested component sharing the same directory.
+  // in this case the relative path is <testedComponent> without '/' wich is an absolute import
+  // so we force it to a relative import by adding './'  : './<testedComponent'
+  relativePath = relativePath.includes('/') ?
+    relativePath // relative path is also a relative import, that's ok
+    : `./${relativePath}` // relative path is an absolute import : force the relative import
+
+  // 2. Replace what needs to be replaced
   const appFileContent = template.replace(
     '/* react-workbench-insert import */',
-    path.relative(output.dir, COMPONENT_ABSOLUTE_PATH) // eslint-disable-line comma-dangle
+     relativePath // eslint-disable-line comma-dangle
   )
 
   // 3. Write it into a tmp folder
