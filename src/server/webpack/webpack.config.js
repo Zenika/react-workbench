@@ -2,12 +2,14 @@
 /* eslint-disable no-console */
 const path = require('path')
 
+const WORKBENCH_DIR = path.resolve(__dirname, '..', '..', '..')
+
 module.exports = {
   devtool: 'eval',
   context: path.resolve(__dirname, '..'),
   entry: {
     app: [
-      path.resolve(__dirname, '..', '..', '..', 'tmp', 'index.jsx'),
+      path.resolve(WORKBENCH_DIR, 'tmp', 'index.jsx'),
     ],
   },
   output: {
@@ -17,7 +19,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx', '.scss'],
     modules: [
-      'node_modules',
+      path.resolve(WORKBENCH_DIR, 'node_modules'),
     ],
   },
   module: {
@@ -54,8 +56,13 @@ module.exports = {
         test: /\.scss?$/,
         exclude: [
           /node_modules/,
+          /src\/gui\/styles\/global\.scss/,
         ],
         use: ['style-loader', 'css-loader?modules', 'sass-loader'],
+      },
+      {
+        test: /global\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
     ],
   },
