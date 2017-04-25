@@ -3,8 +3,10 @@ import { render } from 'react-dom'
 import { createStore, compose } from 'redux'
 import { Provider } from 'react-redux'
 import { withDatGuiFromDocgen } from 'hoc-react-datgui'
+import '../src/gui/styles/global.scss'
+import Workbench from '../src/gui/components/workbench'
 
-// eslint-disable-next-line import/no-absolute-path
+// eslint-disable-next-line import/no-absolute-path,import/first
 import Component from '/* react-workbench-insert import */'
 
 // --- REDUX
@@ -28,7 +30,9 @@ const WrappedComponent = withDatGuiFromDocgen(Component)
 
 const App = () => (
   <Provider store={store}>
-    <WrappedComponent />
+    <Workbench>
+      <WrappedComponent />
+    </Workbench>
   </Provider>
 )
 

@@ -7,6 +7,7 @@
   "scripts": {
     "install": "npm install node-sass@4.3.0",
     "lint:js": "eslint --ext js,jsx src",
+    "lint:sass": "sass-lint -v -q",
     "lint": "npm-run-all --parallel lint:*"
   },
   "bin": {
@@ -26,10 +27,12 @@
     "babel-preset-react": "^6.23.0",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
+    "classnames": "^2.2.5",
     "css-loader": "^0.28.0",
     "express": "^4.15.2",
     "hoc-react-datgui": "^0.0.4",
     "lodash": "^4.17.4",
+    "normalize.css": "^6.0.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
@@ -39,6 +42,7 @@
     "webpack": "^2.3.3",
     "webpack-dev-middleware": "^1.10.1"
   },
+  "sasslintConfig": "./misc/sass-lint.yml",
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": [
@@ -78,6 +82,7 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
-    "npm-run-all": "^4.0.2"
+    "npm-run-all": "^4.0.2",
+    "sass-lint": "^1.10.2"
   }
 }
