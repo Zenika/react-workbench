@@ -1,22 +1,14 @@
-import React, { Component, PropTypes } from 'react'
+import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 import styles from './input.styles.scss'
 
-class Input extends Component {
-
-  handleChange = ({ target }) => {
-    this.props.onChange(target.value)
-  }
-
-  render() {
-    const { style, className, name, defaultValue } = this.props
-    return (
-      <div style={style} className={classnames(styles.input, className)}>
-        <div>{name}</div>
-        <input type="text" defaultValue={defaultValue} onChange={this.handleChange} />
-      </div>
-    )
-  }
+const Input = ({ style, className, name, defaultValue, onChange }) => {
+  return (
+    <div style={style} className={classnames(styles.input, className)}>
+      <div>{name}</div>
+      <input type="text" defaultValue={defaultValue} onChange={onChange} />
+    </div>
+  )
 }
 
 Input.propTypes = {

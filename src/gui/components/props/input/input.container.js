@@ -6,9 +6,9 @@ const mapState = ({ model }, props) => ({
 })
 
 const mapDispatch = (dispatch, { name }) => ({
-  onChange: value => dispatch({
+  onChange: event => dispatch({
     type: 'SET_STATE',
-    payload: { [name]: value },
+    payload: { [name]: event.target.value },
   }),
 })
 
