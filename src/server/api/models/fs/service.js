@@ -4,11 +4,21 @@ const path = require('path')
 const ls = async (entryPath) => {
   const files = await fs.readdirAsync(entryPath)
 
-  const statsFiles = files.map(async (name) => {
-    const stats = await fs.statAsync(path.resolve(entryPath, name))
+  const statsFiles = files.map(async (fullname) => {
+    const stats = await fs.statAsync(path.resolve(entryPath, fullname))
+    const ext = path.extname(fullname)
+    const name = path.basename(fullname, ext)
 
-    if (stats.isDirectory()) return `${name}/`
-    return name
+    return Object.assign(
+      {},
+      {
+        fullname,
+        name,
+        ext,
+        isDirectory: stats.isDirectory(),
+      },
+      stats // eslint-disable-line comma-dangle
+    )
   })
 
   return Promise.all(statsFiles)
