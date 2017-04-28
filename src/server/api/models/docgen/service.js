@@ -179,4 +179,6 @@ const resolve = async (componentPath) => {
   return null
 }
 
-module.exports = resolve
+module.exports = {
+  resolve,
+}

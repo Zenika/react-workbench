@@ -8,7 +8,6 @@ const fs = require('fs')
 const path = require('path')
 const { COMPONENT_ABSOLUTE_PATH } = require('../constants')
 const server = require('../server')
-const resolve = require('./resolver')
 
 const start = async () => {
   // 1. Read the template file
@@ -18,9 +17,6 @@ const start = async () => {
   // 2. Get relative path
   const output = { dir: path.resolve(__dirname, '..', '..', 'tmp'), file: 'index.jsx' }
   let relativePath = path.relative(output.dir, COMPONENT_ABSOLUTE_PATH)
-
-  const model = await resolve(COMPONENT_ABSOLUTE_PATH)
-  console.log(model)
 
   // 2bis -
   // this handle the case of index.jsx (template) and tested component sharing the same directory.
