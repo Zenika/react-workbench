@@ -38,8 +38,15 @@ const componentResolver = (ast, recast) => {
         } else {
           const resolved = utils.resolveToValue(resolveHOC(definition))
           if (resolved.node.type === 'ImportDeclaration') {
+            // Manage imported components in HOC from different file
+            const importType = { path: resolved.node.source.value }
+            throw importType
+          } else if (resolved.node.type === 'Identifier') {
+            // Manage exported components in index.js files
+            console.log(resolved)
+            // console.log(path.value.source.value)
             const importType = {
-              path: resolved.node.source.value,
+              path: resolved.parentPath.parentPath.parentPath.value.source.value,
             }
             throw importType
           }
@@ -108,12 +115,44 @@ const componentResolver = (ast, recast) => {
   return components
 }
 
+// FIXME not all cases of exported elements managed
+// just : export { default } from './xxx'
+const indexResolver = (ast, recast) => {
+  const exportDefaultIndex = (path) => {
+    const importType = {
+      path: path.value.source.value,
+    }
+    throw importType
+  }
+  recast.visit(ast, {
+    visitFunctionDeclaration: false,
+    visitFunctionExpression: false,
+    visitClassDeclaration: false,
+    visitClassExpression: false,
+    visitIfStatement: false,
+    visitWithStatement: false,
+    visitSwitchStatement: false,
+    visitCatchCause: false,
+    visitWhileStatement: false,
+    visitDoWhileStatement: false,
+    visitForStatement: false,
+    visitForInStatement: false,
+    visitExportDeclaration: false,
+    visitExportNamedDeclaration: exportDefaultIndex,
+    visitExportDefaultDeclaration: exportDefaultIndex,
+    visitAssignmentExpression: false,
+  })
+}
+
 const resolvePath = async (path) => {
   const extensions = ['.js', '.jsx', '']
   for (let i = 0; i < extensions.length; i += 1) {
     const newpath = path + extensions[i]
     try {
-      await fs.accessAsync(newpath, fs.F_OK)
+      const stats = await fs.statAsync(newpath)
+      if (stats.isDirectory()) {
+        return resolvePath(p.resolve(path, 'index.js'))
+      }
       return newpath
     } catch (e) {
       // file path not found
@@ -124,14 +163,14 @@ const resolvePath = async (path) => {
 
 const resolve = async (componentPath) => {
   const resolvedPath = await resolvePath(componentPath)
-
+  const isIndex = resolvedPath.endsWith('/index.js')
   const file = await fs.readFileAsync(resolvedPath, 'utf-8')
 
   try {
-    return docgen.parse(file, componentResolver)
+    return docgen.parse(file, isIndex ? indexResolver : componentResolver)
   } catch (e) {
     if (e.path) {
-      const newPath = await resolvePath(p.resolve(componentPath, '..', e.path))
+      const newPath = await resolvePath(p.resolve(componentPath, isIndex ? '.' : '..', e.path))
       if (newPath) {
         return resolve(newPath)
       }
