@@ -2,11 +2,11 @@ import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 import styles from './input.styles.scss'
 
-const Input = ({ style, className, name, defaultValue, onChange }) => {
+const Input = ({ style, className, name, value, onChange, type }) => {
   return (
     <div style={style} className={classnames(styles.input, className)}>
       <div>{name}</div>
-      <input type="text" defaultValue={defaultValue} onChange={onChange} />
+      <input type={type} value={value} checked={value} onChange={onChange} />
     </div>
   )
 }
@@ -15,14 +15,15 @@ Input.propTypes = {
   style: PropTypes.object,
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
-  defaultValue: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   onChange: PropTypes.func.isRequired,
+  type: PropTypes.string.isRequired,
 }
 
 Input.defaultProps = {
   style: {},
   className: '',
-  defaultValue: undefined,
+  value: undefined,
 }
 
 export default Input

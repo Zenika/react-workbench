@@ -1,15 +1,44 @@
 import { connect } from 'react-redux'
 import Input from './input'
 
-const mapState = ({ model }, props) => ({
-  defaultValue: model[props.name].defaultValue && model[props.name].defaultValue.value,
-})
+const getType = (type) => {
+  switch (type) {
+    case 'bool': return 'checkbox'
+    default: return 'text'
+  }
+}
+
+const getValue = (type, e) => {
+  switch (type) {
+    case 'checkbox': return e.target.checked
+    default: return e.target.value
+  }
+}
+
+const mapState = ({ model }, { name }) => {
+  const m = model[name]
+
+  return {
+    value: m.value,
+    type: getType(m.type),
+  }
+}
 
 const mapDispatch = (dispatch, { name }) => ({
-  onChange: event => dispatch({
-    type: 'SET_STATE',
-    payload: { [name]: event.target.value },
+  onChange: type => event => dispatch({
+    type: 'SET_VALUE',
+    payload: {
+      name,
+      value: getValue(type, event),
+    },
   }),
 })
 
-export default connect(mapState, mapDispatch)(Input)
+const merge = (state, dispatch, props) => ({
+  ...state,
+  ...dispatch,
+  onChange: dispatch.onChange(state.type),
+  ...props,
+})
+
+export default connect(mapState, mapDispatch, merge)(Input)
