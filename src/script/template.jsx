@@ -1,3 +1,4 @@
+import 'whatwg-fetch'
 import React from 'react'
 import { render } from 'react-dom'
 import { createStore, compose, combineReducers } from 'redux'
@@ -32,8 +33,14 @@ const store = createStore(
 )
 // --- !! REDUX
 
-// eslint-disable-next-line no-underscore-dangle
-store.dispatch({ type: 'SET_MODEL', payload: Component.__docgenInfo.props })
+// get the component model
+fetch('/api/docgen')
+  .then(response => response.json())
+  .then((json) => {
+    if (json && json.length > 0) {
+      store.dispatch({ type: 'SET_MODEL', payload: json[0].props })
+    }
+  })
 
 // connect the tested component to the redux state
 const WrappedComponent = connect(state => state.component)(Component)
