@@ -137,7 +137,7 @@ const resolvePath = async (path) => {
 
 const resolve = async (componentPath) => {
   const resolvedPath = await resolvePath(componentPath)
-  const isIndex = resolvedPath.endsWith('/index.js')
+  const isIndex = /index\.jsx?$/.test(resolvedPath)
   const file = await fs.readFileAsync(resolvedPath, 'utf-8')
 
   try {
