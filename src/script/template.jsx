@@ -1,4 +1,4 @@
-import 'whatwg-fetch'
+import 'babel-polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import { createStore, compose, combineReducers } from 'redux'
