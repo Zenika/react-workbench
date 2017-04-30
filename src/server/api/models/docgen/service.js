@@ -5,6 +5,9 @@ const docgen = require('react-docgen')
 const utils = require('react-docgen/dist/utils')
 const resolveHOC = require('react-docgen/dist/utils/resolveHOC.js').default
 
+// Revolver implementation based on :
+// https://github.com/reactjs/react-docgen/blob/master/src/resolver/findAllExportedComponentDefinitions.js
+
 const isComponentDefinition = (path) => {
   return utils.isReactCreateClassCall(path)
     || utils.isReactComponentClass(path)
