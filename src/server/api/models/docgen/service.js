@@ -3,7 +3,7 @@ const p = require('path')
 const docgen = require('react-docgen')
 
 const utils = require('react-docgen/dist/utils')
-const resolveHOC = require('react-docgen/dist/utils/resolveHOC.js').default
+const resolveHOC = require('react-docgen/dist/utils/resolveHOC').default
 
 // Revolver implementation based on :
 // https://github.com/reactjs/react-docgen/blob/master/src/resolver/findAllExportedComponentDefinitions.js
