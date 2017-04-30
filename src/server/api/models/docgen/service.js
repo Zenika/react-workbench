@@ -122,7 +122,7 @@ const resolvePath = async (path) => {
     try {
       const stats = await fs.statAsync(newpath)
       if (stats.isDirectory()) {
-        return resolvePath(p.resolve(path, 'index.js'))
+        return resolvePath(p.resolve(path, 'index'))
       }
       return newpath
     } catch (e) {
