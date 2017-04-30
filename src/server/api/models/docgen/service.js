@@ -41,14 +41,6 @@ const componentResolver = (ast, recast) => {
             // Manage imported components in HOC from different file
             const importType = { path: resolved.node.source.value }
             throw importType
-          } else if (resolved.node.type === 'Identifier') {
-            // Manage exported components in index.js files
-            console.log(resolved)
-            // console.log(path.value.source.value)
-            const importType = {
-              path: resolved.parentPath.parentPath.parentPath.value.source.value,
-            }
-            throw importType
           }
 
           if (isComponentDefinition(resolved)) {
@@ -103,18 +95,22 @@ const componentResolver = (ast, recast) => {
   return components
 }
 
-// FIXME not all cases of exported elements managed
-// just : export { default } from './xxx'
+// FIXME not all cases of default exported elements managed
 const indexResolver = (ast, recast) => {
   const exportDefaultIndex = (path) => {
+    let resolvedPath = path
+    // manage : 'export default XXX' (and with hoc)
+    if (path.value.declaration) {
+      resolvedPath = utils.resolveToValue(resolveHOC(path.get('declaration')))
+      resolvedPath = utils.resolveToValue(resolvedPath.parentPath)
+    }
+    // by default manage : export { default } from './XXX'
     const importType = {
-      path: path.value.source.value,
+      path: resolvedPath.value.source.value,
     }
     throw importType
   }
   recast.visit(ast, {
-    visitExportDeclaration: false,
-    visitExportNamedDeclaration: exportDefaultIndex,
     visitExportDefaultDeclaration: exportDefaultIndex,
   })
 }
