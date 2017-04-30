@@ -94,18 +94,6 @@ const componentResolver = (ast, recast) => {
   }
 
   recast.visit(ast, {
-    visitFunctionDeclaration: false,
-    visitFunctionExpression: false,
-    visitClassDeclaration: false,
-    visitClassExpression: false,
-    visitIfStatement: false,
-    visitWithStatement: false,
-    visitSwitchStatement: false,
-    visitCatchCause: false,
-    visitWhileStatement: false,
-    visitDoWhileStatement: false,
-    visitForStatement: false,
-    visitForInStatement: false,
     visitExportDeclaration: exportDeclaration,
     visitExportNamedDeclaration: exportDeclaration,
     visitExportDefaultDeclaration: exportDeclaration,
@@ -125,22 +113,9 @@ const indexResolver = (ast, recast) => {
     throw importType
   }
   recast.visit(ast, {
-    visitFunctionDeclaration: false,
-    visitFunctionExpression: false,
-    visitClassDeclaration: false,
-    visitClassExpression: false,
-    visitIfStatement: false,
-    visitWithStatement: false,
-    visitSwitchStatement: false,
-    visitCatchCause: false,
-    visitWhileStatement: false,
-    visitDoWhileStatement: false,
-    visitForStatement: false,
-    visitForInStatement: false,
     visitExportDeclaration: false,
     visitExportNamedDeclaration: exportDefaultIndex,
     visitExportDefaultDeclaration: exportDefaultIndex,
-    visitAssignmentExpression: false,
   })
 }
 
