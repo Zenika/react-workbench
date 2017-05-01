@@ -128,8 +128,8 @@ const resolvePath = async (path) => {
         return resolvePath(p.resolve(path, 'index'))
       }
       return newpath
-    } catch (e) {
-      // file path not found
+    } catch (ex) {
+      if (ex.errno !== -2) throw ex // -2 is file not found
     }
   }
   return null
