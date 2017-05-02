@@ -34,7 +34,6 @@ module.exports = {
           options: {
             plugins: [
               /* eslint-disable global-require */
-              require('babel-plugin-react-docgen').default,
               require('babel-plugin-transform-class-properties'),
               require('babel-plugin-transform-object-rest-spread'),
               /* eslint-enable global-require */
