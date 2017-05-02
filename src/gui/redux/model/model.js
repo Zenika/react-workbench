@@ -4,6 +4,7 @@ const getValue = (value, type) => {
   switch (type) {
     case 'bool': return !!value
     case 'object': return eval(`Object(${value})`) // eslint-disable-line no-eval
+    case 'func': return eval(value) // eslint-disable-line no-eval
     default: return value
   }
 }
