@@ -11,6 +11,7 @@ const getType = (type) => {
 
 const getValue = (type, value) => {
   switch (type) {
+    case 'array':
     case 'object': return JSON.stringify(value)
     default: return value
   }
