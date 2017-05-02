@@ -8,7 +8,8 @@
     "install": "npm install node-sass@4.3.0",
     "lint:js": "eslint --ext js,jsx src",
     "lint:sass": "sass-lint -v -q",
-    "lint": "npm-run-all --parallel lint:*"
+    "lint": "npm-run-all --parallel lint:*",
+    "start": "./src/script/index.js ./misc/component.jsx"
   },
   "bin": {
     "react-workbench": "./src/script/index.js"

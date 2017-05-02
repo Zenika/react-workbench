@@ -1,59 +1,41 @@
-import 'babel-polyfill'
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore, compose, combineReducers } from 'redux'
-import { connect, Provider } from 'react-redux'
-import '../src/gui/styles/global.scss'
-import Workbench from '../src/gui/components/workbench'
+import app from '../src/gui/app'
 
 // eslint-disable-next-line import/no-absolute-path,import/first
 import Component from '/* react-workbench-insert import */'
 
-// --- REDUX
-const component = (state = {}, { type, payload }) => {
+const getDocgenValue = (value, type) => {
   switch (type) {
-    case 'SET_STATE': return { ...state, ...payload }
-    case 'INIT_STATE': return {}
-    default: return state
+    case 'bool': return value === 'true'
+    case 'object': return eval(`Object(${value})`) // eslint-disable-line no-eval
+    case 'func': return eval(value) // eslint-disable-line no-eval
+    default: return value
   }
 }
 
-const model = (state = {}, { type, payload }) => {
-  switch (type) {
-    case 'SET_MODEL': return payload
-    default: return state
-  }
-}
-
-const store = createStore(
-  combineReducers({ component, model }),
-  compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f,
-  ),
-)
-// --- !! REDUX
-
-// get the component model
 fetch('/api/docgen')
   .then(response => response.json())
   .then((json) => {
     if (json && json.length > 0) {
-      store.dispatch({ type: 'SET_MODEL', payload: json[0].props })
+      app(
+        Component,
+        Object
+          .keys(json[0].props)
+          .reduce(
+            (obj, key) => {
+              const prop = json[0].props[key]
+              const type = prop.type && prop.type.name
+              const value = prop.defaultValue && prop.defaultValue.value
+
+              return {
+                ...obj,
+                [key]: {
+                  value: getDocgenValue(value, type),
+                  type,
+                },
+              }
+            },
+            {},
+          ),
+      )
     }
   })
-
-// connect the tested component to the redux state
-const WrappedComponent = connect(state => state.component)(Component)
-
-const App = () => (
-  <Provider store={store}>
-    <Workbench>
-      <WrappedComponent />
-    </Workbench>
-  </Provider>
-)
-
-render(
-  <App />,
-  document.getElementById('app'),
-)
