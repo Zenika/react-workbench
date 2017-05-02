@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { setValue } from '../../../redux/model'
 import Input from './input'
 
 const getType = (type) => {
@@ -16,22 +17,16 @@ const getValue = (type, e) => {
 }
 
 const mapState = ({ model }, { name }) => {
-  const m = model[name]
+  const { value, type } = model[name]
 
   return {
-    value: m.value,
-    type: getType(m.type),
+    value,
+    type: getType(type),
   }
 }
 
 const mapDispatch = (dispatch, { name }) => ({
-  onChange: type => event => dispatch({
-    type: 'SET_VALUE',
-    payload: {
-      name,
-      value: getValue(type, event),
-    },
-  }),
+  onChange: type => event => dispatch(setValue(name, getValue(type, event))),
 })
 
 const merge = (state, dispatch, props) => ({
