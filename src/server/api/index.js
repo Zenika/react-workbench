@@ -1,7 +1,8 @@
 const bodyParser = require('body-parser')
-const { API_BASE_CONTEXT } = require('../../constants')
+const { API_BASE_CONTEXT, COMPONENT_ABSOLUTE_PATH } = require('../../constants')
 const state = require('./models/state')
 const fs = require('./models/fs')
+const docgen = require('./models/docgen')
 
 const genPath = resource => `${API_BASE_CONTEXT}/${resource.NAME}`
 
@@ -31,6 +32,8 @@ const connect = (app) => {
   // - fs
   app.get(genPath(fs), errorHandler(() => fs.ls('/')))
   app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.ls(`/${req.params.path}/${req.params[0]}`)))
+  // - docgen
+  app.get(genPath(docgen), errorHandler(() => docgen.resolve(COMPONENT_ABSOLUTE_PATH)))
 }
 
 module.exports = {

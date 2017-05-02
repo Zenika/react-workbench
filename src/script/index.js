@@ -17,6 +17,7 @@ const start = async () => {
   // 2. Get relative path
   const output = { dir: path.resolve(__dirname, '..', '..', 'tmp'), file: 'index.jsx' }
   let relativePath = path.relative(output.dir, COMPONENT_ABSOLUTE_PATH)
+
   // 2bis -
   // this handle the case of index.jsx (template) and tested component sharing the same directory.
   // in this case the relative path is <testedComponent> without '/' wich is an absolute import
