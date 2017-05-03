@@ -115,6 +115,7 @@ const indexResolver = (ast, recast) => {
   }
   recast.visit(ast, {
     visitExportDefaultDeclaration: exportDefaultIndex,
+    visitExportNamedDeclaration: exportDefaultIndex,
   })
 }
 
@@ -142,12 +143,14 @@ const resolve = async (componentPath) => {
 
   try {
     return docgen.parse(file, isIndex ? indexResolver : componentResolver)
-  } catch (e) {
-    if (e.path) {
-      const newPath = await resolvePath(p.resolve(componentPath, isIndex ? '.' : '..', e.path))
+  } catch (ex) {
+    if (ex.path) {
+      const newPath = await resolvePath(p.resolve(componentPath, isIndex ? '.' : '..', ex.path))
       if (newPath) {
         return resolve(newPath)
       }
+    } else {
+      throw ex
     }
   }
   return null
