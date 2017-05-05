@@ -7,7 +7,7 @@ const MyComponent = ({ name, age, gender, happy, address, books, onBoom, color }
       {JSON.stringify(address)}
     </pre>
     <pre>
-      {JSON.stringify(books)}
+      {JSON.stringify(books.map(b => `--${b}`))}
     </pre>
     <div style={{ width: '10px', height: '10px', backgroundColor: color }} />
   </div>

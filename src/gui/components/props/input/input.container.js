@@ -9,7 +9,15 @@ const getType = (type) => {
   }
 }
 
-const getValue = (type, e) => {
+const getValue = (type, value) => {
+  switch (type) {
+    case 'array':
+    case 'object': return JSON.stringify(value)
+    default: return value
+  }
+}
+
+const getValueFromEvent = (type, e) => {
   switch (type) {
     case 'checkbox': return e.target.checked
     default: return e.target.value
@@ -20,13 +28,13 @@ const mapState = ({ model }, { name }) => {
   const { value, type } = model[name]
 
   return {
-    value,
+    value: getValue(type, value),
     type: getType(type),
   }
 }
 
 const mapDispatch = (dispatch, { name }) => ({
-  onChange: type => event => dispatch(setValue(name, getValue(type, event))),
+  onChange: type => event => dispatch(setValue(name, getValueFromEvent(type, event))),
 })
 
 const merge = (state, dispatch, props) => ({
