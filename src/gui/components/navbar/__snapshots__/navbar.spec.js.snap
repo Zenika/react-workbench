@@ -1,6 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`undefined 1`] = `
+exports[`component/navbar should have a default behaviour 1`] = `
+<div
+  className="navbar"
+  style={Object {}}
+>
+  Workbench
+</div>
+`;
+
+exports[`component/navbar should take custom className 1`] = `
 <div
   className="navbar custom"
   style={Object {}}
@@ -9,7 +18,7 @@ exports[`undefined 1`] = `
 </div>
 `;
 
-exports[`undefined 2`] = `
+exports[`component/navbar should take custom style 1`] = `
 <div
   className="navbar"
   style={
@@ -17,15 +26,6 @@ exports[`undefined 2`] = `
       "backgroundColor": "red",
     }
   }
->
-  Workbench
-</div>
-`;
-
-exports[`undefined 3`] = `
-<div
-  className="navbar"
-  style={Object {}}
 >
   Workbench
 </div>

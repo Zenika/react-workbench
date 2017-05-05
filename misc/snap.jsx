@@ -11,7 +11,7 @@ const component = Component => (props) => {
 export default (Component) => {
   const WrappedComponent = component(Component)
 
-  return (props) => {
+  return props => () => {
     const c = WrappedComponent(props)
     const tree = c.toJSON()
     expect(tree).toMatchSnapshot()
