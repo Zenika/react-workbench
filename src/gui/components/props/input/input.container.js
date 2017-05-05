@@ -13,6 +13,7 @@ const getValue = (type, value) => {
   switch (type) {
     case 'array':
     case 'object': return JSON.stringify(value)
+    case 'func': return eval(value) // eslint-disable-line no-eval
     default: return value
   }
 }
