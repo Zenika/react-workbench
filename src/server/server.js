@@ -1,9 +1,10 @@
 const express = require('express')
+const log = require('loglevel')
 const { PORT, PUBLIC_FOLDER } = require('./constants')
 const webpack = require('./webpack')
 const api = require('./api')
 
-const start = () => {
+const start = (component) => {
   // Create a new express server
   const app = express()
 
@@ -11,16 +12,14 @@ const start = () => {
   app.use(express.static(PUBLIC_FOLDER))
 
   // serve webpack
-  webpack.connect(app)
+  webpack.connect(app, component)
 
   // serve api
-  api.connect(app)
+  api.connect(app, component)
 
   // listen
   app.listen(PORT, () => {
-    // FIXME : delete this eslint-disable
-    // eslint-disable-next-line no-console
-    console.log(`Listen to localhost:${PORT}`)
+    log.info(`Listen to localhost:${PORT}`)
   })
 }
 
