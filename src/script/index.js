@@ -29,7 +29,7 @@ const start = async () => {
   // 2. Replace what needs to be replaced
   const appFileContent = template.replace(
     '/* react-workbench-insert import */',
-     relativePath // eslint-disable-line comma-dangle
+     relativePath
   )
 
   // 3. Write it into a tmp folder
