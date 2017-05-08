@@ -15,8 +15,8 @@ const get = async (component) => {
 
     // basename is empty, we are at the file system root
     if (path.basename(previousPath) === '') {
-      log.error('package.json not found, unable to identify project root')
-      process.exit(1)
+      log.warn('package.json not found, unable to identify project root')
+      return []
     }
   }
 
@@ -25,11 +25,10 @@ const get = async (component) => {
     await fs.statAsync(`${previousPath}/node_modules`)
   } catch (ex) {
     if (ex.errno === -2) { // -2 is file not found
-      log.error(`node_modules doesn't exist in [${previousPath}], please resolve dependencies`)
-      process.exit(1)
-    } else {
-      throw ex
+      log.warn(`node_modules doesn't exist in [${previousPath}], please resolve dependencies`)
+      return []
     }
+    throw ex
   }
 
   paths.push(`${previousPath}/node_modules`)
