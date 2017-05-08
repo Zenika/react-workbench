@@ -6,7 +6,7 @@ export default (name) => {
     props: {},
   }
 
-  return props => {
+  return (props) => {
     const debugStr = JSON.stringify({ ...debug, props })
     return (
       <div className={name}>{debugStr}</div>
