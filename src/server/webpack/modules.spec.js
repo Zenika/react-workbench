@@ -5,8 +5,8 @@ jest.mock('fs', () => ({
 }))
 
 jest.mock('loglevel', () => ({
-  debug: jest.fn(() => undefined),
-  warn: jest.fn(() => undefined),
+  debug: jest.fn(),
+  warn: jest.fn(),
 }))
 
 const fs = require('fs')
