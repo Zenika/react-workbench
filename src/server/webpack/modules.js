@@ -1,15 +1,16 @@
+const log = require('loglevel')
 const path = require('path')
 const fs = require('fs')
-const { COMPONENT_ABSOLUTE_PATH_DIR } = require('../../constants')
 
-const get = async () => {
+const get = async (component) => {
   const paths = []
-  let previousPath = COMPONENT_ABSOLUTE_PATH_DIR
+  let previousPath = component.path.absolute.dir
   let files = await fs.readdirAsync(previousPath)
 
   // looking for the first directory with a 'package.json' file
   while (!files.includes('package.json')) {
     previousPath = path.resolve(previousPath, '..')
+    log.debug(`Looking for package.json into '${previousPath}`)
     files = await fs.readdirAsync(previousPath)
   }
   paths.push(`${previousPath}/node_modules`)

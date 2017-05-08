@@ -1,5 +1,4 @@
 /* eslint-disable import/no-extraneous-dependencies */
-/* eslint-disable no-console */
 const path = require('path')
 
 const WORKBENCH_DIR = path.resolve(__dirname, '..', '..', '..')
