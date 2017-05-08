@@ -4,7 +4,7 @@ const fs = require('fs')
 
 const get = async (component) => {
   const paths = []
-  let previousPath = component.path.absolute
+  let previousPath = component.path.absolute.dir
   let files = await fs.readdirAsync(previousPath)
 
   // looking for the first directory with a 'package.json' file

@@ -2,13 +2,24 @@ const fs = require('fs')
 const path = require('path')
 const server = require('../server')
 
-const start = async (fileName) => {
-  const component = {
-    fileName,
+const getComponent = (fileName) => {
+  const name = path.basename(fileName)
+  const absolute = path.resolve(process.env.PWD, fileName)
+  const dir = fs.lstatSync(absolute).isDirectory() ? absolute : path.dirname(absolute)
+
+  return {
+    name,
     path: {
-      absolute: path.resolve(process.env.PWD, fileName),
+      absolute: {
+        dir,
+        full: path.resolve(dir, name),
+      },
     },
   }
+}
+
+const start = async (fileName) => {
+  const component = getComponent(fileName)
 
   // 1. Read the template file
   const filePath = path.resolve(__dirname, 'template.jsx')
@@ -16,7 +27,7 @@ const start = async (fileName) => {
 
   // 2. Get relative path
   const output = { dir: path.resolve(__dirname, '..', '..', 'tmp'), file: 'index.jsx' }
-  let relativePath = path.relative(output.dir, component.path.absolute)
+  let relativePath = path.relative(output.dir, component.path.absolute.full)
 
   // 2bis -
   // this handle the case of index.jsx (template) and tested component sharing the same directory.

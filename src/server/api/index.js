@@ -33,7 +33,7 @@ const connect = (app, component) => {
   app.get(genPath(fs), errorHandler(() => fs.ls('/')))
   app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.ls(`/${req.params.path}/${req.params[0]}`)))
   // - docgen
-  app.get(genPath(docgen), errorHandler(() => docgen.resolve(component.path.absolute)))
+  app.get(genPath(docgen), errorHandler(() => docgen.resolve(component.path.absolute.full)))
 }
 
 module.exports = {
