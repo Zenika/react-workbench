@@ -9,7 +9,9 @@
     "lint:js": "eslint --ext js,jsx src",
     "lint:sass": "sass-lint -v -q",
     "lint": "npm-run-all --parallel lint:*",
-    "start": "./src/script/index.js ./misc/component.jsx"
+    "start": "./src/script/index.js ./misc/component.jsx",
+    "test": "jest",
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
   },
   "bin": {
     "react-workbench": "./src/script/index.js"
@@ -43,6 +45,40 @@
     "style-loader": "^0.16.1",
     "webpack": "^2.3.3",
     "webpack-dev-middleware": "^1.10.1"
+  },
+  "babel": {
+    "plugins": [
+      "transform-class-properties",
+      "transform-object-rest-spread"
+    ],
+    "presets": [
+      "es2017",
+      "es2015",
+      "react"
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
+  },
+  "jest": {
+    "transform": {
+      ".*": "./node_modules/babel-jest"
+    },
+    "moduleDirectories": [
+      "node_modules",
+      "<rootDir>"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./misc/__mocks__/fileMock.js",
+      "\\.(css|scss|less|sass)$": "identity-obj-proxy"
+    },
+    "setupFiles": [
+      "./misc/testSetup.js"
+    ]
   },
   "sasslintConfig": "./misc/sass-lint.yml",
   "eslintConfig": {
@@ -88,13 +124,18 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",
+    "babel-jest": "^19.0.0",
+    "coveralls": "^2.13.1",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-babel": "^4.1.1",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.10.3",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^19.0.2",
     "npm-run-all": "^4.0.2",
+    "react-test-renderer": "^15.5.4",
     "sass-lint": "^1.10.2"
   }
 }

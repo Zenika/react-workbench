@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component/navbar should have a default behaviour 1`] = `
+<div
+  className="navbar"
+  style={Object {}}
+>
+  Workbench
+</div>
+`;
+
+exports[`component/navbar should take custom className 1`] = `
+<div
+  className="navbar custom"
+  style={Object {}}
+>
+  Workbench
+</div>
+`;
+
+exports[`component/navbar should take custom style 1`] = `
+<div
+  className="navbar"
+  style={
+    Object {
+      "backgroundColor": "red",
+    }
+  }
+>
+  Workbench
+</div>
+`;

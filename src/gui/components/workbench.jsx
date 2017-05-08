@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 import Navbar from './navbar'
 import Props from './props'
-import styles from './workbench.styles'
+import styles from './workbench.styles.scss'
 
 const Workbench = ({ style, className, children }) => {
   return (
