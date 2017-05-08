@@ -1,4 +1,7 @@
-# react-workbench
+# react-workbench 
+
+![CircleCI](https://circleci.com/gh/Zenika/react-workbench.svg?style=shield&circle-token=8e12a29d95fe36ed30b0185052d0b4c7f6c4d59f)
+[![Coverage Status](https://coveralls.io/repos/github/Zenika/react-workbench/badge.svg?branch=master)](https://coveralls.io/github/Zenika/react-workbench?branch=master)
 
 `react-workbench` is a CLI tool that helps you design, develop, document and test your component in an isolated context, with a beautiful GUI.
 
