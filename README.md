@@ -1,4 +1,6 @@
-# react-workbench
+# react-workbench 
+
+![CircleCI](https://circleci.com/gh/Zenika/react-workbench.svg?style=shield&circle-token=8e12a29d95fe36ed30b0185052d0b4c7f6c4d59f)
 
 `react-workbench` is a CLI tool that helps you design, develop, document and test your component in an isolated context, with a beautiful GUI.
 
