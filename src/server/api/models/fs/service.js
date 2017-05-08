@@ -17,7 +17,7 @@ const ls = async (entryPath) => {
         ext,
         isDirectory: stats.isDirectory(),
       },
-      stats // eslint-disable-line comma-dangle
+      stats
     )
   })
 
