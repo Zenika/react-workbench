@@ -60,51 +60,56 @@ describe('server/webpack/modules', () => {
     expect(paths).toContain('/foo/bar/styles')
   })
 
-  it('should show warning when package.json not found', async () => {
-    // mocks
-    fs.readdirAsync.mockImplementation(jest.fn(async () => ['/']))
+  describe('errors', () => {
+    it('should show warning when package.json not found', async () => {
+      // mocks
+      fs.readdirAsync.mockImplementation(jest.fn(async () => ['/']))
 
-    // calls
-    const paths = await service.get(component)
+      // calls
+      const paths = await service.get(component)
 
-    // asserts
-    expect(loglevel.warn.mock.calls.length).toBe(1)
-    expect(loglevel.warn.mock.calls[0][0]).toBe('package.json not found, unable to identify project root')
-    expect(paths).toBeDefined()
-    expect(paths.length).toBe(0)
-  })
-
-  it('should show warning when node_modules not found', async () => {
-    // mocks
-    fs.readdirAsync.mockImplementation(jest.fn(async () => ['package.json']))
-    fs.statAsync.mockImplementation(jest.fn(async () => {
-      const error = { errno: -2 }
-      throw error
-    }))
-
-    // calls
-    const paths = await service.get(component)
-
-    // asserts
-    expect(loglevel.warn.mock.calls.length).toBe(1)
-    expect(loglevel.warn.mock.calls[0][0]).toBe('node_modules doesn\'t exist in [/foo/bar], please resolve dependencies')
-    expect(paths).toBeDefined()
-    expect(paths.length).toBe(0)
-  })
-
-  it('should throw an error when unexpected fs error happens', async () => {
-    // mocks
-    fs.readdirAsync.mockImplementation(jest.fn(async () => ['package.json']))
-    fs.statAsync.mockImplementation(jest.fn(async () => {
-      throw new Error()
-    }))
-
-    // calls
-    try {
-      await service.get(component)
-    } catch (ex) {
       // asserts
-      expect(ex).toBeDefined()
-    }
+      expect(loglevel.warn.mock.calls.length).toBe(1)
+      expect(loglevel.warn.mock.calls[0][0]).toBe('package.json not found, unable to identify project root')
+      expect(paths).toBeDefined()
+      expect(paths.length).toBe(0)
+    })
+
+    it('should show warning when node_modules not found', async () => {
+      // mocks
+      fs.readdirAsync.mockImplementation(jest.fn(async () => ['package.json']))
+      fs.statAsync.mockImplementation(jest.fn(async () => {
+        const error = { errno: -2 }
+        throw error
+      }))
+
+      // calls
+      const paths = await service.get(component)
+
+      // asserts
+      expect(loglevel.warn.mock.calls.length).toBe(1)
+      expect(loglevel.warn.mock.calls[0][0]).toBe('node_modules doesn\'t exist in [/foo/bar], please resolve dependencies')
+      expect(paths).toBeDefined()
+      expect(paths.length).toBe(0)
+    })
+
+    it('should throw an error when unexpected fs error happens', async () => {
+      // mocks
+      fs.readdirAsync.mockImplementation(jest.fn(async () => ['package.json']))
+      fs.statAsync.mockImplementation(jest.fn(async () => {
+        throw new Error()
+      }))
+
+      // calls
+      let error = false
+      try {
+        await service.get(component)
+      } catch (ex) {
+        error = true
+      }
+
+      // asserts
+      expect(error).toBe(true)
+    })
   })
 })
