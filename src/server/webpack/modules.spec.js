@@ -36,6 +36,22 @@ describe('server/webpack/modules', () => {
     expect(paths).toContain('/foo/bar/node_modules')
   })
 
+  it('should iterate over the path until it finds a package.json file', async () => {
+    // mocks
+    fs.readdirAsync
+      .mockImplementationOnce(jest.fn(async () => ['/foo/bar']))
+      .mockImplementationOnce(jest.fn(async () => ['package.json']))
+
+    // calls
+    const paths = await service.get(component)
+
+    // asserts
+    expect(fs.readdirAsync.mock.calls.length).toBe(2)
+    expect(paths).toBeDefined()
+    expect(paths).toContain('/foo')
+    expect(paths).toContain('/foo/node_modules')
+  })
+
   it('should add src folder if exists', async () => {
     // mocks
     fs.readdirAsync.mockImplementation(jest.fn(async () => ['package.json', 'src']))
