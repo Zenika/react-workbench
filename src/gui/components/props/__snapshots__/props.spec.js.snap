@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component/props props.container.js should map redux model into properties array 1`] = `
+<div
+  className="props"
+  style={Object {}}
+>
+  <input
+    name="foo"
+  />
+  <input
+    name="bar"
+  />
+</div>
+`;
+
+exports[`component/props props.jsx should render by default 1`] = `
+<div
+  className="props"
+  style={Object {}}
+/>
+`;
+
+exports[`component/props props.jsx should render inputs following given properties 1`] = `
+<div
+  className="props"
+  style={Object {}}
+>
+  <input
+    name="prop1"
+  />
+  <input
+    name="prop2"
+  />
+</div>
+`;
+
+exports[`component/props props.jsx should take custom className 1`] = `
+<div
+  className="props custom"
+  style={Object {}}
+/>
+`;
+
+exports[`component/props props.jsx should take custom style 1`] = `
+<div
+  className="props"
+  style={
+    Object {
+      "backgroundColor": "red",
+    }
+  }
+/>
+`;
