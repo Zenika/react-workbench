@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`component/props/input input.container.js model with type array should render a textfield 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type array should render a textfield with value 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked="[\\"item1\\",\\"item2\\"]"
+    onChange={[Function]}
+    type="text"
+    value="[\\"item1\\",\\"item2\\"]"
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type bool should render a checkbox 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="checkbox"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type bool should render a checkbox with value 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="checkbox"
+    value={true}
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type function should render a textfield 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type function should render a textfield with value 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={[Function]}
+    onChange={[Function]}
+    type="text"
+    value={[Function]}
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type object should render a textfield 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type object should render a textfield with value 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked="{\\"item\\":\\"value\\"}"
+    onChange={[Function]}
+    type="text"
+    value="{\\"item\\":\\"value\\"}"
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type string should render a textfield 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.container.js model with type string should render a textfield with value 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked="bar"
+    onChange={[Function]}
+    type="text"
+    value="bar"
+  />
+</div>
+`;
+
+exports[`component/props/input input.jsx common props should take custom className 1`] = `
+<div
+  className="input custom"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.jsx common props should take custom style 1`] = `
+<div
+  className="input"
+  style={
+    Object {
+      "backgroundColor": "red",
+    }
+  }
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.jsx input type="checkbox" should render a checkbox 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="checkbox"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.jsx input type="checkbox" should set a default value 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={true}
+    onChange={[Function]}
+    type="text"
+    value={true}
+  />
+</div>
+`;
+
+exports[`component/props/input input.jsx input type="text" should render a textfield 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked={undefined}
+    onChange={[Function]}
+    type="text"
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`component/props/input input.jsx input type="text" should set a default value 1`] = `
+<div
+  className="input"
+  style={Object {}}
+>
+  <div>
+    foo
+  </div>
+  <input
+    checked="bar"
+    onChange={[Function]}
+    type="text"
+    value="bar"
+  />
+</div>
+`;
