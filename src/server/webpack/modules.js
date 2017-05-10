@@ -10,9 +10,27 @@ const get = async (component) => {
   // looking for the first directory with a 'package.json' file
   while (!files.includes('package.json')) {
     previousPath = path.resolve(previousPath, '..')
-    log.debug(`Looking for package.json into '${previousPath}`)
+    log.debug(`Looking for package.json into [${previousPath}]`)
     files = await fs.readdirAsync(previousPath)
+
+    // basename is empty, we are at the file system root
+    if (path.basename(previousPath) === '') {
+      log.warn('package.json not found, unable to identify project root')
+      return []
+    }
   }
+
+  // check if node_modules exists
+  try {
+    await fs.statAsync(`${previousPath}/node_modules`)
+  } catch (ex) {
+    if (ex.errno === -2) { // -2 is file not found
+      log.warn(`node_modules doesn't exist in [${previousPath}], please resolve dependencies`)
+      return []
+    }
+    throw ex
+  }
+
   paths.push(`${previousPath}/node_modules`)
   paths.push(previousPath)
 
