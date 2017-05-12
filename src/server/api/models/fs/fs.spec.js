@@ -1,7 +1,7 @@
 /* eslint-env jest */
 jest.mock('fs', () => ({
   readdirAsync: jest.fn(async () => undefined),
-  statAsync: jest.fn(async () => ({ isDirectory: () => false })),
+  statAsync: jest.fn(async () => Object.setPrototypeOf({}, { isDirectory: () => true })),
 }))
 
 const fs = require('fs')
@@ -38,6 +38,6 @@ describe('server/api/models/fs', () => {
     expect(result[0].fullname).toBe('baz.txt')
     expect(result[0].name).toBe('baz')
     expect(result[0].ext).toBe('.txt')
-    expect(result[0].isDirectory).toBe(false)
+    expect(result[0].isDirectory).toBe(true)
   })
 })
