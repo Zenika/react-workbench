@@ -16,10 +16,23 @@ describe('server/api/ddb', () => {
     fs.readFileAsync.mockClear()
   })
 
+  describe('init', () => {
+    it('should provide ddb service', () => {
+      // calls
+      const service = ddb('foo')
+
+      // asserts
+      expect(service).toBeDefined()
+      expect(typeof service.write).toBe('function')
+      expect(typeof service.read).toBe('function')
+      expect(typeof service.append).toBe('function')
+    })
+  })
+
   describe('write', () => {
     // data
     const name = 'testedComponent.jsx'
-    const content = { foo: 'bar' }
+    const content = ['foo', 'bar']
 
     it('should create the configuration directory', async () => {
       // calls
@@ -54,7 +67,7 @@ describe('server/api/ddb', () => {
       expect(data).toBeDefined()
       expect(data).toEqual(content)
       expect(fs.writeFileAsync.mock.calls.length).toBe(1)
-      expect(fs.writeFileAsync.mock.calls[0][0]).toEqual(`${constants.COMPONENT_CONFIG_DIR}/${name}.json`)
+      expect(fs.writeFileAsync.mock.calls[0][0]).toBe(`${constants.COMPONENT_CONFIG_DIR}/${name}.json`)
       expect(fs.writeFileAsync.mock.calls[0][1]).toBe(JSON.stringify(data))
     })
 
@@ -79,32 +92,76 @@ describe('server/api/ddb', () => {
     })
   })
 
-  describe.skip('read', () => {
-    it('should read the configuration if exists', () => {
-      // TODO
+  describe('read', () => {
+    // data
+    const name = 'testedComponent.jsx'
+
+    it('should read the configuration if exists', async () => {
+      // mocks
+      fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
+
+      // calls
+      const data = await ddb(name).read()
+
+      // asserts
+      expect(data).toBeDefined()
+      expect(data).toEqual(['foo'])
+      expect(fs.readFileAsync.mock.calls.length).toBe(1)
+      expect(fs.readFileAsync.mock.calls[0][0]).toBe(`${constants.COMPONENT_CONFIG_DIR}/${name}.json`)
     })
 
-    it('should return an empty configuration if doesn\'t exists', () => {
-      // TODO
+    it('should return "undefined" if configuration file doesn\'t exists', async () => {
+      // mocks
+      fs.readFileAsync.mockImplementation(jest.fn(async () => {
+        const error = { errno: -2 }
+        throw error
+      }))
+
+      // calls
+      const data = await ddb(name).read()
+
+      // asserts
+      expect(data).toBeUndefined()
     })
 
     describe('errors', () => {
-      it('should throw an error when unexpected fs error happens', () => {
-        // TODO
+      it('should throw an error when unexpected fs error happens', async () => {
+        // mocks
+        fs.readFileAsync.mockImplementation(jest.fn(async () => {
+          throw new Error()
+        }))
+
+        // calls
+        let error = false
+        try {
+          await ddb(name).read()
+        } catch (ex) {
+          error = true
+        }
+
+        // asserts
+        expect(error).toBe(true)
       })
     })
   })
 
   describe.skip('append', () => {
-    it('should retreive the configuration if exists', () => {
+    // data
+    const content = ['foo', 'bar']
+
+    it('should retreive the configuration if exists', async () => {
+      // mocks
+      fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
+      // calls
+      await ddb('testedComponent.jsx').append(content)
+      // asserts
+    })
+
+    it('should retreive an empty configuration if doesn\'t exists', async () => {
       // TODO
     })
 
-    it('should retreive an empty configuration if doesn\'t exists', () => {
-      // TODO
-    })
-
-    it('should append & write content to the existing configuration', () => {
+    it('should append & write content to the existing configuration', async () => {
       // TODO
     })
   })
