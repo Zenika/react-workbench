@@ -150,11 +150,8 @@ describe('server/api/ddb', () => {
     const content = ['foo', 'bar']
 
     it('should retreive the configuration if exists', async () => {
-      // mocks
-      fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
       // calls
       await ddb('testedComponent.jsx').append(content)
-      // asserts
     })
 
     it('should retreive an empty configuration if doesn\'t exists', async () => {
