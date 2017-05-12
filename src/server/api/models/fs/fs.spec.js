@@ -25,6 +25,18 @@ describe('server/api/models/fs', () => {
     expect(result.length).toBe(2)
   })
 
+  it('should handle empty folder', async () => {
+    // mocks
+    fs.readdirAsync.mockImplementation(jest.fn(async () => []))
+
+    // calls
+    const result = await service.ls('/foo/bar')
+
+    // asserts
+    expect(result).toBeDefined()
+    expect(result.length).toBe(0)
+  })
+
   it('should give fullname, name, ext and isDirectory metadata', async () => {
     // mocks
     fs.readdirAsync.mockImplementation(jest.fn(async () => ['baz.txt']))
