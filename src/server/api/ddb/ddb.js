@@ -4,7 +4,7 @@ const { COMPONENT_CONFIG_DIR } = require('./constants')
 const init = (name) => {
   const DATABASE_PATH = `${COMPONENT_CONFIG_DIR}/${name}.json`
 
-  const write = async (data) => {
+  const write = async (data = []) => {
     // create configuration directory
     try {
       await fs.mkdirAsync(COMPONENT_CONFIG_DIR)
@@ -22,7 +22,10 @@ const init = (name) => {
     let content
 
     try {
-      content = JSON.parse(await fs.readFileAsync(DATABASE_PATH))
+      const fileContent = await fs.readFileAsync(DATABASE_PATH)
+      if (fileContent) {
+        content = JSON.parse(fileContent)
+      }
     } catch (ex) {
       if (ex.errno !== -2) throw ex // -2 is file not found
     }
@@ -30,7 +33,7 @@ const init = (name) => {
     return content
   }
 
-  const append = async (data) => {
+  const append = async (data = []) => {
     const content = (await read()) || []
 
     const all = content.concat(data)

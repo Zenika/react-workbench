@@ -2,7 +2,7 @@
 jest.mock('fs', () => ({
   mkdirAsync: jest.fn(async () => undefined),
   writeFileAsync: jest.fn(async () => undefined),
-  readFileAsync: jest.fn(async () => undefined),
+  readFileAsync: jest.fn(async () => '[]'),
 }))
 
 const fs = require('fs')
@@ -14,6 +14,10 @@ describe('server/api/ddb', () => {
     fs.mkdirAsync.mockClear()
     fs.writeFileAsync.mockClear()
     fs.readFileAsync.mockClear()
+
+    fs.mkdirAsync.mockImplementation(jest.fn(async () => undefined))
+    fs.writeFileAsync.mockImplementation(jest.fn(async () => undefined))
+    fs.readFileAsync.mockImplementation(jest.fn(async () => undefined))
   })
 
   describe('init', () => {
@@ -69,6 +73,15 @@ describe('server/api/ddb', () => {
       expect(fs.writeFileAsync.mock.calls.length).toBe(1)
       expect(fs.writeFileAsync.mock.calls[0][0]).toBe(`${constants.COMPONENT_CONFIG_DIR}/${name}.json`)
       expect(fs.writeFileAsync.mock.calls[0][1]).toBe(JSON.stringify(data))
+    })
+
+    it('should init an empty configuration when given data are undefined', async () => {
+      // calls
+      const data = await ddb(name).write(undefined)
+
+      // asserts
+      expect(data).toBeDefined()
+      expect(data).toEqual([])
     })
 
     describe('errors', () => {
@@ -145,21 +158,50 @@ describe('server/api/ddb', () => {
     })
   })
 
-  describe.skip('append', () => {
+  describe('append', () => {
     // data
     const content = ['foo', 'bar']
 
-    it('should retreive the configuration if exists', async () => {
+    it('should return an empty configuration if doesn\'t exists and nothing to append', async () => {
       // calls
-      await ddb('testedComponent.jsx').append(content)
+      const result = await ddb('testedComponent.jsx').append(undefined)
+
+      // asserts
+      expect(result).toBeDefined()
+      expect(result).toEqual([])
     })
 
-    it('should retreive an empty configuration if doesn\'t exists', async () => {
-      // TODO
+    it('should return the current configuration if exists and nothing to append', async () => {
+      // mocks
+      fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
+
+      // calls
+      const result = await ddb('testedComponent.jsx').append(undefined)
+
+      // asserts
+      expect(result).toBeDefined()
+      expect(result).toEqual(['foo'])
+    })
+
+    it('should append & write content to an empty configuration', async () => {
+      // calls
+      const result = await ddb('testedComponent.jsx').append(content)
+
+      // asserts
+      expect(result).toBeDefined()
+      expect(result).toEqual(['foo', 'bar'])
     })
 
     it('should append & write content to the existing configuration', async () => {
-      // TODO
+      // mocks
+      fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "baz" ]'))
+
+      // calls
+      const result = await ddb('testedComponent.jsx').append(content)
+
+      // asserts
+      expect(result).toBeDefined()
+      expect(result).toEqual(['baz', 'foo', 'bar'])
     })
   })
 })
