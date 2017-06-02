@@ -37,9 +37,15 @@ describe('server/api/models/fs', () => {
     expect(result.length).toBe(0)
   })
 
-  it('should give fullname, name, ext and isDirectory metadata', async () => {
+  it('should give fullname, name, ext, isDirectory and other stats metadata', async () => {
     // mocks
     fs.readdirAsync.mockImplementation(jest.fn(async () => ['baz.txt']))
+    fs.statAsync.mockImplementation(
+      jest.fn(async () => Object.setPrototypeOf({
+        foo: 'foo',
+        bar: 'bar',
+      }, { isDirectory: () => false }))
+    )
 
     // calls
     const result = await service.ls('/foo/bar')
@@ -50,6 +56,8 @@ describe('server/api/models/fs', () => {
     expect(result[0].fullname).toBe('baz.txt')
     expect(result[0].name).toBe('baz')
     expect(result[0].ext).toBe('.txt')
-    expect(result[0].isDirectory).toBe(true)
+    expect(result[0].isDirectory).toBe(false)
+    expect(result[0].foo).toBe('foo')
+    expect(result[0].bar).toBe('bar')
   })
 })
