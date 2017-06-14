@@ -1,6 +1,6 @@
 /* eslint-env jest */
 const recast = require('recast')
-const { parse } = require('../../../../../../misc/recast')
+const { parse } = require('misc/recast')
 
 const componentResolver = require('./componentResolver')
 
@@ -16,7 +16,7 @@ describe('server/api/models/docgen/resolvers/componentResolver', () => {
     const actual = componentResolver(parsed, recast)
     const expected = parsed.get('body', 1, 'declarations', 0, 'init', 'arguments', 0)
     expect(actual.length).toBe(1)
-    expect(actual[0].node).toBe(expected.node)
+    expect(actual[0].node).toEqual(expected.node)
   })
 
   it('should resolve a simple component class', () => {
@@ -32,10 +32,10 @@ describe('server/api/models/docgen/resolvers/componentResolver', () => {
     const actual = componentResolver(parsed, recast)
     const expected = parsed.get('body', 1, 'declarations', 0, 'init', 'arguments', 0)
     expect(actual.length).toBe(1)
-    expect(actual[0].node).toBe(expected.node)
+    expect(actual[0].node).toEqual(expected.node)
   })
 
-  it.skip('should resolve a simple functional component with HOC', () => {
+  it('should resolve a simple functional component with HOC', () => {
     const parsed = parse(`
       import React from 'React'
       import { connect } from 'react-redux'
@@ -45,8 +45,25 @@ describe('server/api/models/docgen/resolvers/componentResolver', () => {
       export default connect(Component)
     `)
     const actual = componentResolver(parsed, recast)
-    const expected = parsed.get('body', 1, 'declarations', 0, 'init', 'arguments', 0)
+    const expected = parsed.get('body', 2, 'declarations', 0, 'init', 'arguments', 0)
     expect(actual.length).toBe(1)
     expect(actual[0].node).toBe(expected.node)
+  })
+
+  it('should resolve a simple component class with HOC', () => {
+    const parsed = parse(`
+      import React from 'React'
+      import { connect } from 'react-redux'
+      class Component extends React.Component {
+        render() {
+          return <div />
+        }
+      }
+      export default connect(Component)
+    `)
+    const actual = componentResolver(parsed, recast)
+    const expected = parsed.get('body', 2, 'declarations', 0, 'init', 'arguments', 0)
+    expect(actual.length).toBe(1)
+    expect(actual[0].node).toEqual(expected.node)
   })
 })
