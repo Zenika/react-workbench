@@ -10,19 +10,14 @@ const isComponentDefinition = (path) => {
     || utils.isStatelessComponent(path)
 }
 
-const resolveDefinition = (definition, types) => {
+const resolveDefinition = (definition) => {
   if (utils.isReactCreateClassCall(definition)) {
-    const resolvedPath = utils.resolveToValue(definition.get('arguments', 0))
-    if (types.ObjectExpression.check(resolvedPath.node)) {
-      return resolvedPath
-    }
+    return utils.resolveToValue(definition.get('arguments', 0))
   } else if (utils.isReactComponentClass(definition)) {
     utils.normalizeClassDefinition(definition)
     return definition
-  } else if (utils.isStatelessComponent(definition)) {
-    return definition
   }
-  return null
+  return definition
 }
 
 const componentResolver = (ast, recast) => {
@@ -48,7 +43,7 @@ const componentResolver = (ast, recast) => {
         }
         return acc
       }, [])
-      .map(definition => resolveDefinition(definition, types))
+      .map(definition => resolveDefinition(definition))
 
     if (definitions.length === 0) {
       return false
@@ -63,11 +58,6 @@ const componentResolver = (ast, recast) => {
 
   const assignmentExpression = (path) => {
     let resolvedPath = path
-    // Ignore anything that is not `exports.X = ...;` or
-    // `module.exports = ...;`
-    if (!utils.isExportsOrModuleAssignment(resolvedPath)) {
-      return false
-    }
     // Resolve the value of the right hand side. It should resolve to a call
     // expression, something like React.createClass
     resolvedPath = utils.resolveToValue(resolvedPath.get('right'))
@@ -77,7 +67,7 @@ const componentResolver = (ast, recast) => {
         return false
       }
     }
-    const definition = resolveDefinition(resolvedPath, types)
+    const definition = resolveDefinition(resolvedPath)
     if (definition && components.indexOf(definition) === -1) {
       components.push(definition)
     }
