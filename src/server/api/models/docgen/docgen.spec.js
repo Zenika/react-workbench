@@ -152,63 +152,65 @@ describe('server/api/models/docgen', () => {
     expect(fs.readFileAsync.mock.calls[0][0]).toBe('/foo/bar/test/index.js')
   })
 
-  it('should throw an error when unexpected fs error happens', async () => {
-    // mocks
-    docgen.parse.mockImplementationOnce(jest.fn(() => {
-      throw new Error('unexpected')
-    }))
+  describe('errors', () => {
+    it('should throw an error when unexpected fs error happens', async () => {
+      // mocks
+      docgen.parse.mockImplementationOnce(jest.fn(() => {
+        throw new Error('unexpected')
+      }))
 
-    // calls
-    let error = false
-    try {
-      await service.resolve('/foo/bar/test')
-    } catch (ex) {
-      error = true
-    }
-    // asserts
-    expect(error).toBe(true)
-  })
+      // calls
+      let error = false
+      try {
+        await service.resolve('/foo/bar/test')
+      } catch (ex) {
+        error = true
+      }
+      // asserts
+      expect(error).toBe(true)
+    })
 
-  it('should throw an error when unexpected fs error happens', async () => {
-    // mocks
-    fs.statAsync.mockImplementationOnce(jest.fn(() => {
-      throw new Error('unexpected')
-    }))
+    it('should throw an error when unexpected fs error happens', async () => {
+      // mocks
+      fs.statAsync.mockImplementationOnce(jest.fn(() => {
+        throw new Error('unexpected')
+      }))
 
-    // calls
-    let error = false
-    try {
-      await service.resolve('/foo/bar/test')
-    } catch (ex) {
-      error = true
-    }
-    // asserts
-    expect(error).toBe(true)
-  })
+      // calls
+      let error = false
+      try {
+        await service.resolve('/foo/bar/test')
+      } catch (ex) {
+        error = true
+      }
+      // asserts
+      expect(error).toBe(true)
+    })
 
-  it('should return an exception when no filepath resolved', async () => {
-    // mocks
-    fs.statAsync
-      .mockImplementationOnce(jest.fn(async () => ({ isDirectory: () => false })))
-      .mockImplementation(jest.fn(async () => {
-        const error = { errno: -2 }
+    it('should return an exception when no filepath resolved', async () => {
+      // mocks
+      fs.statAsync
+        .mockImplementationOnce(jest.fn(async () => ({ isDirectory: () => false })))
+        .mockImplementation(jest.fn(async () => {
+          const error = { errno: -2 }
+          throw error
+        }))
+
+      // mocks
+      docgen.parse.mockImplementationOnce(jest.fn(() => {
+        const error = { path: '/foo/bar/test/index' }
         throw error
       }))
 
-    // mocks
-    docgen.parse.mockImplementationOnce(jest.fn(() => {
-      const error = { path: '/foo/bar/test/index' }
-      throw error
-    }))
-
-    // calls
-    let error = false
-    try {
-      await service.resolve('/foo/bar/test')
-    } catch (ex) {
-      error = true
-    }
-    // asserts
-    expect(error).toBe(true)
+      // calls
+      let error = false
+      try {
+        await service.resolve('/foo/bar/test')
+      } catch (ex) {
+        error = true
+      }
+      // asserts
+      expect(error).toBe(true)
+    })
   })
 })
