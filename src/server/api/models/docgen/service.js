@@ -34,11 +34,9 @@ const resolve = async (componentPath) => {
       if (newPath) {
         return resolve(newPath)
       }
-    } else {
-      throw ex
     }
+    throw ex
   }
-  return null
 }
 
 module.exports = {

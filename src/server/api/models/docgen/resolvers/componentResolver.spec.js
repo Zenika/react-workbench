@@ -977,7 +977,7 @@ describe('findAllExportedComponentDefinitions', () => {
   })
 
   describe('Custom tests of resolver', () => {
-    it('abcd', () => {
+    it('should throw an exception if no component definition found and return the default exported element', () => {
       const parsed = parse(`
         import React from 'React';
         import Dumb from 'dumb-comp';
@@ -987,13 +987,18 @@ describe('findAllExportedComponentDefinitions', () => {
 
       // calls
       let error = false
+      let exception
       try {
         findComponents(parsed)
       } catch (ex) {
         error = true
+        exception = ex
       }
       // asserts
       expect(error).toBe(true)
+      expect(exception).toBeDefined()
+      expect(exception.path).toBeDefined()
+      expect(exception.path).toBe('dumb-comp')
     })
   })
 })
