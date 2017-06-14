@@ -131,7 +131,6 @@ describe('server/api/models/docgen', () => {
     // asserts
     expect(fs.readFileAsync.mock.calls.length).toBe(2)
     expect(fs.readFileAsync.mock.calls[0][0]).toBe('/foo/bar/test.js')
-    expect(fs.readFileAsync.mock.calls[1][0]).toBe('/foo/bar/test/next.js.js') // WHY ?????????
     expect(docgen.parse.mock.calls.length).toBe(2)
     expect(docgen.parse.mock.calls[0][1]).toEqual('componentResolver')
     expect(docgen.parse.mock.calls[1][1]).toEqual('componentResolver')
