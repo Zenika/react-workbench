@@ -7,7 +7,7 @@ const { parse } = require('misc/recast')
 
 const componentResolver = require('./componentResolver')
 
-describe('findAllExportedComponentDefinitions', () => {
+describe('server/api/models/docgen/resolvers/componentResolver', () => {
   const findComponents = path => componentResolver(path, recast)
 
   describe('CommonJS module exports', () => {
