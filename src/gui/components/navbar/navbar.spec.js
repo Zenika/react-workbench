@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import snap from 'misc/snap'
+import snap from 'misc/test/snap'
 import Navbar from './navbar'
 
 const snapshot = snap(Navbar)

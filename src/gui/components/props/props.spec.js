@@ -4,7 +4,7 @@ import React from 'react'
 import renderer from 'react-test-renderer'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import snap from 'misc/snap'
+import snap from 'misc/test/snap'
 import Props from './props'
 import PropsContainer from './props.container'
 

@@ -2,7 +2,7 @@
 
 exports[`component/navbar should have a default behaviour 1`] = `
 <div
-  className="navbar"
+  className=""
   style={Object {}}
 >
   Workbench
@@ -11,7 +11,7 @@ exports[`component/navbar should have a default behaviour 1`] = `
 
 exports[`component/navbar should take custom className 1`] = `
 <div
-  className="navbar custom"
+  className="custom"
   style={Object {}}
 >
   Workbench
@@ -20,7 +20,7 @@ exports[`component/navbar should take custom className 1`] = `
 
 exports[`component/navbar should take custom style 1`] = `
 <div
-  className="navbar"
+  className=""
   style={
     Object {
       "backgroundColor": "red",

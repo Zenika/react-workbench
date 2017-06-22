@@ -1,12 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import Input from './input'
-import styles from './props.styles.scss'
 
 const Props = ({ style, className, properties }) => {
   return (
-    <div style={style} className={classnames(styles.props, className)}>
+    <div style={style} className={className}>
       { properties.map(prop => <Input key={prop} name={prop} />) }
     </div>
   )
