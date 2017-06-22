@@ -2,9 +2,6 @@ const webpack = require('webpack')
 const webpackMiddleware = require('webpack-dev-middleware')
 
 const connect = async (app, config) => {
-  // patch config
-  // config.resolve.modules = config.resolve.modules.concat(await modules.get(component))
-
   // webpack compiler
   const compiler = webpack(config)
 

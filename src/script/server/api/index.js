@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser')
 const log = require('loglevel')
-const { API_BASE_CONTEXT } = require('../../constants')
+const { API_BASE_CONTEXT } = require('../../config/constants')
 const state = require('./models/state')
 const fs = require('./models/fs')
 const docgen = require('./models/docgen')

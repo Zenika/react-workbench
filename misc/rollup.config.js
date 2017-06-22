@@ -3,11 +3,8 @@ import fs from 'fs'
 import babel from 'rollup-plugin-babel'
 import nodeResolve from 'rollup-plugin-node-resolve'
 import commonjs from 'rollup-plugin-commonjs'
-import uglify from 'rollup-plugin-uglify'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
-
-console.log({ testedComponent: path.resolve('./tmp/testedComponent') })
 
 export default {
   entry: pkg['jsnext:main'] || 'src/gui/start.jsx',
@@ -29,6 +26,5 @@ export default {
         'node_modules/react/react.js': ['Children', 'Component', 'createElement'],
       },
     }),
-    // uglify(),
   ],
 }
