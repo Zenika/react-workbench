@@ -2,7 +2,7 @@
 
 // Bluebird to the rescue (for all the project (script+server))
 require('./bluebird')
-const log = require('./loglevel')
+const log = require('./logger')
 const start = require('./start')
 
 const argv = require('yargs')
