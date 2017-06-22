@@ -7,9 +7,9 @@ jest.mock('fs', () => ({
 
 const fs = require('fs')
 const constants = require('./constants')
-const ddb = require('./ddb')
+const db = require('./db')
 
-describe('server/api/ddb', () => {
+describe('server/api/db', () => {
   beforeEach(() => {
     fs.mkdirAsync.mockClear()
     fs.writeFileAsync.mockClear()
@@ -21,9 +21,9 @@ describe('server/api/ddb', () => {
   })
 
   describe('init', () => {
-    it('should provide ddb service', () => {
+    it('should provide db service', () => {
       // calls
-      const service = ddb('foo')
+      const service = db('foo')
 
       // asserts
       expect(service).toBeDefined()
@@ -40,7 +40,7 @@ describe('server/api/ddb', () => {
 
     it('should create the configuration directory', async () => {
       // calls
-      const data = await ddb(name).write(content)
+      const data = await db(name).write(content)
 
       // asserts
       expect(data).toBeDefined()
@@ -56,7 +56,7 @@ describe('server/api/ddb', () => {
       }))
 
       // calls
-      const data = await ddb(name).write(content)
+      const data = await db(name).write(content)
 
       // asserts
       expect(data).toBeDefined()
@@ -65,7 +65,7 @@ describe('server/api/ddb', () => {
 
     it('should write data into the directory', async () => {
       // calls
-      const data = await ddb(name).write(content)
+      const data = await db(name).write(content)
 
       // asserts
       expect(data).toBeDefined()
@@ -77,7 +77,7 @@ describe('server/api/ddb', () => {
 
     it('should init an empty configuration when given data are undefined', async () => {
       // calls
-      const data = await ddb(name).write(undefined)
+      const data = await db(name).write(undefined)
 
       // asserts
       expect(data).toBeDefined()
@@ -94,7 +94,7 @@ describe('server/api/ddb', () => {
         // calls
         let error = false
         try {
-          await ddb(name).write(content)
+          await db(name).write(content)
         } catch (ex) {
           error = true
         }
@@ -114,7 +114,7 @@ describe('server/api/ddb', () => {
       fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
 
       // calls
-      const data = await ddb(name).read()
+      const data = await db(name).read()
 
       // asserts
       expect(data).toBeDefined()
@@ -131,7 +131,7 @@ describe('server/api/ddb', () => {
       }))
 
       // calls
-      const data = await ddb(name).read()
+      const data = await db(name).read()
 
       // asserts
       expect(data).toBeUndefined()
@@ -147,7 +147,7 @@ describe('server/api/ddb', () => {
         // calls
         let error = false
         try {
-          await ddb(name).read()
+          await db(name).read()
         } catch (ex) {
           error = true
         }
@@ -164,7 +164,7 @@ describe('server/api/ddb', () => {
 
     it('should return an empty configuration if doesn\'t exists and nothing to append', async () => {
       // calls
-      const result = await ddb('testedComponent.jsx').append(undefined)
+      const result = await db('testedComponent.jsx').append(undefined)
 
       // asserts
       expect(result).toBeDefined()
@@ -176,7 +176,7 @@ describe('server/api/ddb', () => {
       fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
 
       // calls
-      const result = await ddb('testedComponent.jsx').append(undefined)
+      const result = await db('testedComponent.jsx').append(undefined)
 
       // asserts
       expect(result).toBeDefined()
@@ -185,7 +185,7 @@ describe('server/api/ddb', () => {
 
     it('should append & write content to an empty configuration', async () => {
       // calls
-      const result = await ddb('testedComponent.jsx').append(content)
+      const result = await db('testedComponent.jsx').append(content)
 
       // asserts
       expect(result).toBeDefined()
@@ -197,7 +197,7 @@ describe('server/api/ddb', () => {
       fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "baz" ]'))
 
       // calls
-      const result = await ddb('testedComponent.jsx').append(content)
+      const result = await db('testedComponent.jsx').append(content)
 
       // asserts
       expect(result).toBeDefined()

@@ -1,11 +1,11 @@
 const { NAME } = require('./constants')
-const ddb = require('../../ddb')(NAME)
+const db = require('../../db')(NAME)
 
 const create = async (state) => {
-  await ddb.append(state)
+  await db.append(state)
 }
 
-const read = async () => (await ddb.read()) || []
+const read = async () => (await db.read()) || []
 
 module.exports = {
   create,
