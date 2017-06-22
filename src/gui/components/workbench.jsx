@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import classnames from 'classnames'
 import Navbar from './navbar'
 import Props from './props'
 
 const Workbench = ({ style, className, children }) => {
   return (
-    <div className={classnames(className)} style={style}>
+    <div className={className} style={style}>
       <Navbar />
       <div>
         <div>{children}</div>

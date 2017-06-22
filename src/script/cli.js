@@ -1,4 +1,4 @@
-const log = require('./config/loglevel')
+const log = require('./config/logger')
 const start = require('./start')
 
 const argv = require('yargs')
