@@ -21,7 +21,7 @@ const start = async (fileName) => {
 
   // Override webpack config
   // entry
-  targetProjectWebpack.entry = { bundle: path.resolve(__dirname, '..', '..', 'gui.build.js') }
+  targetProjectWebpack.entry = { bundle: path.resolve(__dirname, '..', '..', 'dist', 'gui.build.js') }
   // output
   targetProjectWebpack.output = {
     path: path.resolve('..', '..', 'public'),

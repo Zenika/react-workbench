@@ -8,8 +8,7 @@ const pkg = JSON.parse(fs.readFileSync('./package.json'))
 
 export default {
   entry: pkg['jsnext:main'] || 'src/gui/start.jsx',
-  dest: 'gui.build.js',
-  sourceMap: path.resolve(pkg.main),
+  dest: 'dist/gui.build.js',
   moduleName: pkg.amdName || pkg.name,
   format: process.env.FORMAT || 'umd',
   external: [path.resolve('./src/gui/public/component.js')],
