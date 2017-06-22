@@ -2,7 +2,7 @@
 
 exports[`component/props props.container.js should map redux model into properties array 1`] = `
 <div
-  className="props"
+  className=""
   style={Object {}}
 >
   <input
@@ -16,14 +16,14 @@ exports[`component/props props.container.js should map redux model into properti
 
 exports[`component/props props.jsx should render by default 1`] = `
 <div
-  className="props"
+  className=""
   style={Object {}}
 />
 `;
 
 exports[`component/props props.jsx should render inputs following given properties 1`] = `
 <div
-  className="props"
+  className=""
   style={Object {}}
 >
   <input
@@ -37,14 +37,14 @@ exports[`component/props props.jsx should render inputs following given properti
 
 exports[`component/props props.jsx should take custom className 1`] = `
 <div
-  className="props custom"
+  className="custom"
   style={Object {}}
 />
 `;
 
 exports[`component/props props.jsx should take custom style 1`] = `
 <div
-  className="props"
+  className=""
   style={
     Object {
       "backgroundColor": "red",

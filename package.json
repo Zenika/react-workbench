@@ -6,7 +6,6 @@
   "license": "MIT",
   "scripts": {
     "lint:js": "eslint --ext js,jsx src",
-    "lint:sass": "sass-lint -v -q",
     "lint": "npm-run-all --parallel lint:*",
     "start": "./src/script/index.js ./misc/component.jsx",
     "test": "jest",
@@ -43,7 +42,6 @@
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "redux": "^3.6.0",
-    "sass-loader": "^6.0.3",
     "style-loader": "^0.16.1",
     "webpack": "^2.3.3",
     "webpack-dev-middleware": "^1.10.1",
@@ -81,14 +79,12 @@
       "<rootDir>"
     ],
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./misc/__mocks__/fileMock.js",
-      "\\.(css|scss|less|sass)$": "identity-obj-proxy"
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "./misc/__mocks__/fileMock.js"
     },
     "setupFiles": [
-      "./misc/testSetup.js"
+      "./misc/test/testSetup.js"
     ]
   },
-  "sasslintConfig": "./misc/sass-lint.yml",
   "eslintConfig": {
     "parser": "babel-eslint",
     "extends": [
@@ -149,8 +145,6 @@
     "rollup": "^0.43.0",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-uglify": "^2.0.1",
-    "sass-lint": "^1.10.2"
+    "rollup-plugin-node-resolve": "^3.0.0"
   }
 }
