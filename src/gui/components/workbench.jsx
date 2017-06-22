@@ -3,13 +3,12 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Navbar from './navbar'
 import Props from './props'
-import styles from './workbench.styles.scss'
 
 const Workbench = ({ style, className, children }) => {
   return (
-    <div className={classnames(styles.workbench, className)} style={style}>
+    <div className={classnames(className)} style={style}>
       <Navbar />
-      <div className={styles.workbenchLayout}>
+      <div>
         <div>{children}</div>
         <Props />
       </div>

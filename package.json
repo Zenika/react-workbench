@@ -5,13 +5,13 @@
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
   "scripts": {
-    "install": "npm install node-sass@4.3.0",
     "lint:js": "eslint --ext js,jsx src",
     "lint:sass": "sass-lint -v -q",
     "lint": "npm-run-all --parallel lint:*",
     "start": "./src/script/index.js ./misc/component.jsx",
     "test": "jest",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "build": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js"
   },
   "bin": {
     "react-workbench": "./src/script/index.js"
@@ -56,7 +56,12 @@
     ],
     "presets": [
       "es2017",
-      "es2015",
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
       "react"
     ],
     "env": {
@@ -129,6 +134,7 @@
     "babel-eslint": "^7.2.1",
     "babel-jest": "^19.0.0",
     "coveralls": "^2.13.1",
+    "cross-env": "^5.0.1",
     "enzyme": "^2.8.2",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^14.1.0",
@@ -140,6 +146,11 @@
     "jest": "^19.0.2",
     "npm-run-all": "^4.0.2",
     "react-test-renderer": "^15.5.4",
+    "rollup": "^0.43.0",
+    "rollup-plugin-babel": "^2.7.1",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
     "sass-lint": "^1.10.2"
   }
 }

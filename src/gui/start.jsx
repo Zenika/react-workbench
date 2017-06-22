@@ -1,7 +1,5 @@
-import app from '../src/gui/app'
-
-// eslint-disable-next-line import/no-absolute-path,import/first
-import Component from '/* react-workbench-insert import */'
+import app from './app'
+import Component from './public/component.js'
 
 const getDocgenValue = (value, type) => {
   switch (type) {
@@ -19,7 +17,7 @@ fetch('/api/docgen')
       app(
         Component,
         Object
-          .keys(json[0].props)
+          .keys(json[0].props || {})
           .reduce(
             (obj, key) => {
               const prop = json[0].props[key]

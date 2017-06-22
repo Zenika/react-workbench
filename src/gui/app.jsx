@@ -2,7 +2,6 @@ import React from 'react'
 import { render } from 'react-dom'
 import { connect, Provider } from 'react-redux'
 import store from './redux/store'
-import './styles/global.scss'
 import Workbench from './components/workbench'
 
 export default (Component, model) => {

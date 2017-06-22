@@ -8,7 +8,7 @@ module.exports = {
   context: path.resolve(__dirname, '..'),
   entry: {
     app: [
-      path.resolve(WORKBENCH_DIR, 'tmp', 'index.jsx'),
+      path.resolve(WORKBENCH_DIR, 'src', 'gui', 'start.jsx'),
     ],
   },
   output: {
