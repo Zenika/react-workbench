@@ -11,7 +11,7 @@ export default {
   dest: 'dist/gui.build.js',
   moduleName: pkg.amdName || pkg.name,
   format: process.env.FORMAT || 'umd',
-  external: [path.resolve('./src/gui/public/component.js')],
+  external: [path.resolve('./src/gui/component.js')],
   plugins: [
     babel(),
     nodeResolve({

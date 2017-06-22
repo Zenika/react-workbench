@@ -7,7 +7,7 @@ module.exports = async (component) => {
   const template = await fs.readFileAsync(filePath, 'utf-8')
 
   // 2. Get relative path
-  const output = { dir: path.resolve(__dirname, '..', '..', '..', 'public'), file: 'component.js' }
+  const output = { dir: path.resolve(__dirname, '..', '..', '..', 'dist'), file: 'component.js' }
   let relativePath = path.relative(output.dir, component.path.absolute.full)
 
   // 2bis -

@@ -1,5 +1,5 @@
 import app from './app'
-import Component from './public/component.js'
+import Component from './component.js'
 
 const getDocgenValue = (value, type) => {
   switch (type) {

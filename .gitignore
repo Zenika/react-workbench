@@ -2,5 +2,4 @@ node_modules
 /test
 /tmp
 /coverage
-/public/component.js
 /dist
