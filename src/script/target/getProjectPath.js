@@ -2,7 +2,8 @@ const log = require('loglevel')
 const path = require('path')
 const fs = require('fs')
 
-module.exports = async (component) => {
+module.exports = async (state) => {
+  const { component } = state
   let previousPath = component.path.absolute.dir
   let files = await fs.readdirAsync(previousPath)
 
