@@ -32,6 +32,7 @@ const start = async (fileName) => {
   targetProjectWebpack.plugins = [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.WatchIgnorePlugin([path.resolve(__dirname, '..', '..', 'dist', 'component.js')]),
   ]
   // modules resolver fallback
   targetProjectWebpack.resolve = Object.assign({}, targetProjectWebpack.resolve, {
