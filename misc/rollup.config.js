@@ -7,7 +7,7 @@ import commonjs from 'rollup-plugin-commonjs'
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
 
 export default {
-  entry: pkg['jsnext:main'] || 'src/gui/start.jsx',
+  entry: pkg['jsnext:main'] || 'src/gui/app.jsx',
   dest: 'dist/gui.build.js',
   moduleName: pkg.amdName || pkg.name,
   format: process.env.FORMAT || 'umd',
