@@ -2,6 +2,7 @@ const path = require('path')
 const server = require('./server')
 const { getProjectPath, getComponent } = require('./target')
 const { genTemplate } = require('./template')
+const webpack = require('webpack')
 
 const start = async (fileName) => {
   const componentPaths = getComponent(fileName)
@@ -21,10 +22,25 @@ const start = async (fileName) => {
 
   // Override webpack config
   // entry
-  targetProjectWebpack.entry = { bundle: path.resolve(__dirname, '..', '..', 'dist', 'gui.build.js') }
+  targetProjectWebpack.entry = {
+    bundle: [
+      'webpack-hot-middleware/client',
+      path.resolve(__dirname, '..', '..', 'dist', 'gui.build.js'),
+    ],
+  }
+  // plugins
+  targetProjectWebpack.plugins = [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.WatchIgnorePlugin([path.resolve(__dirname, '..', '..', 'dist', 'component.js')]),
+  ]
+  // modules resolver fallback
+  targetProjectWebpack.resolve = Object.assign({}, targetProjectWebpack.resolve, {
+    modules: ['node_modules', path.resolve(__dirname, '..', '..', 'node_modules')],
+  })
   // output
   targetProjectWebpack.output = {
-    path: path.resolve('..', '..', 'public'),
+    path: '/',
     filename: '[name].js',
     publicPath: '/',
   }
