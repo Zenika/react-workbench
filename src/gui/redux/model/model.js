@@ -1,5 +1,6 @@
 import { SET_MODEL, SET_VALUE } from './model.actions'
 
+// TODO : refactor
 export const getValue = (value, type) => {
   switch (type) {
     case 'bool': return !!value
