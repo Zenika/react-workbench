@@ -24,7 +24,8 @@ const start = async (fileName) => {
   // entry
   targetProjectWebpack.entry = {
     bundle: [
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?http://localhost:8080',
+      'webpack/hot/only-dev-server',
       path.resolve(__dirname, '..', '..', 'dist', 'gui.build.js'),
     ],
   }
@@ -42,7 +43,7 @@ const start = async (fileName) => {
   targetProjectWebpack.output = {
     path: '/',
     filename: '[name].js',
-    publicPath: '/',
+    publicPath: 'http://localhost:8080/',
   }
 
   // Generate component template (targetting tested component)

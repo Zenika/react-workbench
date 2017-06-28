@@ -1,8 +1,18 @@
 import 'babel-polyfill'
 
 import React from 'react'
-import ReactDom from 'react-dom'
+import ReactDOM from 'react-dom'
 import App from './components/app'
 
-// render to DOM
-ReactDom.render(<App />, document.getElementById('app'))
+const render = (Component) => {
+  ReactDOM.render(<Component />, document.getElementById('app'))
+}
+
+render(App)
+
+if (module.hot) {
+  module.hot.accept(() => {
+    console.log('re-render app')
+    render(App)
+  })
+}

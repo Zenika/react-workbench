@@ -11,10 +11,16 @@ const connect = async (app, config) => {
     webpackDevMiddleware(compiler, {
       noInfo: true,
       publicPath: config.output.publicPath,
+      headers: { 'Access-Control-Allow-Origin': '*' },
+      historyApiFallback: true,
     })
   )
 
-  app.use(webpackHotMiddleware(compiler))
+  app.use(
+    webpackHotMiddleware(compiler, {
+      heartbeat: 2000,
+    })
+  )
 }
 
 module.exports = {
