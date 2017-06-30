@@ -1,28 +1,23 @@
-import { SET_MODEL, SET_VALUE } from './model.actions'
+import { RECEIVED_DOCGEN } from '../docgen'
+import { docgenToModel, convertGuiValue } from '../utils/docgen.js'
 
-export const getValue = (value, type) => {
-  switch (type) {
-    case 'bool': return !!value
-    case 'object': return eval(`Object(${value})`) // eslint-disable-line no-eval
-    case 'array':
-    case 'func': return eval(value) // eslint-disable-line no-eval
-    default: return value
-  }
-}
+export const UPDATE_VALUE = 'UPDATE_VALUE'
 
 export default (state = {}, { type, payload }) => {
   switch (type) {
-    case SET_MODEL: return payload
-    case SET_VALUE: {
+    case RECEIVED_DOCGEN:
+      return docgenToModel(payload)
+    case UPDATE_VALUE: {
       const old = state[payload.name]
       return {
         ...state,
         [payload.name]: {
           ...old,
-          value: getValue(payload.value, old.type),
+          value: convertGuiValue(payload.value, old.type),
         },
       }
     }
-    default: return state
+    default:
+      return state
   }
 }

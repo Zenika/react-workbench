@@ -1,8 +1,9 @@
 import { connect } from 'react-redux'
 import Props from './props'
+import { getPropsKeys } from '../../redux/docgen'
 
 const mapState = state => ({
-  properties: Object.keys(state.model),
+  properties: getPropsKeys(state),
 })
 
 export default connect(mapState)(Props)
