@@ -26,19 +26,19 @@ const mapState = (state, { name }) => {
   const value = getComponentValue(name, type)(state)
   return {
     value,
-    type: type.name,
-    input: getInputType(type.name),
+    propType: type.name,
+    type: getInputType(type.name),
   }
 }
 
 const mapDispatch = (dispatch, { name }) => ({
-  onChange: (input, type) => event =>
+  onChange: (inputType, propType) => event =>
     dispatch({
       type: UPDATE_VALUE,
       payload: {
         name,
-        type,
-        value: getEventValue(input, event),
+        type: propType,
+        value: getEventValue(inputType, event),
       },
     }),
 })
@@ -46,7 +46,7 @@ const mapDispatch = (dispatch, { name }) => ({
 const merge = (state, dispatch, props) => ({
   ...state,
   ...dispatch,
-  onChange: dispatch.onChange(state.input, state.type),
+  onChange: dispatch.onChange(state.type, state.propType),
   ...props,
 })
 
