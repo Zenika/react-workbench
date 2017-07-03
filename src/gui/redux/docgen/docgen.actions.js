@@ -13,8 +13,7 @@ export const fetchDocgen = () => async (dispatch) => {
     } else {
       dispatch({ type: RECEIVED_EMPTY_DOCGEN })
     }
-  } catch (err) {
-    console.log(err)
-    dispatch({ type: FAILED_DOCGEN })
+  } catch (error) {
+    dispatch({ type: FAILED_DOCGEN, error })
   }
 }
