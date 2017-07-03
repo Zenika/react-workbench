@@ -23,7 +23,7 @@ const getEventValue = (input, event) => {
 
 const mapState = (state, { name }) => {
   const { type } = getProp(name)(state)
-  const value = getComponentValue(name, type)(state)
+  const value = getComponentValue(name, type.name)(state)
   return {
     value,
     propType: type.name,

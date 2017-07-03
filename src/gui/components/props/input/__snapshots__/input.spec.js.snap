@@ -7,6 +7,10 @@ exports[`component/props/input input.container.js model with type array should r
 >
   <div>
     foo
+     
+    <small>
+      array
+    </small>
   </div>
   <input
     checked={undefined}
@@ -24,6 +28,10 @@ exports[`component/props/input input.container.js model with type array should r
 >
   <div>
     foo
+     
+    <small>
+      array
+    </small>
   </div>
   <input
     checked="[\\"item1\\",\\"item2\\"]"
@@ -41,6 +49,10 @@ exports[`component/props/input input.container.js model with type bool should re
 >
   <div>
     foo
+     
+    <small>
+      bool
+    </small>
   </div>
   <input
     checked={undefined}
@@ -58,6 +70,10 @@ exports[`component/props/input input.container.js model with type bool should re
 >
   <div>
     foo
+     
+    <small>
+      bool
+    </small>
   </div>
   <input
     checked={true}
@@ -75,6 +91,10 @@ exports[`component/props/input input.container.js model with type function shoul
 >
   <div>
     foo
+     
+    <small>
+      func
+    </small>
   </div>
   <input
     checked={undefined}
@@ -92,6 +112,10 @@ exports[`component/props/input input.container.js model with type function shoul
 >
   <div>
     foo
+     
+    <small>
+      func
+    </small>
   </div>
   <input
     checked={[Function]}
@@ -109,6 +133,10 @@ exports[`component/props/input input.container.js model with type object should 
 >
   <div>
     foo
+     
+    <small>
+      object
+    </small>
   </div>
   <input
     checked={undefined}
@@ -126,6 +154,10 @@ exports[`component/props/input input.container.js model with type object should 
 >
   <div>
     foo
+     
+    <small>
+      object
+    </small>
   </div>
   <input
     checked="{\\"item\\":\\"value\\"}"
@@ -143,6 +175,10 @@ exports[`component/props/input input.container.js model with type string should 
 >
   <div>
     foo
+     
+    <small>
+      string
+    </small>
   </div>
   <input
     checked={undefined}
@@ -160,12 +196,16 @@ exports[`component/props/input input.container.js model with type string should 
 >
   <div>
     foo
+     
+    <small>
+      string
+    </small>
   </div>
   <input
-    checked="bar"
+    checked="foo"
     onChange={[Function]}
     type="text"
-    value="bar"
+    value="foo"
   />
 </div>
 `;
@@ -177,6 +217,10 @@ exports[`component/props/input input.jsx common props should take custom classNa
 >
   <div>
     foo
+     
+    <small>
+      string
+    </small>
   </div>
   <input
     checked={undefined}
@@ -198,6 +242,10 @@ exports[`component/props/input input.jsx common props should take custom style 1
 >
   <div>
     foo
+     
+    <small>
+      string
+    </small>
   </div>
   <input
     checked={undefined}
@@ -215,6 +263,10 @@ exports[`component/props/input input.jsx input type="checkbox" should render a c
 >
   <div>
     foo
+     
+    <small>
+      bool
+    </small>
   </div>
   <input
     checked={undefined}
@@ -232,6 +284,10 @@ exports[`component/props/input input.jsx input type="checkbox" should set a defa
 >
   <div>
     foo
+     
+    <small>
+      string
+    </small>
   </div>
   <input
     checked={true}
@@ -249,6 +305,10 @@ exports[`component/props/input input.jsx input type="text" should render a textf
 >
   <div>
     foo
+     
+    <small>
+      string
+    </small>
   </div>
   <input
     checked={undefined}
@@ -266,6 +326,10 @@ exports[`component/props/input input.jsx input type="text" should set a default 
 >
   <div>
     foo
+     
+    <small>
+      string
+    </small>
   </div>
   <input
     checked="bar"
