@@ -20,4 +20,30 @@ const docgenToModel = (docgen) => {
   }, {})
 }
 
-export { convertDocgenValue, docgenToModel }
+const convertToGuiValue = (value, type) => {
+  switch (type) {
+    case 'array':
+    case 'object':
+      return JSON.stringify(value)
+    case 'func':
+      return eval(value) // eslint-disable-line no-eval
+    default:
+      return value
+  }
+}
+
+const convertFromGuiValue = (value, type) => {
+  switch (type) {
+    case 'bool':
+      return !!value
+    case 'object':
+      return eval(`Object(${value})`) // eslint-disable-line no-eval
+    case 'array':
+    case 'func':
+      return eval(value) // eslint-disable-line no-eval
+    default:
+      return value
+  }
+}
+
+export { convertDocgenValue, docgenToModel, convertToGuiValue, convertFromGuiValue }

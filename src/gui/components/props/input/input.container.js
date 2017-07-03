@@ -12,48 +12,22 @@ const getInputType = (type) => {
   }
 }
 
-const convertToGuiValue = (type, value) => {
-  switch (type) {
-    case 'array':
-    case 'object':
-      return JSON.stringify(value)
-    case 'func':
-      return eval(value) // eslint-disable-line no-eval
-    default:
-      return value
-  }
-}
-
-const convertFromGuiValue = (value, type) => {
-  switch (type) {
-    case 'bool':
-      return !!value
-    case 'object':
-      return eval(`Object(${value})`) // eslint-disable-line no-eval
-    case 'array':
-    case 'func':
-      return eval(value) // eslint-disable-line no-eval
-    default:
-      return value
-  }
-}
-
-const getValueFromEvent = (input, event, type) => {
+const getEventValue = (input, event) => {
   switch (input) {
     case 'checkbox':
-      return convertFromGuiValue(event.target.checked, type)
+      return event.target.checked
     default:
-      return convertFromGuiValue(event.target.value, type)
+      return event.target.value
   }
 }
 
 const mapState = (state, { name }) => {
   const { type } = getProp(name)(state)
-  const value = getComponentValue(name)(state)
+  const value = getComponentValue(name, type)(state)
   return {
-    value: convertToGuiValue(type.name, value),
+    value,
     type: type.name,
-    inputType: getInputType(type.name),
+    input: getInputType(type.name),
   }
 }
 
@@ -63,7 +37,8 @@ const mapDispatch = (dispatch, { name }) => ({
       type: UPDATE_VALUE,
       payload: {
         name,
-        value: getValueFromEvent(input, event, type),
+        type,
+        value: getEventValue(input, event),
       },
     }),
 })
@@ -71,7 +46,7 @@ const mapDispatch = (dispatch, { name }) => ({
 const merge = (state, dispatch, props) => ({
   ...state,
   ...dispatch,
-  onChange: dispatch.onChange(state.inputType, state.type),
+  onChange: dispatch.onChange(state.input, state.type),
   ...props,
 })
 
