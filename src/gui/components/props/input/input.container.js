@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getComponentValue, UPDATE_VALUE } from '../../../redux/model'
+import { getComponentValue, updateProp } from '../../../redux/model'
 import { getProp } from '../../../redux/docgen'
 import Input from './input'
 
@@ -33,14 +33,7 @@ const mapState = (state, { name }) => {
 
 const mapDispatch = (dispatch, { name }) => ({
   onChange: (inputType, propType) => event =>
-    dispatch({
-      type: UPDATE_VALUE,
-      payload: {
-        name,
-        type: propType,
-        value: getEventValue(inputType, event),
-      },
-    }),
+    dispatch(updateProp(name, propType, getEventValue(inputType, event))),
 })
 
 const merge = (state, dispatch, props) => ({

@@ -1,2 +1,3 @@
-export { default, UPDATE_VALUE } from './model'
+export { default } from './model'
 export * from './model.selectors'
+export * from './model.actions'
