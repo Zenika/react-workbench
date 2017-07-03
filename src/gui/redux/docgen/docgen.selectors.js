@@ -1,11 +1,12 @@
 import { createSelector } from 'reselect'
-import { LOADING_DOCGEN } from './docgen'
 
 const getDocgen = state => state.docgen
 
-const isLoading = createSelector(getDocgen, docgen => docgen === LOADING_DOCGEN)
+const getDocgenData = createSelector(getDocgen, docgen => docgen.data)
 
-const getProps = createSelector(getDocgen, docgen => docgen.props || {})
+const isLoading = createSelector(getDocgen, docgen => !docgen.loaded)
+
+const getProps = createSelector(getDocgenData, data => data.props || {})
 
 const getPropsKeys = createSelector(getProps, props => Object.keys(props))
 

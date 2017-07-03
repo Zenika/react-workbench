@@ -5,19 +5,20 @@ import {
   FAILED_DOCGEN,
 } from './docgen.actions'
 
-export const EMPTY_DOCGEN = {}
-export const LOADING_DOCGEN = {}
+export const initialState = {
+  loaded: false,
+  data: {},
+}
 
-export default (state = EMPTY_DOCGEN, { type, payload } = {}) => {
+export default (state = initialState, { type, payload } = {}) => {
   switch (type) {
     case REQUEST_DOCGEN:
-      return LOADING_DOCGEN
+      return { ...initialState, loaded: false }
     case RECEIVED_DOCGEN:
-      return payload
+      return { data: payload, loaded: true }
     case RECEIVED_EMPTY_DOCGEN:
-      return EMPTY_DOCGEN
     case FAILED_DOCGEN:
-      return EMPTY_DOCGEN
+      return { ...initialState, loaded: true }
     default:
       return state
   }

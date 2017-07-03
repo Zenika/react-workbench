@@ -41,6 +41,8 @@ const convertFromGuiValue = (value, type) => {
     case 'array':
     case 'func':
       return eval(value) // eslint-disable-line no-eval
+    case 'number':
+      return Number(value)
     default:
       return value
   }
