@@ -1,11 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+const innerStyle = {
+  container: {
+    marginBottom: '5px',
+    fontSize: '0.9em',
+  },
+  input: {
+    border: 'none',
+    width: '95%',
+    backgroundColor: '#7E8AA2',
+    color: '#FFF',
+    marginTop: '5px',
+  },
+}
+
 const Input = ({ style, className, name, value, onChange, type, propType }) => {
   return (
-    <div style={style} className={className}>
-      <div>{name} <small>{propType}</small></div>
-      <input type={type} value={value} checked={value} onChange={onChange} />
+    <div style={{ ...innerStyle.container, ...style }} className={className}>
+      <label htmlFor={name}>
+        {name} <small>({propType})</small>
+      </label>
+      <input
+        id={name}
+        type={type}
+        value={value}
+        checked={value}
+        onChange={onChange}
+        style={innerStyle.input}
+      />
     </div>
   )
 }
