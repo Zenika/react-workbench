@@ -24,7 +24,7 @@ const start = async (fileName) => {
   // entry
   targetProjectWebpack.entry = {
     bundle: [
-      'webpack-hot-middleware/client',
+      'webpack-hot-middleware/client?reload=true',
       path.resolve(__dirname, '..', '..', 'dist', 'gui.build.js'),
     ],
   }
