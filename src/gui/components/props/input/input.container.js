@@ -1,47 +1,45 @@
 import { connect } from 'react-redux'
-import { setValue } from '../../../redux/model'
+import { getComponentValue, updateProp } from '../../../redux/model'
+import { getProp } from '../../../redux/docgen'
 import Input from './input'
 
-const getType = (type) => {
+const getInputType = (type) => {
   switch (type) {
-    case 'bool': return 'checkbox'
-    default: return 'text'
+    case 'bool':
+      return 'checkbox'
+    default:
+      return 'text'
   }
 }
 
-const getValue = (type, value) => {
-  switch (type) {
-    case 'array':
-    case 'object': return JSON.stringify(value)
-    case 'func': return eval(value) // eslint-disable-line no-eval
-    default: return value
+const getEventValue = (input, event) => {
+  switch (input) {
+    case 'checkbox':
+      return event.target.checked
+    default:
+      return event.target.value
   }
 }
 
-const getValueFromEvent = (type, e) => {
-  switch (type) {
-    case 'checkbox': return e.target.checked
-    default: return e.target.value
-  }
-}
-
-const mapState = ({ model }, { name }) => {
-  const { value, type } = model[name]
-
+const mapState = (state, { name }) => {
+  const { type } = getProp(name)(state)
+  const value = getComponentValue(name, type.name)(state)
   return {
-    value: getValue(type, value),
-    type: getType(type),
+    value,
+    propType: type.name,
+    type: getInputType(type.name),
   }
 }
 
 const mapDispatch = (dispatch, { name }) => ({
-  onChange: type => event => dispatch(setValue(name, getValueFromEvent(type, event))),
+  onChange: (inputType, propType) => event =>
+    dispatch(updateProp(name, propType, getEventValue(inputType, event))),
 })
 
 const merge = (state, dispatch, props) => ({
   ...state,
   ...dispatch,
-  onChange: dispatch.onChange(state.type),
+  onChange: dispatch.onChange(state.type, state.propType),
   ...props,
 })
 

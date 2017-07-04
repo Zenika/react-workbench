@@ -2299,6 +2299,10 @@ hmac-drbg@^1.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.1"
 
+hoc-react-loader@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/hoc-react-loader/-/hoc-react-loader-6.1.0.tgz#5a6e33161d4c42d9b1a7b6fe1f0da0c34b6e74de"
+
 hoek@2.x.x:
   version "2.16.3"
   resolved "https://registry.yarnpkg.com/hoek/-/hoek-2.16.3.tgz#20bb7403d3cea398e91dc4710a8ff1b8274a25ed"
@@ -3942,6 +3946,14 @@ rechoir@^0.6.2:
   dependencies:
     resolve "^1.1.6"
 
+redux-devtools-extension@^2.13.2:
+  version "2.13.2"
+  resolved "https://registry.yarnpkg.com/redux-devtools-extension/-/redux-devtools-extension-2.13.2.tgz#e0f9a8e8dfca7c17be92c7124958a3b94eb2911d"
+
+redux-thunk@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
+
 redux@^3.6.0:
   version "3.7.0"
   resolved "https://registry.yarnpkg.com/redux/-/redux-3.7.0.tgz#07a623cafd92eee8abe309d13d16538f6707926f"
@@ -4076,6 +4088,10 @@ require-uncached@^1.0.2:
   dependencies:
     caller-path "^0.1.0"
     resolve-from "^1.0.0"
+
+reselect@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
 
 resolve-from@^1.0.0:
   version "1.0.1"
@@ -4540,6 +4556,10 @@ timers-browserify@^2.0.2:
   resolved "https://registry.yarnpkg.com/timers-browserify/-/timers-browserify-2.0.2.tgz#ab4883cf597dcd50af211349a00fbca56ac86b86"
   dependencies:
     setimmediate "^1.0.4"
+
+tinycolor2@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/tinycolor2/-/tinycolor2-1.4.1.tgz#f4fad333447bc0b07d4dc8e9209d8f39a8ac77e8"
 
 tmpl@1.0.x:
   version "1.0.4"
