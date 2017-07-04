@@ -1,9 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import styles from './navbar.styles'
+
 const Navbar = ({ style, className }) => {
   return (
-    <div style={style} className={className}>
+    <div style={style} className={`${styles} ${className}`}>
       Workbench
     </div>
   )
