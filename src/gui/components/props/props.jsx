@@ -7,7 +7,7 @@ import { title } from './props.styles'
 const Props = ({ style, className, properties }) => {
   return (
     <div style={style} className={className}>
-      <div className={`${title}`}>component props</div>
+      <div className={`${title}`}>props</div>
       <div>
         { properties.map(prop => <Input key={prop} name={prop} />) }
       </div>
