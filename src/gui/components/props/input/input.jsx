@@ -1,11 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import container from './input.styles'
+
 const Input = ({ style, className, name, value, onChange, type, propType }) => {
   return (
-    <div style={style} className={className}>
-      <div>{name} <small>{propType}</small></div>
-      <input type={type} value={value} checked={value} onChange={onChange} />
+    <div style={style} className={`${container} ${className}`}>
+      <label htmlFor={name}>
+        {name} <small>({propType})</small>
+      </label>
+      <input id={name} type={type} value={value} checked={value} onChange={onChange} />
     </div>
   )
 }
