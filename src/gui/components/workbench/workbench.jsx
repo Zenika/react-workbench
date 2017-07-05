@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 import Navbar from '../navbar'
 import Props from '../props'
 
+import container, { header, main, sidebar } from './workbench.styles'
+
 const Workbench = ({ style, className, children }) => {
   return (
-    <div className={className} style={style}>
-      <Navbar />
-      <div>
-        <div>{children}</div>
-        <Props />
+    <div className={`${container} ${className}`} style={style}>
+      <Navbar className={`${header}`} />
+      <Props className={`${sidebar}`} />
+      <div className={`${main}`} >
+        {children}
       </div>
     </div>
   )

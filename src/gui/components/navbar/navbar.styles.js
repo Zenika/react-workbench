@@ -2,7 +2,6 @@ import { css } from 'glamor'
 import { primaryColor } from '../../styles'
 
 const layout = css({
-  height: '40px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
