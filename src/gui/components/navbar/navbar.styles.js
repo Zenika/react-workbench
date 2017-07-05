@@ -4,13 +4,12 @@ import { primaryColor } from '../../styles'
 const layout = css({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
 })
 
-const font = css({
-  fontFamily: 'Arial',
+export const title = css({
   fontSize: '1.2em',
   fontWeight: 'bolder',
+  paddingLeft: '10px',
 })
 
-export default css(primaryColor, layout, font)
+export default css(primaryColor, layout)
