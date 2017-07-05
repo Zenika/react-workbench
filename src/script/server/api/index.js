@@ -4,6 +4,8 @@ const { API_BASE_CONTEXT } = require('../../config/constants')
 const state = require('./services/state')
 const fs = require('./services/fs')
 const docgen = require('./services/docgen')
+const markdown = require('./services/markdown')
+const readme = require('./services/readme')
 
 const genPath = resource => `${API_BASE_CONTEXT}/${resource.NAME}`
 
@@ -34,6 +36,11 @@ const connect = (app, component) => {
   app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.ls(`/${req.params.path}/${req.params[0]}`)))
   // - docgen
   app.get(genPath(docgen), errorHandler(() => docgen.resolve(component.path.absolute.full)))
+  // - markdown
+  app.post(genPath(markdown), errorHandler(req => markdown.generate(component, req.body)))
+  // - readme
+  app.get(genPath(readme), errorHandler(() => readme.read(component)))
+  app.post(genPath(readme), errorHandler(req => readme.write(component, req.body)))
 }
 
 module.exports = {
