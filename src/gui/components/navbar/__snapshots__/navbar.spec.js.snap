@@ -2,31 +2,43 @@
 
 exports[`component/navbar should have a default behaviour 1`] = `
 <div
-  className=""
+  className="css-j54ku0 "
   style={Object {}}
 >
-  Workbench
+  <div
+    className="css-11xpg4p"
+  >
+    react-workbench
+  </div>
 </div>
 `;
 
 exports[`component/navbar should take custom className 1`] = `
 <div
-  className="custom"
+  className="css-j54ku0 custom"
   style={Object {}}
 >
-  Workbench
+  <div
+    className="css-11xpg4p"
+  >
+    react-workbench
+  </div>
 </div>
 `;
 
 exports[`component/navbar should take custom style 1`] = `
 <div
-  className=""
+  className="css-j54ku0 "
   style={
     Object {
       "backgroundColor": "red",
     }
   }
 >
-  Workbench
+  <div
+    className="css-11xpg4p"
+  >
+    react-workbench
+  </div>
 </div>
 `;
