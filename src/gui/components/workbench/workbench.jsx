@@ -10,7 +10,7 @@ const Workbench = ({ style, className, children }) => {
     <div className={`${container} ${className}`} style={style}>
       <Navbar className={`${header}`} />
       <Props className={`${sidebar}`} />
-      <div className={`${main}`} >
+      <div className={`${main}`}>
         {children}
       </div>
     </div>
