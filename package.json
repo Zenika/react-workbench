@@ -1,7 +1,7 @@
 {
   "name": "zenika-react-workbench",
   "version": "0.0.1",
-  "main": "src/script/index.js",
+  "main": "index.js",
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
   "scripts": {
@@ -10,15 +10,18 @@
     "start": "./src/script/index.js",
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
-    "build:prod": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
-    "build:dev": "npm run build:prod -- -w",
-    "build": "npm run build:prod"
+    "build:gui:prod": "cross-env NODE_ENV=build rollup -c ./misc/rollup.gui.config.js",
+    "build:gui:dev": "npm run build:gui:prod -- -w",
+    "build:script:prod": "cross-env NODE_ENV=build rollup -c ./misc/rollup.script.config.js",
+    "build:script:dev": "npm run build:script:prod -- -w",
+    "build": "npm-run-all --parallel build:*:prod",
+    "build:dev": "npm-run-all --parallel build:*:dev"
   },
   "bin": {
     "react-workbench": "./src/script/index.js"
   },
   "dependencies": {
-    "babel-core": "^6.24.0",
+    "babel-core": "^6.25.0",
     "babel-loader": "^6.4.1",
     "babel-plugin-syntax-class-properties": "^6.13.0",
     "babel-plugin-transform-class-properties": "^6.23.0",
