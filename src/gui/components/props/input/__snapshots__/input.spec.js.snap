@@ -2,7 +2,11 @@
 
 exports[`component/props/input input.container.js model with type array should render a textfield 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -28,7 +32,11 @@ exports[`component/props/input input.container.js model with type array should r
 
 exports[`component/props/input input.container.js model with type array should render a textfield with value 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -54,7 +62,11 @@ exports[`component/props/input input.container.js model with type array should r
 
 exports[`component/props/input input.container.js model with type bool should render a checkbox 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -80,7 +92,11 @@ exports[`component/props/input input.container.js model with type bool should re
 
 exports[`component/props/input input.container.js model with type bool should render a checkbox with value 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -106,7 +122,11 @@ exports[`component/props/input input.container.js model with type bool should re
 
 exports[`component/props/input input.container.js model with type function should render a textfield 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -132,7 +152,11 @@ exports[`component/props/input input.container.js model with type function shoul
 
 exports[`component/props/input input.container.js model with type function should render a textfield with value 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -158,7 +182,11 @@ exports[`component/props/input input.container.js model with type function shoul
 
 exports[`component/props/input input.container.js model with type object should render a textfield 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -184,7 +212,11 @@ exports[`component/props/input input.container.js model with type object should 
 
 exports[`component/props/input input.container.js model with type object should render a textfield with value 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -210,7 +242,11 @@ exports[`component/props/input input.container.js model with type object should 
 
 exports[`component/props/input input.container.js model with type string should render a textfield 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -236,7 +272,11 @@ exports[`component/props/input input.container.js model with type string should 
 
 exports[`component/props/input input.container.js model with type string should render a textfield with value 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -262,7 +302,11 @@ exports[`component/props/input input.container.js model with type string should 
 
 exports[`component/props/input input.jsx common props should take custom className 1`] = `
 <div
-  className="css-1to4m6n custom"
+  className={
+    Object {
+      "data-css-53i54u": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -288,7 +332,11 @@ exports[`component/props/input input.jsx common props should take custom classNa
 
 exports[`component/props/input input.jsx common props should take custom style 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={
     Object {
       "backgroundColor": "red",
@@ -318,7 +366,11 @@ exports[`component/props/input input.jsx common props should take custom style 1
 
 exports[`component/props/input input.jsx input type="checkbox" should render a checkbox 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -344,7 +396,11 @@ exports[`component/props/input input.jsx input type="checkbox" should render a c
 
 exports[`component/props/input input.jsx input type="checkbox" should set a default value 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -370,7 +426,11 @@ exports[`component/props/input input.jsx input type="checkbox" should set a defa
 
 exports[`component/props/input input.jsx input type="text" should render a textfield 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label
@@ -396,7 +456,11 @@ exports[`component/props/input input.jsx input type="text" should render a textf
 
 exports[`component/props/input input.jsx input type="text" should set a default value 1`] = `
 <div
-  className="css-1to4m6n "
+  className={
+    Object {
+      "data-css-1to4m6n": "",
+    }
+  }
   style={Object {}}
 >
   <label

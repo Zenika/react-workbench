@@ -2,12 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Input from './input'
 
-import { title } from './props.styles'
+import styles from './props.styles'
 
 const Props = ({ style, className, properties }) => {
   return (
     <div style={style} className={className}>
-      <div className={`${title}`}>props</div>
+      <div className={styles.title}>props</div>
       <div>
         { properties.map(prop => <Input key={prop} name={prop} />) }
       </div>
@@ -17,7 +17,7 @@ const Props = ({ style, className, properties }) => {
 
 Props.propTypes = {
   style: PropTypes.object,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   properties: PropTypes.array,
 }
 

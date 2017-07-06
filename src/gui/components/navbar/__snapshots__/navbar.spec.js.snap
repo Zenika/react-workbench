@@ -2,11 +2,19 @@
 
 exports[`component/navbar should have a default behaviour 1`] = `
 <div
-  className="css-j54ku0 "
+  className={
+    Object {
+      "data-css-1o4ayhl": "",
+    }
+  }
   style={Object {}}
 >
   <div
-    className="css-11xpg4p"
+    className={
+      Object {
+        "data-css-11xpg4p": "",
+      }
+    }
   >
     react-workbench
   </div>
@@ -15,11 +23,19 @@ exports[`component/navbar should have a default behaviour 1`] = `
 
 exports[`component/navbar should take custom className 1`] = `
 <div
-  className="css-j54ku0 custom"
+  className={
+    Object {
+      "data-css-kdimgl": "",
+    }
+  }
   style={Object {}}
 >
   <div
-    className="css-11xpg4p"
+    className={
+      Object {
+        "data-css-11xpg4p": "",
+      }
+    }
   >
     react-workbench
   </div>
@@ -28,7 +44,11 @@ exports[`component/navbar should take custom className 1`] = `
 
 exports[`component/navbar should take custom style 1`] = `
 <div
-  className="css-j54ku0 "
+  className={
+    Object {
+      "data-css-1o4ayhl": "",
+    }
+  }
   style={
     Object {
       "backgroundColor": "red",
@@ -36,7 +56,11 @@ exports[`component/navbar should take custom style 1`] = `
   }
 >
   <div
-    className="css-11xpg4p"
+    className={
+      Object {
+        "data-css-11xpg4p": "",
+      }
+    }
   >
     react-workbench
   </div>

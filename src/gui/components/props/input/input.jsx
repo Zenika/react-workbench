@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { merge } from 'glamor'
 
-import container from './input.styles'
+import styles from './input.styles'
 
 const Input = ({ style, className, name, value, onChange, type, propType }) => {
   return (
-    <div style={style} className={`${container} ${className}`}>
+    <div style={style} className={merge([styles.layout, className])}>
       <label htmlFor={name}>
         {name} <small>({propType})</small>
       </label>
@@ -16,7 +17,7 @@ const Input = ({ style, className, name, value, onChange, type, propType }) => {
 
 Input.propTypes = {
   style: PropTypes.object,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.bool, PropTypes.func]),

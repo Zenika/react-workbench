@@ -1,6 +1,6 @@
 import { css } from 'glamor'
 
-export default css({
+const layout = css({
   margin: '5px 0',
   '& input[type="text"]': {
     width: '100%',
@@ -9,3 +9,5 @@ export default css({
     paddingLeft: '10px',
   },
 })
+
+export default { layout }
