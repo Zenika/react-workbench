@@ -1,6 +1,7 @@
 import fs from 'fs'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
+import builtins from 'rollup-plugin-node-builtins'
 
 const pkg = JSON.parse(fs.readFileSync('./package.json'))
 const external = [
@@ -20,5 +21,6 @@ export default {
       exclude: 'node_modules/**',
     }),
     commonjs(),
+    builtins(),
   ],
 }

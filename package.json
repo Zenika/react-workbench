@@ -7,7 +7,7 @@
   "scripts": {
     "lint:js": "eslint --ext js,jsx src",
     "lint": "npm-run-all --parallel lint:*",
-    "start": "./src/script/index.js",
+    "start": "./index.js",
     "test": "jest",
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "build:gui:prod": "cross-env NODE_ENV=build rollup -c ./misc/rollup.gui.config.js",
@@ -18,7 +18,7 @@
     "build:dev": "npm-run-all --parallel build:*:dev"
   },
   "bin": {
-    "react-workbench": "./src/script/index.js"
+    "react-workbench": "./index.js"
   },
   "dependencies": {
     "babel-core": "^6.25.0",
@@ -152,6 +152,7 @@
     "rollup": "^0.43.0",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-watch": "^4.0.0"
   }
