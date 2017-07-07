@@ -1,3 +1,3 @@
 module.exports = {
-  NAME: 'readme',
+  NAME: 'doc',
 }
