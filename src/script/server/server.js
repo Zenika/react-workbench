@@ -1,8 +1,11 @@
+const path = require('path')
 const express = require('express')
 const log = require('loglevel')
-const { PORT, PUBLIC_FOLDER } = require('./constants')
 const bundle = require('./bundle')
 const api = require('./api')
+
+const PORT = (process.env.PORT || 8080)
+const PUBLIC_FOLDER = path.resolve(__dirname, '..', '..', '..', 'public')
 
 const start = (state) => {
   const { webpackConfiguration, component } = state

@@ -1,11 +1,14 @@
 const server = require('./server')
-const { getComponent, getWebpackConfiguration } = require('./target')
+const { getComponent, getProjectPath } = require('./path')
+const { getWebpackConfiguration } = require('./target')
 const { genTemplate } = require('./template')
 
 const start = async (state) => {
-  let innerState = {
-    component: getComponent(state),
-  }
+  let innerState = { ...state }
+
+  // get some paths
+  innerState = { ...innerState, component: getComponent(innerState) }
+  innerState = { ...innerState, projectPath: await getProjectPath(innerState) }
 
   // retrieve webpack configuration to run
   innerState = {

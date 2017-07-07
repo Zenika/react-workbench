@@ -1,7 +1,7 @@
 /* eslint-disable global-require, import/no-dynamic-require */
 
-module.exports = (config) => {
-  const { projectPath } = config
+module.exports = (state) => {
+  const { projectPath } = state
 
   // try create-react-app configuration
   try {
