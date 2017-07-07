@@ -1,11 +1,13 @@
-import { createStore, compose, combineReducers } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunk from 'redux-thunk'
 import model from './model'
+import docgen from './docgen'
 
 export default createStore(
   combineReducers({
     model,
+    docgen,
   }),
-  compose(
-    window.devToolsExtension ? window.devToolsExtension() : f => f,
-  ),
+  composeWithDevTools(applyMiddleware(thunk))
 )

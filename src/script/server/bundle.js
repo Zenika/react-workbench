@@ -1,22 +1,20 @@
 const webpack = require('webpack')
-const webpackMiddleware = require('webpack-dev-middleware')
+const webpackDevMiddleware = require('webpack-dev-middleware')
+const webpackHotMiddleware = require('webpack-hot-middleware')
 
 const connect = async (app, config) => {
   // webpack compiler
   const compiler = webpack(config)
 
-  // get ouput filename (js bundle)
-  const { filename } = config.output
-
   // add middleware
-  app.use(webpackMiddleware(
-    compiler,
-    {
-      contentBase: __dirname,
-      lazy: true,
-      filename,
-    }
-  ))
+  app.use(
+    webpackDevMiddleware(compiler, {
+      noInfo: true,
+      publicPath: config.output.publicPath,
+    })
+  )
+
+  app.use(webpackHotMiddleware(compiler))
 }
 
 module.exports = {

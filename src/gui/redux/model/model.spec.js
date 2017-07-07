@@ -1,6 +1,6 @@
 /* eslint-env jest */
-import { SET_MODEL, SET_VALUE, setModel, setValue } from './model.actions'
 import reducer from './model'
+import { updateProp, UPDATE_PROP } from './model.actions'
 
 describe('gui/redux/model', () => {
   it('should initialize state', () => {
@@ -9,36 +9,26 @@ describe('gui/redux/model', () => {
 
     // asserts
     expect(state).toBeDefined()
-    expect(state).toEqual({ })
+    expect(state).toEqual({})
   })
 
-  describe(`${SET_MODEL} action`, () => {
-    it('should update state with model', () => {
-      // data
-      const model = { foo: {}, bar: {} }
-
-      // execute
-      const state = reducer(undefined, setModel(model))
-
-      // asserts
-      expect(state).toBeDefined()
-      expect(state).toEqual(model)
-    })
+  describe('RECEIVED_DOCGEN action', () => {
+    it.skip('should update state with model')
   })
 
-  describe(`${SET_VALUE} action`, () => {
+  describe(`${UPDATE_PROP} action`, () => {
     it('should update state with "boolean" value', () => {
       // data
       const prevState = { foo: { type: 'bool' } }
 
       // execute
-      const state = reducer(prevState, setValue('foo', true))
+      const state = reducer(prevState, updateProp('foo', 'bool', true))
 
       // asserts
       expect(state).toBeDefined()
       expect(state.foo).toBeDefined()
-      expect(typeof state.foo.value).toBe('boolean')
-      expect(state.foo.value).toBe(true)
+      expect(typeof state.foo).toBe('boolean')
+      expect(state.foo).toBe(true)
     })
 
     it('should update state with "object" value', () => {
@@ -46,13 +36,13 @@ describe('gui/redux/model', () => {
       const prevState = { foo: { type: 'object' } }
 
       // execute
-      const state = reducer(prevState, setValue('foo', '{ bar: \'val\' }'))
+      const state = reducer(prevState, updateProp('foo', 'object', "{ bar: 'val' }"))
 
       // asserts
       expect(state).toBeDefined()
       expect(state.foo).toBeDefined()
-      expect(typeof state.foo.value).toBe('object')
-      expect(state.foo.value).toEqual({ bar: 'val' })
+      expect(typeof state.foo).toBe('object')
+      expect(state.foo).toEqual({ bar: 'val' })
     })
 
     it('should update state with "array" value', () => {
@@ -60,13 +50,13 @@ describe('gui/redux/model', () => {
       const prevState = { foo: { type: 'array' } }
 
       // execute
-      const state = reducer(prevState, setValue('foo', '[\'item1\', \'item2\']'))
+      const state = reducer(prevState, updateProp('foo', 'array', "['item1', 'item2']"))
 
       // asserts
       expect(state).toBeDefined()
       expect(state.foo).toBeDefined()
-      expect(typeof state.foo.value).toBe('object')
-      expect(state.foo.value).toEqual(['item1', 'item2'])
+      expect(typeof state.foo).toBe('object')
+      expect(state.foo).toEqual(['item1', 'item2'])
     })
 
     it('should update state with "func" value', () => {
@@ -75,13 +65,13 @@ describe('gui/redux/model', () => {
       const func = '() => "hello world"'
 
       // execute
-      const state = reducer(prevState, setValue('foo', func))
+      const state = reducer(prevState, updateProp('foo', 'func', func))
 
       // asserts
       expect(state).toBeDefined()
       expect(state.foo).toBeDefined()
-      expect(typeof state.foo.value).toBe('function')
-      expect(state.foo.value.toString()).toEqual(func)
+      expect(typeof state.foo).toBe('function')
+      expect(state.foo.toString()).toEqual(func)
     })
 
     it('should update state with "string" value', () => {
@@ -89,13 +79,13 @@ describe('gui/redux/model', () => {
       const prevState = { foo: { type: 'string' } }
 
       // execute
-      const state = reducer(prevState, setValue('foo', 'bar'))
+      const state = reducer(prevState, updateProp('foo', 'string', 'bar'))
 
       // asserts
       expect(state).toBeDefined()
       expect(state.foo).toBeDefined()
-      expect(typeof state.foo.value).toBe('string')
-      expect(state.foo.value).toEqual('bar')
+      expect(typeof state.foo).toBe('string')
+      expect(state.foo).toEqual('bar')
     })
   })
 })
