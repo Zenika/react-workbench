@@ -1,10 +1,6 @@
-const generateTitle = (name) => {
-  return `# ${name}\n\n`
-}
+const generateTitle = name => `# ${name}`
 
-const generateDescription = (description) => {
-  return description ? `${description}\n\n` : ''
-}
+const generateDescription = (description = '') => `> ${description}`
 
 const generateProp = (name, prop) => {
   return `${name}|${prop.required}|${prop.type.name}\n`
@@ -20,10 +16,10 @@ const generateProps = (props) => {
   return ''
 }
 
-module.exports = (name, doc) => {
-  let markdown = ''
-  markdown += generateTitle(name)
-  markdown += generateDescription(doc.description)
-  markdown += generateProps(doc.props)
-  return markdown
-}
+module.exports = (name, doc) => `
+${generateTitle(name)}
+
+${generateDescription(doc.description)}
+
+${generateProps(doc.props)}
+`
