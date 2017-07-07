@@ -32,8 +32,9 @@ const connect = (app, component) => {
   app.get(genPath(state), errorHandler(() => state.read()))
   app.post(genPath(state), errorHandler(req => state.create(req.body)))
   // - fs
-  app.get(genPath(fs), errorHandler(() => fs.ls('/')))
-  app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.ls(`/${req.params.path}/${req.params[0]}`)))
+  app.get(genPath(fs), errorHandler(() => fs.get('/')))
+  app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.get(`/${req.params.path}/${req.params[0]}`)))
+  app.post(`${genPath(fs)}/:path*`, errorHandler(req => fs.get(`/${req.params.path}/${req.params[0]}`, req.body)))
   // - docgen
   app.get(genPath(docgen), errorHandler(() => docgen.resolve(component.path.absolute.full)))
   // - markdown
