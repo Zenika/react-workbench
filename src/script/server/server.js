@@ -7,8 +7,6 @@ const api = require('./api')
 const start = (state) => {
   const { webpackConfiguration, component } = state
 
-  console.log({ webpackConfiguration })
-
   // create a new express server
   const app = express()
 

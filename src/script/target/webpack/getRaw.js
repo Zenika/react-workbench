@@ -5,18 +5,16 @@ module.exports = (config) => {
 
   // try create-react-app configuration
   try {
-    return Object.assign(
-      {},
-      require(`${projectPath}/node_modules/react-scripts/config/webpack.config.dev.js`)
-    )
+    return {
+      ...require(`${projectPath}/node_modules/react-scripts/config/webpack.config.dev.js`),
+    }
   } catch (ex) {
     if (ex.code !== 'MODULE_NOT_FOUND') throw ex
 
     // try webpack.config.js
-    return Object.assign(
-      {},
-      require(`${projectPath}/webpack.config.js`)
-    )
+    return {
+      ...require(`${projectPath}/webpack.config.js`),
+    }
 
     // TODO: Ask user where is his webpack config
   }

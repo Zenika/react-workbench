@@ -8,9 +8,10 @@ const start = async (state) => {
   }
 
   // retrieve webpack configuration to run
-  innerState = Object.assign({}, innerState, {
+  innerState = {
+    ...innerState,
     webpackConfiguration: await getWebpackConfiguration(innerState),
-  })
+  }
 
   // generate component template (targetting tested component)
   await genTemplate(innerState)
