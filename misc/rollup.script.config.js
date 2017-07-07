@@ -8,6 +8,8 @@ const external = [
   ...Object.keys(pkg.dependencies || {}),
   ...Object.keys(pkg.devDependencies || {}),
   ...Object.keys(pkg.peerDependencies || {}),
+  'react-docgen/dist/utils',
+  'react-docgen/dist/utils/resolveHOC',
 ]
 
 export default {
