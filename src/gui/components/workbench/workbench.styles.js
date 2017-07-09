@@ -16,13 +16,13 @@ const header = css({
 
 const main = css({
   gridArea: 'main',
-  padding: '10px',
+  padding: '1em',
   overflow: 'auto',
 })
 
 const sidebar = css({
   gridArea: 'sidebar',
-  padding: '10px',
+  padding: '1em',
   overflow: 'auto',
 })
 

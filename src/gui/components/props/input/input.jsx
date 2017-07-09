@@ -6,7 +6,7 @@ import styles from './input.styles'
 
 const Input = ({ style, className, name, value, onChange, type, propType }) => {
   return (
-    <div style={style} className={merge([styles.layout, className])}>
+    <div style={style} className={merge(styles.layout, className)}>
       <label htmlFor={name}>
         {name} <small>({propType})</small>
       </label>

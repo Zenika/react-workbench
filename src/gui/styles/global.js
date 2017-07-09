@@ -1,3 +1,5 @@
+import 'glamor/reset'
+
 import { css } from 'glamor'
 
 // set global css rules

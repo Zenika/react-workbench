@@ -2,12 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { merge } from 'glamor'
 
-import { primaryColor } from '../../styles'
 import styles from './navbar.styles'
 
 const Navbar = ({ style, className }) => {
   return (
-    <div style={style} className={merge([styles.layout, primaryColor, className])}>
+    <div style={style} className={merge(styles.layout, className)}>
       <div className={styles.title}>
         react-workbench
       </div>

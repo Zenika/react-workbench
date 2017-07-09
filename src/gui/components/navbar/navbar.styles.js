@@ -1,6 +1,7 @@
 import { css } from 'glamor'
+import { primaryColor } from '../../styles'
 
-const layout = css({
+const layout = css(primaryColor, {
   display: 'flex',
   alignItems: 'center',
 })
@@ -8,7 +9,7 @@ const layout = css({
 const title = css({
   fontSize: '1.2em',
   fontWeight: 'bolder',
-  paddingLeft: '10px',
+  paddingLeft: '1em',
 })
 
 export default { layout, title }
