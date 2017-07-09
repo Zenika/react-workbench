@@ -4,7 +4,7 @@ exports[`component/navbar should have a default behaviour 1`] = `
 <div
   className={
     Object {
-      "data-css-1o4ayhl": "",
+      "data-css-j54ku0": "",
     }
   }
   style={Object {}}
@@ -12,7 +12,7 @@ exports[`component/navbar should have a default behaviour 1`] = `
   <div
     className={
       Object {
-        "data-css-11xpg4p": "",
+        "data-css-qdfag2": "",
       }
     }
   >
@@ -25,7 +25,7 @@ exports[`component/navbar should take custom className 1`] = `
 <div
   className={
     Object {
-      "data-css-kdimgl": "",
+      "data-css-euqau2": "",
     }
   }
   style={Object {}}
@@ -33,7 +33,7 @@ exports[`component/navbar should take custom className 1`] = `
   <div
     className={
       Object {
-        "data-css-11xpg4p": "",
+        "data-css-qdfag2": "",
       }
     }
   >
@@ -46,7 +46,7 @@ exports[`component/navbar should take custom style 1`] = `
 <div
   className={
     Object {
-      "data-css-1o4ayhl": "",
+      "data-css-j54ku0": "",
     }
   }
   style={
@@ -58,7 +58,7 @@ exports[`component/navbar should take custom style 1`] = `
   <div
     className={
       Object {
-        "data-css-11xpg4p": "",
+        "data-css-qdfag2": "",
       }
     }
   >

@@ -8,7 +8,7 @@ exports[`component/props props.container.js should map redux model into properti
   <div
     className={
       Object {
-        "data-css-14dcf8k": "",
+        "data-css-162aour": "",
       }
     }
   >
@@ -26,7 +26,7 @@ exports[`component/props props.jsx should render by default 1`] = `
   <div
     className={
       Object {
-        "data-css-14dcf8k": "",
+        "data-css-162aour": "",
       }
     }
   >
@@ -44,7 +44,7 @@ exports[`component/props props.jsx should render inputs following given properti
   <div
     className={
       Object {
-        "data-css-14dcf8k": "",
+        "data-css-162aour": "",
       }
     }
   >
@@ -69,7 +69,7 @@ exports[`component/props props.jsx should take custom className 1`] = `
   <div
     className={
       Object {
-        "data-css-14dcf8k": "",
+        "data-css-162aour": "",
       }
     }
   >
@@ -91,7 +91,7 @@ exports[`component/props props.jsx should take custom style 1`] = `
   <div
     className={
       Object {
-        "data-css-14dcf8k": "",
+        "data-css-162aour": "",
       }
     }
   >
