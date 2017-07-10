@@ -3,7 +3,7 @@ const log = require('loglevel')
 const { API_BASE_CONTEXT } = require('../../config/constants')
 const state = require('./services/state')
 const fs = require('./services/fs')
-const docgen = require('./services/docgen')
+const doc = require('./services/doc')
 
 const genPath = resource => `${API_BASE_CONTEXT}/${resource.NAME}`
 
@@ -30,10 +30,11 @@ const connect = (app, component) => {
   app.get(genPath(state), errorHandler(() => state.read()))
   app.post(genPath(state), errorHandler(req => state.create(req.body)))
   // - fs
-  app.get(genPath(fs), errorHandler(() => fs.ls('/')))
-  app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.ls(`/${req.params.path}/${req.params[0]}`)))
-  // - docgen
-  app.get(genPath(docgen), errorHandler(() => docgen.resolve(component.path.absolute.full)))
+  app.get(genPath(fs), errorHandler(() => fs.get('/')))
+  app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.get(`/${req.params.path}/${req.params[0]}`)))
+  app.post(`${genPath(fs)}/:path*`, errorHandler(req => fs.get(`/${req.params.path}/${req.params[0]}`, req.body)))
+  // - documentation
+  app.get(genPath(doc), errorHandler(req => doc.generate(component, req.query.format)))
 }
 
 module.exports = {

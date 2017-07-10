@@ -6,7 +6,7 @@ export const FAILED_DOCGEN = 'FAILED_DOCGEN'
 export const fetchDocgen = () => async (dispatch) => {
   dispatch({ type: REQUEST_DOCGEN })
   try {
-    const response = await fetch('/api/docgen')
+    const response = await fetch('/api/doc')
     const json = await response.json()
     if (json && json.length > 0) {
       dispatch({ type: RECEIVED_DOCGEN, payload: json[0] })
