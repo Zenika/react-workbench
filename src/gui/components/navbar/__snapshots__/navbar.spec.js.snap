@@ -2,31 +2,67 @@
 
 exports[`component/navbar should have a default behaviour 1`] = `
 <div
-  className=""
+  className={
+    Object {
+      "data-css-j54ku0": "",
+    }
+  }
   style={Object {}}
 >
-  Workbench
+  <div
+    className={
+      Object {
+        "data-css-qdfag2": "",
+      }
+    }
+  >
+    react-workbench
+  </div>
 </div>
 `;
 
 exports[`component/navbar should take custom className 1`] = `
 <div
-  className="custom"
+  className={
+    Object {
+      "data-css-euqau2": "",
+    }
+  }
   style={Object {}}
 >
-  Workbench
+  <div
+    className={
+      Object {
+        "data-css-qdfag2": "",
+      }
+    }
+  >
+    react-workbench
+  </div>
 </div>
 `;
 
 exports[`component/navbar should take custom style 1`] = `
 <div
-  className=""
+  className={
+    Object {
+      "data-css-j54ku0": "",
+    }
+  }
   style={
     Object {
       "backgroundColor": "red",
     }
   }
 >
-  Workbench
+  <div
+    className={
+      Object {
+        "data-css-qdfag2": "",
+      }
+    }
+  >
+    react-workbench
+  </div>
 </div>
 `;

@@ -1,29 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
 import Navbar from '../navbar'
 import Props from '../props'
+import styles from './workbench.styles'
 
-const Workbench = ({ style, className, children }) => {
+const Workbench = ({ children }) => {
   return (
-    <div className={className} style={style}>
-      <Navbar />
-      <div>
-        <div>{children}</div>
-        <Props />
+    <div className={styles.layout} >
+      <Navbar className={styles.header} />
+      <Props className={styles.sidebar} />
+      <div className={styles.main}>
+        {children}
       </div>
     </div>
   )
 }
 
 Workbench.propTypes = {
-  style: PropTypes.object,
-  className: PropTypes.string,
   children: PropTypes.node.isRequired,
-}
-
-Workbench.defaultProps = {
-  style: {},
-  className: '',
 }
 
 export default Workbench

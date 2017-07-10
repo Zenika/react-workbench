@@ -4,14 +4,36 @@ exports[`component/props props.container.js should map redux model into properti
 <div
   className=""
   style={Object {}}
-/>
+>
+  <div
+    className={
+      Object {
+        "data-css-162aour": "",
+      }
+    }
+  >
+    props
+  </div>
+  <div />
+</div>
 `;
 
 exports[`component/props props.jsx should render by default 1`] = `
 <div
   className=""
   style={Object {}}
-/>
+>
+  <div
+    className={
+      Object {
+        "data-css-162aour": "",
+      }
+    }
+  >
+    props
+  </div>
+  <div />
+</div>
 `;
 
 exports[`component/props props.jsx should render inputs following given properties 1`] = `
@@ -19,12 +41,23 @@ exports[`component/props props.jsx should render inputs following given properti
   className=""
   style={Object {}}
 >
-  <input
-    name="prop1"
-  />
-  <input
-    name="prop2"
-  />
+  <div
+    className={
+      Object {
+        "data-css-162aour": "",
+      }
+    }
+  >
+    props
+  </div>
+  <div>
+    <input
+      name="prop1"
+    />
+    <input
+      name="prop2"
+    />
+  </div>
 </div>
 `;
 
@@ -32,7 +65,18 @@ exports[`component/props props.jsx should take custom className 1`] = `
 <div
   className="custom"
   style={Object {}}
-/>
+>
+  <div
+    className={
+      Object {
+        "data-css-162aour": "",
+      }
+    }
+  >
+    props
+  </div>
+  <div />
+</div>
 `;
 
 exports[`component/props props.jsx should take custom style 1`] = `
@@ -43,5 +87,16 @@ exports[`component/props props.jsx should take custom style 1`] = `
       "backgroundColor": "red",
     }
   }
-/>
+>
+  <div
+    className={
+      Object {
+        "data-css-162aour": "",
+      }
+    }
+  >
+    props
+  </div>
+  <div />
+</div>
 `;

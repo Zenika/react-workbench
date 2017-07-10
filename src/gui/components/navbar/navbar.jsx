@@ -1,17 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { merge } from 'glamor'
+
+import styles from './navbar.styles'
 
 const Navbar = ({ style, className }) => {
   return (
-    <div style={style} className={className}>
-      Workbench
+    <div style={style} className={merge(styles.layout, className)}>
+      <div className={styles.title}>
+        react-workbench
+      </div>
     </div>
   )
 }
 
 Navbar.propTypes = {
   style: PropTypes.object,
-  className: PropTypes.string,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 }
 
 Navbar.defaultProps = {
