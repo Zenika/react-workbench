@@ -1,9 +1,10 @@
 import { css } from 'glamor'
-import { primaryColor } from '../../styles'
+import { primaryColor } from '../../../styles'
 
 const layout = css(primaryColor, {
   display: 'flex',
   alignItems: 'center',
+  height: '4em',
 })
 
 const title = css({

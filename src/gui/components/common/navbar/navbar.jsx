@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { merge } from 'glamor'
 
-import Button from '../button'
+import NavButton from '../navButton'
 import styles from './navbar.styles'
 
 const Navbar = ({ style, className }) => {
@@ -12,7 +12,8 @@ const Navbar = ({ style, className }) => {
         react-workbench
       </div>
       <div className={styles.navActions}>
-        <Button label="documentation" />
+        <NavButton label="workbench" route="/" />
+        <NavButton label="documentation" route="/documentation" />
       </div>
     </nav>
   )

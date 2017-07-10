@@ -8,7 +8,7 @@ import { mount } from 'enzyme'
 import snap from 'misc/test/snap'
 import Input from './input'
 import InputContainer from './input.container'
-import { UPDATE_PROP, updateProp } from '../../../redux/model'
+import { UPDATE_PROP, updateProp } from '../../../../redux/model'
 
 describe('component/props/input', () => {
   describe('input.jsx', () => {

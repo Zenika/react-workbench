@@ -1,24 +1,18 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-import Navbar from '../navbar'
-import Props from '../props'
+import Props from './props'
 import styles from './workbench.styles'
+import WrappedComponent from '../../component.container'
 
-const Workbench = ({ children }) => {
+const Workbench = () => {
   return (
-    <div className={styles.layout} >
-      <Navbar className={styles.header} />
-      <Props className={styles.sidebar} />
-      <div className={styles.main}>
-        {children}
+    <div className={styles.layout}>
+      <div className={styles.content}>
+        <WrappedComponent />
       </div>
+      <Props className={styles.sidebar} />
     </div>
   )
-}
-
-Workbench.propTypes = {
-  children: PropTypes.node.isRequired,
 }
 
 export default Workbench

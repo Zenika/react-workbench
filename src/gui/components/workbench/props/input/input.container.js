@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { getComponentValue, updateProp } from '../../../redux/model'
-import { getProp } from '../../../redux/docgen'
+import { getComponentValue, updateProp } from '../../../../redux/model'
+import { getProp } from '../../../../redux/docgen'
 import Input from './input'
 
 const getInputType = (type) => {
