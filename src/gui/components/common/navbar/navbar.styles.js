@@ -1,5 +1,5 @@
 import { css } from 'glamor'
-import { primaryColor } from '../../../styles'
+import { primaryColor, primaryLightColor } from '../../../styles'
 
 const layout = css(primaryColor, {
   display: 'flex',
@@ -23,13 +23,8 @@ const navActions = css({
     marginLeft: '1em',
     border: '0px solid #fff',
     borderRadius: '3px',
-    color: '#666',
-    fontWeight: '600',
     cursor: 'pointer',
     outline: 'none',
-  },
-  '> button:hover': {
-    color: '#37474f',
   },
 })
 

@@ -1,11 +1,9 @@
 import React from 'react'
 import router from 'hoc-little-router'
 
-import styles from './documentation.styles'
-
 const Documentation = () => {
   return (
-    <div className={styles.layout}>
+    <div>
       Documentation
     </div>
   )
