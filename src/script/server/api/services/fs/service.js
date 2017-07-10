@@ -1,16 +1,13 @@
 const fs = require('fs')
 const path = require('path')
 
-const statFile = (fullpath, stats, content) => Object.assign(
-  {},
-  {
-    fullname: path.basename(fullpath),
-    ext: path.extname(fullpath),
-    isDirectory: stats.isDirectory(),
-    content: JSON.stringify(content),
-  },
-  stats
-)
+const statFile = (fullpath, stats, content) => ({
+  fullname: path.basename(fullpath),
+  ext: path.extname(fullpath),
+  isDirectory: stats.isDirectory(),
+  content: JSON.stringify(content),
+  ...stats,
+})
 
 const ls = async (entryPath) => {
   const files = await fs.readdirAsync(entryPath)
