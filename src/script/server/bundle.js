@@ -2,15 +2,17 @@ const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 
-const connect = async (app, config) => {
+const connect = async (state, app) => {
+  const { webpackConfiguration } = state
+
   // webpack compiler
-  const compiler = webpack(config)
+  const compiler = webpack(webpackConfiguration)
 
   // add middleware
   app.use(
     webpackDevMiddleware(compiler, {
       noInfo: true,
-      publicPath: config.output.publicPath,
+      publicPath: webpackConfiguration.output.publicPath,
     })
   )
 

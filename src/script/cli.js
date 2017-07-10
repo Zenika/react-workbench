@@ -19,4 +19,4 @@ if (argv.debug) {
   log.setLevel('debug')
 }
 
-start(argv._[0])
+start({ fileName: argv._[0] })

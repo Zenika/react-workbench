@@ -1,12 +1,14 @@
 const path = require('path')
 const fs = require('fs')
 
-module.exports = (fileName) => {
+module.exports = (state) => {
+  const { fileName } = state
+
   const name = path.basename(fileName)
   const absolute = path.resolve(process.env.PWD, fileName)
   const dir = fs.lstatSync(absolute).isDirectory() ? absolute : path.dirname(absolute)
 
-  return {
+  const component = {
     name,
     path: {
       absolute: {
@@ -15,4 +17,6 @@ module.exports = (fileName) => {
       },
     },
   }
+
+  return component
 }

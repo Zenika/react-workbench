@@ -1,10 +1,16 @@
+const path = require('path')
 const express = require('express')
 const log = require('loglevel')
-const { PORT, PUBLIC_FOLDER } = require('./constants')
 const bundle = require('./bundle')
 const api = require('./api')
 
-const start = (component, webpackConfig) => {
+// FIXME: move it to root ?
+const PORT = (process.env.PORT || 8080)
+const PUBLIC_FOLDER = path.resolve(__dirname, '..', '..', '..', 'public')
+
+const start = (state) => {
+  const { component } = state
+
   // create a new express server
   const app = express()
 
@@ -12,7 +18,7 @@ const start = (component, webpackConfig) => {
   app.use(express.static(PUBLIC_FOLDER))
 
   // serve webpack bundle
-  bundle.connect(app, webpackConfig)
+  bundle.connect(state, app)
 
   // serve api
   api.connect(app, component)

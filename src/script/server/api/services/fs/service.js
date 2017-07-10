@@ -9,16 +9,13 @@ const ls = async (entryPath) => {
     const ext = path.extname(fullname)
     const name = path.basename(fullname, ext)
 
-    return Object.assign(
-      {},
-      {
-        fullname,
-        name,
-        ext,
-        isDirectory: stats.isDirectory(),
-      },
-      stats
-    )
+    return {
+      fullname,
+      name,
+      ext,
+      isDirectory: stats.isDirectory(),
+      ...stats,
+    }
   })
 
   return Promise.all(statsFiles)
