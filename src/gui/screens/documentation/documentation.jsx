@@ -1,12 +1,11 @@
 import React from 'react'
-import router from 'hoc-little-router'
 
-const Documentation = () => {
+const Documentation = ({ content }) => {
   return (
     <div>
-      Documentation
+      {content}
     </div>
   )
 }
 
-export default router('DOCUMENTATION')(Documentation)
+export default Documentation
