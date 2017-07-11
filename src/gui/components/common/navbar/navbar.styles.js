@@ -22,7 +22,7 @@ const navActions = css({
     padding: '.5em',
     marginLeft: '1em',
     border: '0px solid #fff',
-    borderRadius: '3px',
+    borderRadius: '.3em',
     cursor: 'pointer',
     outline: 'none',
   },
