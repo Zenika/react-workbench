@@ -9,4 +9,4 @@ const Documentation = () => {
   )
 }
 
-export default router('DOCUMENTATION', { absolute: true })(Documentation)
+export default router('DOCUMENTATION')(Documentation)
