@@ -2,8 +2,16 @@ import 'babel-polyfill'
 
 import React from 'react'
 import { render } from 'react-dom'
-import App from './components/app'
+import { Provider } from 'react-redux'
+
+import store from './redux/store'
+import App from './app'
 
 import './styles/global'
 
-render(<App />, document.getElementById('app'))
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app')
+)

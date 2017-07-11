@@ -1,5 +1,5 @@
 import { css } from 'glamor'
-import { primaryColor, primaryLightColor } from '../../../styles'
+import { primaryColor } from '../../styles'
 
 const layout = css(primaryColor, {
   display: 'flex',

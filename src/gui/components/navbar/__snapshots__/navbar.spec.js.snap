@@ -21,7 +21,7 @@ exports[`component/navbar should have a default behaviour 1`] = `
   <div
     className={
       Object {
-        "data-css-1u7y7sm": "",
+        "data-css-xjx7wv": "",
       }
     }
   >
@@ -58,7 +58,7 @@ exports[`component/navbar should take custom className 1`] = `
   <div
     className={
       Object {
-        "data-css-1u7y7sm": "",
+        "data-css-xjx7wv": "",
       }
     }
   >
@@ -99,7 +99,7 @@ exports[`component/navbar should take custom style 1`] = `
   <div
     className={
       Object {
-        "data-css-1u7y7sm": "",
+        "data-css-xjx7wv": "",
       }
     }
   >
