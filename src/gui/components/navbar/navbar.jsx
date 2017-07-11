@@ -2,15 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { merge } from 'glamor'
 
+import NavButton from '../navButton'
 import styles from './navbar.styles'
 
 const Navbar = ({ style, className }) => {
   return (
-    <div style={style} className={merge(styles.layout, className)}>
+    <nav style={style} className={merge(styles.layout, className)}>
       <div className={styles.title}>
         react-workbench
       </div>
-    </div>
+      <div className={styles.navActions}>
+        <NavButton label="workbench" route="/" />
+        <NavButton label="documentation" route="/documentation" />
+      </div>
+    </nav>
   )
 }
 

@@ -4,6 +4,7 @@ import { primaryColor } from '../../styles'
 const layout = css(primaryColor, {
   display: 'flex',
   alignItems: 'center',
+  height: '4em',
 })
 
 const title = css({
@@ -12,4 +13,19 @@ const title = css({
   paddingLeft: '1em',
 })
 
-export default { layout, title }
+const navActions = css({
+  display: 'flex',
+  alignItems: 'center',
+  marginLeft: 'auto',
+  paddingRight: '1em',
+  '> button': {
+    padding: '.5em',
+    marginLeft: '1em',
+    border: '0px solid #fff',
+    borderRadius: '.3em',
+    cursor: 'pointer',
+    outline: 'none',
+  },
+})
+
+export default { layout, title, navActions }

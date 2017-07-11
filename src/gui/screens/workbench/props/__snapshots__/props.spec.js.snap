@@ -2,7 +2,11 @@
 
 exports[`component/props props.container.js should map redux model into properties array 1`] = `
 <div
-  className=""
+  className={
+    Object {
+      "data-css-ikffa7": "",
+    }
+  }
   style={Object {}}
 >
   <div
@@ -20,7 +24,11 @@ exports[`component/props props.container.js should map redux model into properti
 
 exports[`component/props props.jsx should render by default 1`] = `
 <div
-  className=""
+  className={
+    Object {
+      "data-css-ikffa7": "",
+    }
+  }
   style={Object {}}
 >
   <div
@@ -38,7 +46,11 @@ exports[`component/props props.jsx should render by default 1`] = `
 
 exports[`component/props props.jsx should render inputs following given properties 1`] = `
 <div
-  className=""
+  className={
+    Object {
+      "data-css-ikffa7": "",
+    }
+  }
   style={Object {}}
 >
   <div
@@ -63,7 +75,11 @@ exports[`component/props props.jsx should render inputs following given properti
 
 exports[`component/props props.jsx should take custom className 1`] = `
 <div
-  className="custom"
+  className={
+    Object {
+      "data-css-oj2paa": "",
+    }
+  }
   style={Object {}}
 >
   <div
@@ -81,7 +97,11 @@ exports[`component/props props.jsx should take custom className 1`] = `
 
 exports[`component/props props.jsx should take custom style 1`] = `
 <div
-  className=""
+  className={
+    Object {
+      "data-css-ikffa7": "",
+    }
+  }
   style={
     Object {
       "backgroundColor": "red",

@@ -2,6 +2,9 @@
 import snap from 'misc/test/snap'
 import Navbar from './navbar'
 
+// mock input component into props
+jest.mock('../navButton', () => 'navButton')
+
 const snapshot = snap(Navbar)
 
 describe('component/navbar', () => {

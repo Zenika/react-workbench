@@ -1,10 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`component/navbar should have a default behaviour 1`] = `
-<div
+<nav
   className={
     Object {
-      "data-css-j54ku0": "",
+      "data-css-up45um": "",
     }
   }
   style={Object {}}
@@ -18,14 +18,30 @@ exports[`component/navbar should have a default behaviour 1`] = `
   >
     react-workbench
   </div>
-</div>
+  <div
+    className={
+      Object {
+        "data-css-xjx7wv": "",
+      }
+    }
+  >
+    <navButton
+      label="workbench"
+      route="/"
+    />
+    <navButton
+      label="documentation"
+      route="/documentation"
+    />
+  </div>
+</nav>
 `;
 
 exports[`component/navbar should take custom className 1`] = `
-<div
+<nav
   className={
     Object {
-      "data-css-euqau2": "",
+      "data-css-9ky4b0": "",
     }
   }
   style={Object {}}
@@ -39,14 +55,30 @@ exports[`component/navbar should take custom className 1`] = `
   >
     react-workbench
   </div>
-</div>
+  <div
+    className={
+      Object {
+        "data-css-xjx7wv": "",
+      }
+    }
+  >
+    <navButton
+      label="workbench"
+      route="/"
+    />
+    <navButton
+      label="documentation"
+      route="/documentation"
+    />
+  </div>
+</nav>
 `;
 
 exports[`component/navbar should take custom style 1`] = `
-<div
+<nav
   className={
     Object {
-      "data-css-j54ku0": "",
+      "data-css-up45um": "",
     }
   }
   style={
@@ -64,5 +96,21 @@ exports[`component/navbar should take custom style 1`] = `
   >
     react-workbench
   </div>
-</div>
+  <div
+    className={
+      Object {
+        "data-css-xjx7wv": "",
+      }
+    }
+  >
+    <navButton
+      label="workbench"
+      route="/"
+    />
+    <navButton
+      label="documentation"
+      route="/documentation"
+    />
+  </div>
+</nav>
 `;
