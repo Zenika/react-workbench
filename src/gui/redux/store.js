@@ -5,6 +5,7 @@ import thunk from 'redux-thunk'
 import router from './router'
 import model from './model'
 import docgen from './docgen'
+import documentation from './documentation'
 
 // initialize redux store
 const store = createStore(
@@ -12,6 +13,7 @@ const store = createStore(
     router: router.reducer,
     model,
     docgen,
+    documentation,
   }),
   composeWithDevTools(router.enhancer, applyMiddleware(thunk, router.middleware))
 )

@@ -1,12 +1,18 @@
 import React from 'react'
-import router from 'hoc-little-router'
+import PropTypes from 'prop-types'
 
-const Documentation = () => {
+import styles from './documentation.styles'
+
+const Documentation = ({ content }) => {
   return (
-    <div>
-      Documentation
-    </div>
+    <textarea className={styles.layout}>
+      {content}
+    </textarea>
   )
 }
 
-export default router('DOCUMENTATION')(Documentation)
+Documentation.propTypes = {
+  content: PropTypes.string.isRequired,
+}
+
+export default Documentation
