@@ -8,7 +8,7 @@ import styles from './tabs.styles'
 
 class Tabs extends Component {
   state = {
-    selected: 0,
+    selected: this.props.defaultKey,
   }
 
   handleSelectedTab = (key) => {
@@ -37,6 +37,7 @@ class Tabs extends Component {
 }
 
 Tabs.propTypes = {
+  defaultKey: PropTypes.number,
   children: PropTypes.oneOfType([PropTypes.node, PropTypes.array]).isRequired,
   actions: PropTypes.oneOfType([PropTypes.node, PropTypes.object]),
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
@@ -45,6 +46,7 @@ Tabs.propTypes = {
 }
 
 Tabs.defaultProps = {
+  defaultKey: 0,
   actions: undefined,
   className: undefined,
   actionsClassName: undefined,
