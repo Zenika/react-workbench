@@ -27,7 +27,7 @@ Input.propTypes = {
 
 Input.defaultProps = {
   style: {},
-  className: '',
+  className: undefined,
   value: undefined,
 }
 

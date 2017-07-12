@@ -9,3 +9,7 @@ css.global('html, body', {
   fontFamily: 'Arial, Helvetica, sans-serif',
   fontSize: '13px',
 })
+
+css.global('*', {
+  boxSizing: 'border-box',
+})

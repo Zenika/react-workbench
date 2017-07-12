@@ -1,9 +1,8 @@
 import { css } from 'glamor'
 
 const layout = css({
-  display: 'block',
-  boxSizing: 'border-box',
-  overflow: 'auto',
+  position: 'relative',
+  border: '1px solid #ddd',
 })
 
 export default { layout }

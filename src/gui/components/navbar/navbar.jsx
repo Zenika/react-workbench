@@ -26,7 +26,7 @@ Navbar.propTypes = {
 
 Navbar.defaultProps = {
   style: {},
-  className: '',
+  className: undefined,
 }
 
 export default Navbar
