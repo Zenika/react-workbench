@@ -4660,6 +4660,10 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
 
+trampss-redux-factory@2.2.0-rc1:
+  version "2.2.0-rc1"
+  resolved "https://registry.yarnpkg.com/trampss-redux-factory/-/trampss-redux-factory-2.2.0-rc1.tgz#41784d2f7153a7a87f12855a5511516fab494335"
+
 trim-right@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/trim-right/-/trim-right-1.0.1.tgz#cb2e1203067e0c8de1f614094b9fe45704ea6003"
