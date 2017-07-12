@@ -1,11 +1,18 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
+import styles from './documentation.styles'
 
 const Documentation = ({ content }) => {
   return (
-    <div>
+    <textarea className={styles.layout}>
       {content}
-    </div>
+    </textarea>
   )
+}
+
+Documentation.propTypes = {
+  content: PropTypes.string.isRequired,
 }
 
 export default Documentation
