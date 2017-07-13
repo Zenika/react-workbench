@@ -17,20 +17,22 @@ class Tabs extends Component {
 
   render() {
     const { children, actions, className, actionsClassName, headersClassName } = this.props
+
     const childArray = React.Children.toArray(children)
-    const titles = childArray.map((c, index) => ({ key: index, title: c.props.title }))
-    const selectedTab = childArray[this.state.selected]
+    const headers = childArray.map(({ props }) => ({ tabKey: props.tabKey, title: props.title }))
+    const selected = this.state.selected || headers[0].tabKey
+    const tab = childArray.find(c => c.props.tabKey === selected)
 
     return (
       <div className={merge(styles.layout, className)}>
         <TabsHeader
-          titles={titles}
-          selectedTab={this.state.selected}
+          headers={headers}
+          selectedTab={selected}
           onSelectTab={this.handleSelectedTab}
           className={headersClassName}
         />
         <TabsAction actions={actions} className={actionsClassName} />
-        {selectedTab}
+        {tab}
       </div>
     )
   }
@@ -46,7 +48,7 @@ Tabs.propTypes = {
 }
 
 Tabs.defaultProps = {
-  defaultKey: 0,
+  defaultKey: undefined,
   actions: undefined,
   className: undefined,
   actionsClassName: undefined,

@@ -13,8 +13,8 @@ const Workbench = () => {
         <WrappedComponent />
       </div>
       <Tabs className={styles.sidebar}>
-        <Tab title="props"><Props /></Tab>
-        <Tab title="state">Not implemented yet.</Tab>
+        <Tab tabKey="props" title="props"><Props /></Tab>
+        <Tab tabKey="state" title="state">Not implemented yet.</Tab>
       </Tabs>
     </div>
   )
