@@ -4,72 +4,39 @@ exports[`component/props props.container.js should map redux model into properti
 <div
   className={
     Object {
-      "data-css-ikffa7": "",
+      "data-css-7xct0c": "",
     }
   }
   style={Object {}}
->
-  <div
-    className={
-      Object {
-        "data-css-162aour": "",
-      }
-    }
-  >
-    props
-  </div>
-  <div />
-</div>
+/>
 `;
 
 exports[`component/props props.jsx should render by default 1`] = `
 <div
   className={
     Object {
-      "data-css-ikffa7": "",
+      "data-css-7xct0c": "",
     }
   }
   style={Object {}}
->
-  <div
-    className={
-      Object {
-        "data-css-162aour": "",
-      }
-    }
-  >
-    props
-  </div>
-  <div />
-</div>
+/>
 `;
 
 exports[`component/props props.jsx should render inputs following given properties 1`] = `
 <div
   className={
     Object {
-      "data-css-ikffa7": "",
+      "data-css-7xct0c": "",
     }
   }
   style={Object {}}
 >
-  <div
-    className={
-      Object {
-        "data-css-162aour": "",
-      }
-    }
-  >
-    props
-  </div>
-  <div>
-    <input
-      name="prop1"
-    />
-    <input
-      name="prop2"
-    />
-  </div>
+  <input
+    name="prop1"
+  />
+  <input
+    name="prop2"
+  />
 </div>
 `;
 
@@ -77,29 +44,18 @@ exports[`component/props props.jsx should take custom className 1`] = `
 <div
   className={
     Object {
-      "data-css-oj2paa": "",
+      "data-css-132or61": "",
     }
   }
   style={Object {}}
->
-  <div
-    className={
-      Object {
-        "data-css-162aour": "",
-      }
-    }
-  >
-    props
-  </div>
-  <div />
-</div>
+/>
 `;
 
 exports[`component/props props.jsx should take custom style 1`] = `
 <div
   className={
     Object {
-      "data-css-ikffa7": "",
+      "data-css-7xct0c": "",
     }
   }
   style={
@@ -107,16 +63,5 @@ exports[`component/props props.jsx should take custom style 1`] = `
       "backgroundColor": "red",
     }
   }
->
-  <div
-    className={
-      Object {
-        "data-css-162aour": "",
-      }
-    }
-  >
-    props
-  </div>
-  <div />
-</div>
+/>
 `;

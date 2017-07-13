@@ -2,6 +2,8 @@ import React from 'react'
 
 import Props from './props'
 import styles from './workbench.styles'
+
+import { Tabs, Tab } from '../../components/tabs'
 import WrappedComponent from '../../component.container'
 
 const Workbench = () => {
@@ -10,7 +12,10 @@ const Workbench = () => {
       <div className={styles.content}>
         <WrappedComponent />
       </div>
-      <Props className={styles.sidebar} />
+      <Tabs className={styles.sidebar}>
+        <Tab tabKey="props" title="props"><Props /></Tab>
+        <Tab tabKey="state" title="state">Not implemented yet.</Tab>
+      </Tabs>
     </div>
   )
 }
