@@ -7,7 +7,7 @@ const layout = css({
 })
 
 const main = css({
-  height: '100%',
+  height: 'calc(100vh - 4em)',
   overflow: 'hidden',
 })
 

@@ -2,7 +2,6 @@ import { css } from 'glamor'
 
 const layout = css({
   display: 'flex',
-  height: '100%',
   justifyContent: 'space-between',
 })
 
@@ -12,7 +11,7 @@ const content = css({
 })
 
 const sidebar = css({
-  overflow: 'auto',
+  overflow: 'hidden',
   width: '25em',
 })
 

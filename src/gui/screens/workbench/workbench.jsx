@@ -1,14 +1,15 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
+import { merge } from 'glamor'
 import Props from './props'
 import styles from './workbench.styles'
 
 import { Tabs, Tab } from '../../components/tabs'
 import WrappedComponent from '../../component.container'
 
-const Workbench = () => {
+const Workbench = ({ className }) => {
   return (
-    <div className={styles.layout}>
+    <div className={merge(styles.layout, className)}>
       <div className={styles.content}>
         <WrappedComponent />
       </div>
@@ -18,6 +19,14 @@ const Workbench = () => {
       </Tabs>
     </div>
   )
+}
+
+Workbench.propTypes = {
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+}
+
+Workbench.defaultProps = {
+  className: undefined,
 }
 
 export default Workbench
