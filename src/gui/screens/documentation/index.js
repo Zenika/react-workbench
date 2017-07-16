@@ -1,1 +1,1 @@
-export { default } from './documentation.container'
+export { default } from './documentation'

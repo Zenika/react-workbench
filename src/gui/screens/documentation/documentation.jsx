@@ -1,20 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { merge } from 'glamor'
+import router from 'hoc-little-router'
 
 import { Tabs, Tab } from '../../components/tabs'
-import styles from './documentation.styles'
+import Edit from './edit'
+import Preview from './preview'
 
 const Documentation = ({ content, className }) => {
   return (
-    <Tabs className={merge(styles.layout, className)}>
+    <Tabs className={className}>
       <Tab tabKey="edit" title="edit">
-        <textarea className={styles.edit}>
-          {content}
-        </textarea>
+        <Edit markdown={content} />
       </Tab>
       <Tab tabKey="preview" title="preview">
-        {content}
+        <Preview html={content} />
       </Tab>
     </Tabs>
   )
@@ -29,4 +28,4 @@ Documentation.defaultProps = {
   className: undefined,
 }
 
-export default Documentation
+export default router('DOCUMENTATION')(Documentation)
