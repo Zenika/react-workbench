@@ -6,9 +6,7 @@ import styles from './preview.styles'
 
 const Preview = ({ html, className }) => {
   return (
-    <div className={merge(styles.layout, className)}>
-      {html}
-    </div>
+    <div className={merge(styles.layout, className)} dangerouslySetInnerHTML={{ __html: html }} />
   )
 }
 

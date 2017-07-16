@@ -6,9 +6,7 @@ import styles from './edit.styles'
 
 const Edit = ({ markdown, className }) => {
   return (
-    <textarea className={merge(styles.layout, className)}>
-      {markdown}
-    </textarea>
+    <textarea className={merge(styles.layout, className)} defaultValue={markdown} />
   )
 }
 
