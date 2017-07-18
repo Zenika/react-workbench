@@ -21,7 +21,7 @@ const errorHandler = callback => async (req, res, ...args) => {
   }
 }
 
-const connect = (app, component) => {
+const connect = (app) => {
   // use json for api
   app.use(API_BASE_CONTEXT, bodyParser.json())
 
@@ -34,7 +34,7 @@ const connect = (app, component) => {
   app.get(`${genPath(fs)}/:path*`, errorHandler(req => fs.get(`/${req.params.path}/${req.params[0]}`)))
   app.post(`${genPath(fs)}/:path*`, errorHandler(req => fs.get(`/${req.params.path}/${req.params[0]}`, req.body)))
   // - documentation
-  app.get(genPath(doc), errorHandler(req => doc.generate(component, req.query.format)))
+  app.get(genPath(doc), errorHandler(req => doc.generate(req.query.format)))
 }
 
 module.exports = {
