@@ -1,18 +1,30 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import router from 'hoc-little-router'
 
-import styles from './documentation.styles'
+import { Tabs, Tab } from '../../components/tabs'
+import Edit from './edit'
+import Preview from './preview'
 
-const Documentation = ({ content }) => {
+const Documentation = ({ className }) => {
   return (
-    <textarea className={styles.layout}>
-      {content}
-    </textarea>
+    <Tabs className={className}>
+      <Tab tabKey="edit" title="edit">
+        <Edit />
+      </Tab>
+      <Tab tabKey="preview" title="preview">
+        <Preview />
+      </Tab>
+    </Tabs>
   )
 }
 
 Documentation.propTypes = {
-  content: PropTypes.string.isRequired,
+  className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
 }
 
-export default Documentation
+Documentation.defaultProps = {
+  className: undefined,
+}
+
+export default router('DOCUMENTATION')(Documentation)
