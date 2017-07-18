@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 import loader from 'hoc-react-loader'
 
-import { fetchDocumentation, getDocumentationData, isLoading } from '../../../redux/documentation'
+import documentation, { fetchDocumentation } from '../../../redux/documentation'
 import Preview from './preview'
 
 const mapState = state => ({
-  loaded: !isLoading(state),
-  html: getDocumentationData(state),
+  loaded: documentation.isInitialized(state),
+  html: documentation.get()(state),
 })
 
 const mapDispatch = dispatch => ({
