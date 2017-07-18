@@ -8,10 +8,7 @@ import styles from './props.styles'
 const Props = ({ style, className, properties }) => {
   return (
     <div style={style} className={merge(styles.layout, className)}>
-      <div className={styles.title}>props</div>
-      <div>
-        { properties.map(prop => <Input key={prop} name={prop} />) }
-      </div>
+      { properties.map(prop => <Input key={prop} name={prop} />) }
     </div>
   )
 }
@@ -24,7 +21,7 @@ Props.propTypes = {
 
 Props.defaultProps = {
   style: {},
-  className: '',
+  className: undefined,
   properties: [],
 }
 

@@ -1,12 +1,10 @@
 import { css } from 'glamor'
 
 const layout = css({
+  width: '100%',
   height: '100%',
-  maxHeight: '100%',
+  overflow: 'auto',
   padding: '1em',
-  margin: '1em',
-  borderWidth: '1px',
-  outline: 'none',
 })
 
 export default { layout }

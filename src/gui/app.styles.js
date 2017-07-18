@@ -6,4 +6,9 @@ const layout = css({
   flexDirection: 'column',
 })
 
-export default { layout }
+const main = css({
+  height: 'calc(100vh - 4em)',
+  overflow: 'hidden',
+})
+
+export default { layout, main }

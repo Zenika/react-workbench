@@ -11,8 +11,8 @@ const content = css({
 })
 
 const sidebar = css({
-  overflow: 'auto',
-  padding: '1em',
+  overflow: 'hidden',
+  width: '25em',
 })
 
 export default { layout, content, sidebar }

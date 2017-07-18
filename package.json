@@ -4,6 +4,10 @@
   "main": "src/script/index.js",
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
+  "contributors": [
+    "Benjamin PETETOT <benjamin.petetot@zenika.com>",
+    "Fabien JUIF <fabien.juif@gmail.com>"
+  ],
   "scripts": {
     "lint:js": "eslint --ext js,jsx src",
     "lint": "npm-run-all --parallel lint:*",
@@ -12,7 +16,8 @@
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "build:prod": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
     "build:dev": "npm run build:prod -- -w",
-    "build": "npm run build:prod"
+    "build": "npm run build:prod",
+    "prepublish": "npm run build"
   },
   "bin": {
     "react-workbench": "./src/script/index.js"
@@ -38,6 +43,7 @@
     "hoc-react-loader": "^6.1.0",
     "lodash": "^4.17.4",
     "loglevel": "^1.4.1",
+    "markup-it": "^3.5.2",
     "prop-types": "^15.5.8",
     "react": "^15.4.2",
     "react-docgen": "^2.14.1",
@@ -48,6 +54,7 @@
     "redux-little-router": "^14.2.0",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
+    "slate": "^0.20.6",
     "tinycolor2": "^1.4.1",
     "trampss-redux-factory": "3.0.0-rc1",
     "webpack": "^2.3.3",
