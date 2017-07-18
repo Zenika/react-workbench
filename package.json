@@ -4,6 +4,10 @@
   "main": "src/script/index.js",
   "repository": "git@github.com:Zenika/react-workbench.git",
   "license": "MIT",
+  "contributors": [
+    "Benjamin PETETOT <benjamin.petetot@zenika.com>",
+    "Fabien JUIF <fabien.juif@gmail.com>"
+  ],
   "scripts": {
     "lint:js": "eslint --ext js,jsx src",
     "lint": "npm-run-all --parallel lint:*",
