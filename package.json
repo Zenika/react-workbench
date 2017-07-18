@@ -16,7 +16,8 @@
     "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls",
     "build:prod": "cross-env NODE_ENV=build rollup -c ./misc/rollup.config.js",
     "build:dev": "npm run build:prod -- -w",
-    "build": "npm run build:prod"
+    "build": "npm run build:prod",
+    "prepublish": "npm run build"
   },
   "bin": {
     "react-workbench": "./src/script/index.js"
