@@ -1,9 +1,9 @@
 const path = require('path')
 const fs = require('fs')
-const componentStore = require('../../redux/reducers/component')
+const reducers = require('../../redux/reducers')
 
 module.exports = () => async (dispatch, getState) => {
-  const component = componentStore.get()(getState())
+  const component = reducers.component.get()(getState())
 
    // read the template file
   const filePath = path.resolve(__dirname, 'template.js')

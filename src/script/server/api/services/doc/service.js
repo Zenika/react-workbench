@@ -1,10 +1,10 @@
-const componentStore = require('../../../../redux/reducers/component')
+const reducers = require('../../../../redux/reducers')
 const docgen = require('./docgen')
 const markdown = require('./markdown')
 const html = require('./html')
 
 const generate = (format = 'docgen') => async (dispatch, getState) => {
-  const { path, name } = componentStore.get()(getState())
+  const { path, name } = reducers.component.get()(getState())
   const doc = await docgen.resolve(path.absolute.full)
 
   switch (format) {

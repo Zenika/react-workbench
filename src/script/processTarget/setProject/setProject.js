@@ -1,11 +1,10 @@
 const log = require('loglevel')
 const path = require('path')
 const fs = require('fs')
-const componentStore = require('../../redux/reducers/component')
-const store = require('../../redux/reducers/project')
+const reducers = require('../../redux/reducers')
 
 module.exports = () => async (dispatch, getState) => {
-  const component = componentStore.get()(getState())
+  const component = reducers.component.get()(getState())
 
   let previousPath = component.path.absolute.dir
   let files = await fs.readdirAsync(previousPath)
@@ -24,5 +23,5 @@ module.exports = () => async (dispatch, getState) => {
     }
   }
 
-  if (!error) dispatch(store.set({ path: previousPath }))
+  if (!error) dispatch(reducers.project.set({ path: previousPath }))
 }

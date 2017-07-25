@@ -1,13 +1,13 @@
 const fs = require('fs')
 const path = require('path')
-const store = require('../../redux/reducers/component')
+const reducers = require('../../redux/reducers')
 
 module.exports = fileName => async (dispatch) => {
   const name = path.basename(fileName)
   const absolute = path.resolve(process.env.PWD, fileName)
   const dir = (await fs.lstatAsync(absolute)).isDirectory() ? absolute : path.dirname(absolute)
 
-  dispatch(store.set({
+  dispatch(reducers.component.set({
     name,
     path: {
       absolute: {
