@@ -1,8 +1,9 @@
-import factory from 'trampss-redux-factory'
+import { keyValue } from 'trampss-redux-factory'
 import { mapAction, mapPayload } from 'trampss-redux-factory/helpers'
 
 import { docgenToModel, convertFromGuiValue } from '../utils/docgen.js'
 
+// Middleware transforming DOCGEN action to MODEL action
 const docgenMapper = (action) => {
   if (action.type === '@trampss/SET_DOCGEN') {
     return {
@@ -13,13 +14,14 @@ const docgenMapper = (action) => {
   return action
 }
 
+// Middleware applying value convertion when model is updated
 const updateMapper = payload => ({
   ...payload,
   value: convertFromGuiValue(payload.value, payload.type),
 })
 
-const middleware = {
+const middlewares = {
   pre: [mapAction(docgenMapper), mapPayload(/UPDATE_MODEL/)(updateMapper)],
 }
 
-export default factory(middleware)({ key: 'name', name: 'model', type: 'map' })
+export default keyValue(middlewares)({ key: 'name', name: 'model' })

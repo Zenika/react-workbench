@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 import docgen from './docgen'
 
-const getDocgen = state => docgen.get()(state) || {}
+const getDocgen = state => docgen.get()(state)
 
 const getProps = createSelector(getDocgen, data => data.props || {})
 
