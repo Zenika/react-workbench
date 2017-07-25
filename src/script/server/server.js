@@ -1,10 +1,13 @@
 const express = require('express')
 const log = require('loglevel')
-const { PORT, PUBLIC_FOLDER } = require('./constants') // FIXME : move it to redux
+const reducers = require('../redux/reducers')
 const { bundle } = require('./bundle')
 const api = require('./api')
 
-const start = () => {
+const start = () => (dispatch, getState) => {
+  // get config
+  const { PUBLIC_FOLDER, PORT } = reducers.config.get()(getState())
+
   // create a new express server
   const app = express()
 

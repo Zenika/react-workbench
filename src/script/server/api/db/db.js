@@ -1,19 +1,20 @@
 const fs = require('fs')
-const { COMPONENT_CONFIG_DIR } = require('./constants')
+const reducers = require('../../../redux/reducers')
 
-const init = (name) => {
-  const DATABASE_PATH = `${COMPONENT_CONFIG_DIR}/${name}.json`
+const init = name => (dispatch, getState) => {
+  const projectPath = reducers.project.get()(getState()).path
+  const filePath = `${projectPath}/${name}.json`
 
   const write = async (data = []) => {
     // create configuration directory
     try {
-      await fs.mkdirAsync(COMPONENT_CONFIG_DIR)
+      await fs.mkdirAsync(projectPath)
     } catch (ex) {
       if (ex.errno !== -17) throw ex // -17 is directory exist
     }
 
     // write data into directory
-    await fs.writeFileAsync(DATABASE_PATH, JSON.stringify(data))
+    await fs.writeFileAsync(filePath, JSON.stringify(data))
 
     return data
   }
@@ -22,7 +23,7 @@ const init = (name) => {
     let content
 
     try {
-      const fileContent = await fs.readFileAsync(DATABASE_PATH)
+      const fileContent = await fs.readFileAsync(filePath)
       if (fileContent) {
         content = JSON.parse(fileContent)
       }
