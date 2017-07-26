@@ -15,6 +15,7 @@ module.exports = raw => ({
     publicPath: '/',
   },
   plugins: [
+    ...raw.plugins,
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.WatchIgnorePlugin([path.resolve(__dirname, '..', '..', '..', '..', 'dist', 'component.js')]),

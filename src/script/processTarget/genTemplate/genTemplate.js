@@ -20,14 +20,13 @@ module.exports = () => async (dispatch, getState) => {
     relativePath // relative path is also a relative import, that's ok
     : `./${relativePath}` // relative path is an absolute import : force the relative import
 
-  // replace what needs to be replaced
+  // inject the component path into the import of the template file
   const appFileContent = template.replace(
     '/* react-workbench-insert import */',
      relativePath // eslint-disable-line comma-dangle
   )
 
   // write it into a tmp folder
-  // - create the tmp folder
   try {
     await fs.mkdirAsync(output.dir)
   } catch (ex) {
@@ -35,7 +34,6 @@ module.exports = () => async (dispatch, getState) => {
       throw ex
     }
   }
-  // - write file
   const fullpath = path.resolve(output.dir, output.file)
   await fs.writeFileAsync(fullpath, appFileContent)
 }
