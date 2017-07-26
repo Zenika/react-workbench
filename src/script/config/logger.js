@@ -2,6 +2,9 @@
 const log = require('loglevel')
 const chalk = require('chalk')
 
+// print stack trace
+process.on('unhandledRejection', r => console.log(r)) // eslint-disable-line no-console
+
 // default logLevel, it can be changed with command line --debug
 log.setLevel('info')
 

@@ -1,8 +1,4 @@
-const { NAME } = require('./constants')
+const { connectAll } = require('../../../../redux')
 const service = require('./service')
 
-module.exports = Object.assign(
-  {},
-  { NAME },
-  service
-)
+module.exports = { NAME: 'DOC', ...connectAll(service) }

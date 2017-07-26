@@ -1375,13 +1375,13 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@2.6.7, debug@^2.1.1:
+debug@2.6.7, debug@^2.1.1, debug@^2.3.2:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.7.tgz#92bad1f6d05bbb6bba22cca88bcd0ec894c2861e"
   dependencies:
     ms "2.0.0"
 
-debug@^2.2.0, debug@^2.3.2, debug@^2.6.3, debug@^2.6.8:
+debug@^2.2.0, debug@^2.6.3, debug@^2.6.8:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -4841,9 +4841,9 @@ tr46@~0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
 
-trampss-redux-factory@3.0.0-rc1:
-  version "3.0.0-rc1"
-  resolved "https://registry.yarnpkg.com/trampss-redux-factory/-/trampss-redux-factory-3.0.0-rc1.tgz#a6c461acf377ab44d4832585ef6d17fe358d8721"
+trampss-redux-factory@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/trampss-redux-factory/-/trampss-redux-factory-3.2.0.tgz#6388dc3801539cc173b9700d7259b8fc94d2e7a6"
 
 trim-newlines@^1.0.0:
   version "1.0.0"

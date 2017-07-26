@@ -1,6 +1,6 @@
 const { connectAll } = require('../../redux')
-const connect = require('./api')
+const genTemplate = require('./genTemplate')
 
 module.exports = connectAll({
-  connect,
+  genTemplate,
 })
