@@ -1,10 +1,13 @@
 const express = require('express')
 const log = require('loglevel')
-const { PORT, PUBLIC_FOLDER } = require('./constants')
-const bundle = require('./bundle')
+const reducers = require('../redux/reducers')
+const { bundle } = require('./bundle')
 const api = require('./api')
 
-const start = (component, webpackConfig) => {
+const start = () => (dispatch, getState) => {
+  // get config
+  const { PUBLIC_FOLDER, PORT } = reducers.config.get()(getState())
+
   // create a new express server
   const app = express()
 
@@ -12,10 +15,10 @@ const start = (component, webpackConfig) => {
   app.use(express.static(PUBLIC_FOLDER))
 
   // serve webpack bundle
-  bundle.connect(app, webpackConfig)
+  bundle(app)
 
   // serve api
-  api.connect(app, component)
+  api.connect(app)
 
   // listen
   app.listen(PORT, () => {

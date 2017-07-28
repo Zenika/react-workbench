@@ -1,8 +1,11 @@
 const webpack = require('webpack')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
+const reducers = require('../../redux/reducers')
 
-const connect = async (app, config) => {
+module.exports = app => (dispatch, getState) => {
+  const { webpack: { config } } = reducers.project.get()(getState())
+
   // webpack compiler
   const compiler = webpack(config)
 
@@ -15,8 +18,4 @@ const connect = async (app, config) => {
   )
 
   app.use(webpackHotMiddleware(compiler))
-}
-
-module.exports = {
-  connect,
 }

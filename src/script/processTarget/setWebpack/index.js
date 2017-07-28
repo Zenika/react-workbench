@@ -1,6 +1,6 @@
 const { connectAll } = require('../../redux')
-const connect = require('./api')
+const setWebpack = require('./setWebpack')
 
 module.exports = connectAll({
-  connect,
+  setWebpack,
 })

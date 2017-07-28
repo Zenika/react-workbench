@@ -1,6 +1,6 @@
 const { connectAll } = require('../../redux')
-const connect = require('./api')
+const setProject = require('./setProject')
 
 module.exports = connectAll({
-  connect,
+  setProject,
 })
