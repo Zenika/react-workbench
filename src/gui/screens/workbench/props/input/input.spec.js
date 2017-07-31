@@ -2,13 +2,14 @@
 /* eslint-env jest */
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { mount } from 'enzyme'
 import snap from 'misc/test/snap'
 import Input from './input'
 import InputContainer from './input.container'
-import { UPDATE_PROP, updateProp } from '../../../../redux/model'
+import docgen from '../../../../redux/docgen'
+import model from '../../../../redux/model'
 
 describe('component/props/input', () => {
   describe('input.jsx', () => {
@@ -22,10 +23,7 @@ describe('component/props/input', () => {
 
     describe('input type="text"', () => {
       it('should render a textfield', snapshot(component))
-      it(
-        'should set a default value',
-        snapshot({ ...component, value: 'bar' })
-      )
+      it('should set a default value', snapshot({ ...component, value: 'bar' }))
       it('should trigger onChange events', () => {
         // data & mocks
         const props = { ...component, onChange: jest.fn() }
@@ -72,44 +70,44 @@ describe('component/props/input', () => {
 
     describe('model with type string', () => {
       it('should render a textfield', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'string' } },
-              },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: { type: { name: 'string' } },
             },
-          },
-          model: { foo: undefined },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'string' } },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: {
+                type: { name: 'string' },
+                defaultValue: { value: "'foo'" },
               },
             },
-          },
-          model: { foo: 'foo' },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
-      it(`should trigger dispatch ${UPDATE_PROP} when value was changed`, () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'string' } },
+      it('should trigger dispatch an update when value was changed', () => {
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: {
+                type: { name: 'string' },
+                defaultValue: { value: "'foo'" },
               },
             },
-          },
-          model: { foo: 'foo' },
-        }))
-        store.dispatch = jest.fn()
+          })
+        )
 
+        store.dispatch = jest.fn()
         const wrapper = mount(
           <Provider store={store}>
             <InputContainer name="foo" />
@@ -119,146 +117,147 @@ describe('component/props/input', () => {
         wrapper.find('input').simulate('change', { target: { value: 'baz' } })
 
         expect(store.dispatch.mock.calls.length).toBe(1)
-        expect(store.dispatch.mock.calls[0]).toEqual([updateProp('foo', 'string', 'baz')])
+        expect(store.dispatch.mock.calls[0]).toEqual([
+          model.update({ name: 'foo', value: 'baz', type: 'string' }),
+        ])
       })
     })
 
     describe('model with type bool', () => {
       it('should render a checkbox', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'bool' } },
-              },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: { type: { name: 'bool' } },
             },
-          },
-          model: { foo: undefined },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
       it('should render a checkbox with value', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'bool' } },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: {
+                type: { name: 'bool' },
+                defaultValue: { value: 'true' },
               },
             },
-          },
-          model: { foo: true },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
-      it(`should trigger dispatch ${UPDATE_PROP} when value was changed`, () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'bool' } },
+      it('should trigger dispatch an update when value was changed', () => {
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: {
+                type: { name: 'bool' },
+                defaultValue: { value: 'true' },
               },
             },
-          },
-          model: { foo: false },
-        }))
-        store.dispatch = jest.fn()
+          })
+        )
 
+        store.dispatch = jest.fn()
         const wrapper = mount(
           <Provider store={store}>
             <InputContainer name="foo" />
           </Provider>
         )
 
-        wrapper.find('input').simulate('change', { target: { checked: true } })
+        wrapper.find('input').simulate('change', { target: { checked: false } })
 
         expect(store.dispatch.mock.calls.length).toBe(1)
-        expect(store.dispatch.mock.calls[0]).toEqual([updateProp('foo', 'bool', true)])
+        expect(store.dispatch.mock.calls[0]).toEqual([
+          model.update({ name: 'foo', value: false, type: 'bool' }),
+        ])
       })
     })
 
     describe('model with type array', () => {
       it('should render a textfield', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'array' } },
-              },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: { type: { name: 'array' } },
             },
-          },
-          model: { foo: undefined },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'array' } },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: {
+                type: { name: 'array' },
+                defaultValue: { value: "['item1', 'item2']" },
               },
             },
-          },
-          model: { foo: ['item1', 'item2'] },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
     })
 
     describe('model with type object', () => {
       it('should render a textfield', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'object' } },
-              },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: { type: { name: 'object' } },
             },
-          },
-          model: { foo: undefined },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'object' } },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: {
+                type: { name: 'object' },
+                defaultValue: { value: "{ item: 'value' }" },
               },
             },
-          },
-          model: { foo: { item: 'value' } },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
     })
 
     describe('model with type function', () => {
       it('should render a textfield', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'func' } },
-              },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: { type: { name: 'func' } },
             },
-          },
-          model: { foo: undefined },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(() => ({
-          docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'func' } },
+        const store = createStore(combineReducers({ docgen, model }))
+        store.dispatch(
+          docgen.set({
+            props: {
+              foo: {
+                type: { name: 'func' },
+                defaultValue: { value: "() => alert('test')" },
               },
             },
-          },
-          model: { foo: '() => {}' },
-        }))
+          })
+        )
         snapshotContainer('foo', store)
       })
     })

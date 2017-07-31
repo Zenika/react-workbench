@@ -12,12 +12,12 @@ const convertDocgenValue = (value, type) => {
 }
 
 const docgenToModel = (docgen) => {
-  return Object.keys(docgen.props || {}).reduce((obj, key) => {
+  return Object.keys(docgen.props || {}).map((key) => {
     const prop = docgen.props[key]
     const type = prop.type && prop.type.name
     const value = prop.defaultValue && prop.defaultValue.value
-    return { ...obj, [key]: convertDocgenValue(value, type) }
-  }, {})
+    return { name: key, value: convertDocgenValue(value, type) }
+  })
 }
 
 const convertToGuiValue = (value, type) => {
