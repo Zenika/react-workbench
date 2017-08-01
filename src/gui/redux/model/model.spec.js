@@ -62,6 +62,7 @@ describe('gui/redux/model', () => {
       const value = selectors.getComponentValue('foo', 'type')(store.getState())
       expect(value).toBe('bar')
     })
+
     it('should get all component prop in model state', () => {
       store.dispatch(model.set([{ name: 'foo', value: 'bar', type: 'string' }]))
       const props = selectors.getComponentProps(store.getState())
