@@ -59,7 +59,7 @@ describe('gui/redux/model', () => {
 
     it('should get component value in model state', () => {
       store.dispatch(model.set([{ name: 'foo', value: 'bar', type: 'string' }]))
-      const value = selectors.getComponentValue('foo', 'type')(store.getState())
+      const value = selectors.getComponentValue('foo', 'string')(store.getState())
       expect(value).toBe('bar')
     })
 
