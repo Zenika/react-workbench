@@ -1,12 +1,11 @@
 /* eslint-env jest */
 import { fetchDocgen } from './docgen.api'
 
-const dispatch = jest.fn(() => ({}))
+const dispatch = jest.fn()
 
 describe('gui/redux/docgen', () => {
   beforeEach(() => {
     dispatch.mockClear()
-    dispatch.mockImplementation(jest.fn(action => action))
   })
 
   it('should dispatch RESET_DOCGEN & SET_DOCGEN with response', async () => {
