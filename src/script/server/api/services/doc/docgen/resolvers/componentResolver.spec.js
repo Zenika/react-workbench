@@ -3,7 +3,7 @@
 // https://github.com/reactjs/react-docgen/blob/master/src/resolver/__tests__/findAllExportedComponentDefinitions-test.js
 
 const recast = require('recast')
-const { parse } = require('misc/recast')
+const { parse } = require('misc/test/recast')
 
 const componentResolver = require('./componentResolver')
 
