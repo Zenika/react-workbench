@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gui/redux/utils convert GUI value to model value should convert array value 1`] = `
+Array [
+  1,
+  2,
+]
+`;
+
+exports[`gui/redux/utils convert GUI value to model value should convert boolean value 1`] = `true`;
+
+exports[`gui/redux/utils convert GUI value to model value should convert enum value 1`] = `"foo"`;
+
+exports[`gui/redux/utils convert GUI value to model value should convert func value 1`] = `[Function]`;
+
+exports[`gui/redux/utils convert GUI value to model value should convert number value 1`] = `0`;
+
+exports[`gui/redux/utils convert GUI value to model value should convert object value 1`] = `
+Object {
+  "foo": "bar",
+}
+`;
+
+exports[`gui/redux/utils convert GUI value to model value should convert string value 1`] = `"foo"`;
+
+exports[`gui/redux/utils convert GUI value to model value should convert symbol value 1`] = `"Symbol('foo')"`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert array value 1`] = `
+Array [
+  1,
+  2,
+]
+`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert boolean value 1`] = `false`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert enum value 1`] = `"foo"`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert func value 1`] = `[Function]`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert number value 1`] = `0`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert object value 1`] = `
+Object {
+  "foo": "bar",
+}
+`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert string value 1`] = `"foo"`;
+
+exports[`gui/redux/utils convert docgen prop value to model value should convert symbol value 1`] = `"Symbol('foo')"`;
+
+exports[`gui/redux/utils convert docgen to model structure should convert docgen to model 1`] = `
+Array [
+  Object {
+    "name": "name",
+    "value": "World",
+  },
+]
+`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert array value 1`] = `"[1,2]"`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert boolean value 1`] = `false`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert enum value 1`] = `"foo"`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert func value 1`] = `[Function]`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert number value 1`] = `0`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert object value 1`] = `"{\\"foo\\":\\"bar\\"}"`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert string value 1`] = `"foo"`;
+
+exports[`gui/redux/utils convert model value to GUI value should convert symbol value 1`] = `Symbol(foo)`;
