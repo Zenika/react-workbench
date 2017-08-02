@@ -26,8 +26,7 @@ describe('gui/redux/model', () => {
       )
 
       // check if model state is updated
-      expect(model.isInitialized(store.getState())).toBe(true)
-      expect(model.getKeys(store.getState()).includes('foo')).toBe(true)
+      expect(store.getState().model).toMatchSnapshot()
     })
 
     it('should convert gui values to model values', () => {
@@ -46,7 +45,7 @@ describe('gui/redux/model', () => {
       store.dispatch(model.update({ name: 'foo', value: 'bar', type: 'string' }))
 
       // check if model is updated
-      expect(model.get('foo')(store.getState()).value).toBe('bar')
+      expect(store.getState().model).toMatchSnapshot()
     })
   })
 
