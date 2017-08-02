@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gui/redux/docgen should dispatch RESET_DOCGEN & SET_DOCGEN with response 1`] = `
+Array [
+  Array [
+    Object {
+      "type": "@trampss/RESET_DOCGEN",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {
+        "foo": "bar",
+      },
+      "type": "@trampss/SET_DOCGEN",
+    },
+  ],
+]
+`;
+
+exports[`gui/redux/docgen should dispatch SET_DOCGEN with empty object when an error occured 1`] = `
+Array [
+  Array [
+    Object {
+      "type": "@trampss/RESET_DOCGEN",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {},
+      "type": "@trampss/SET_DOCGEN",
+    },
+  ],
+]
+`;
+
+exports[`gui/redux/docgen should dispatch SET_DOCGEN with empty object when no data fetched 1`] = `
+Array [
+  Array [
+    Object {
+      "type": "@trampss/RESET_DOCGEN",
+    },
+  ],
+  Array [
+    Object {
+      "payload": Object {},
+      "type": "@trampss/SET_DOCGEN",
+    },
+  ],
+]
+`;
