@@ -18,12 +18,7 @@ describe('gui/redux/docgen', () => {
     await fetchDocgen()(dispatch)
 
     // asserts
-    expect(dispatch.mock.calls.length).toBe(2)
-    expect(dispatch.mock.calls[0][0]).toEqual({ type: '@trampss/RESET_DOCGEN' })
-    expect(dispatch.mock.calls[1][0]).toEqual({
-      type: '@trampss/SET_DOCGEN',
-      payload: { foo: 'bar' },
-    })
+    expect(dispatch.mock.calls).toMatchSnapshot()
   })
 
   it('should dispatch SET_DOCGEN with empty object when no data fetched', async () => {
@@ -36,9 +31,7 @@ describe('gui/redux/docgen', () => {
     await fetchDocgen()(dispatch)
 
     // asserts
-    expect(dispatch.mock.calls.length).toBe(2)
-    expect(dispatch.mock.calls[0][0]).toEqual({ type: '@trampss/RESET_DOCGEN' })
-    expect(dispatch.mock.calls[1][0]).toEqual({ type: '@trampss/SET_DOCGEN', payload: {} })
+    expect(dispatch.mock.calls).toMatchSnapshot()
   })
   it('should dispatch SET_DOCGEN with empty object when an error occured', async () => {
      // mocks
@@ -52,8 +45,6 @@ describe('gui/redux/docgen', () => {
     await fetchDocgen()(dispatch)
 
     // asserts
-    expect(dispatch.mock.calls.length).toBe(2)
-    expect(dispatch.mock.calls[0][0]).toEqual({ type: '@trampss/RESET_DOCGEN' })
-    expect(dispatch.mock.calls[1][0]).toEqual({ type: '@trampss/SET_DOCGEN', payload: {} })
+    expect(dispatch.mock.calls).toMatchSnapshot()
   })
 })
