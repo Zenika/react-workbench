@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`gui/redux/model reducer should convert gui values to model values 1`] = `
+Object {
+  "array": Array [
+    Object {
+      "name": "foo",
+      "type": "string",
+      "value": "bar",
+    },
+  ],
+  "data": Object {
+    "foo": Object {
+      "name": "foo",
+      "type": "string",
+      "value": "bar",
+    },
+  },
+  "initialized": true,
+  "keys": Array [
+    "foo",
+  ],
+}
+`;
+
+exports[`gui/redux/model reducer should transform SET_DOCGEN to SET_MODEL action 1`] = `
+Object {
+  "array": Array [
+    Object {
+      "name": "foo",
+      "value": "foo",
+    },
+  ],
+  "data": Object {
+    "foo": Object {
+      "name": "foo",
+      "value": "foo",
+    },
+  },
+  "initialized": true,
+  "keys": Array [
+    "foo",
+  ],
+}
+`;
