@@ -6,11 +6,12 @@ const errorHandler = callback => async (req, res, ...args) => {
     if (content) {
       res.send(content)
     } else {
-      res.sendStatus(200)
+      res.sendStatus(204)
     }
   } catch (ex) {
+    const { name, message } = ex
     log.error(ex)
-    res.status(500).send({ ex })
+    res.status(500).send({ name, message })
   }
 }
 
