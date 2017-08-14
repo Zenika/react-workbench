@@ -3,6 +3,7 @@ const log = require('loglevel')
 const reducers = require('../../redux/reducers')
 const state = require('./services/state')
 const doc = require('./services/doc')
+const screenshot = require('./services/screenshot')
 
 const errorHandler = callback => async (req, res, ...args) => {
   try {
@@ -34,6 +35,8 @@ const connect = app => (dispatch, getState) => {
   app.post(genPath(state), errorHandler(req => state.create(req.body)))
   // - documentation
   app.get(genPath(doc), errorHandler(req => doc.generate(req.query.format)))
+  // - screenshot
+  app.get(genPath(screenshot), errorHandler(() => screenshot.capture()))
 }
 
 module.exports = connect
