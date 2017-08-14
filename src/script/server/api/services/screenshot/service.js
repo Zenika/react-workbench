@@ -14,14 +14,18 @@ const launchChrome = async (url) => {
 }
 
 const connectToChrome = async (port) => {
+  // check chrome version
+  const versionInfo = await chromeRemoteInterface.Version({ port })
+  const versionNumber = versionInfo.Browser.match(/\d+/g)[0] // HeadlessChrome/62.0.3185.0
+  if (versionNumber < 62) {
+    throw Error(
+      'Your Chrome version is too old, you need at least version 62 to capture screenshots with react-workbench.'
+    )
+  }
+
+  // connect to chrome
   const client = await chromeRemoteInterface({ port })
   const { DOM, Page } = client
-
-  // check chrome version
-  const version = await chromeRemoteInterface.Version({ port })
-  log.info(version.Browser)
-  log.info(version['Protocol-Version'])
-
   await Page.enable()
   await DOM.enable()
   return client
