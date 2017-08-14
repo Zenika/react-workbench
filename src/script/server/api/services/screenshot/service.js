@@ -5,13 +5,8 @@ const log = require('loglevel')
 
 const reducers = require('../../../../redux/reducers')
 
-const FORMAT = 'jpeg'
-const DEVTOOL_PORT = 9222
-
 const launchChrome = async (url) => {
-  log.info(`launch chrome on ${url}...`)
   const chrome = await chromeLauncher.launch({
-    port: DEVTOOL_PORT,
     startingUrl: url,
     chromeFlags: ['--disable-gpu', '--headless'],
   })
@@ -19,7 +14,6 @@ const launchChrome = async (url) => {
 }
 
 const connectToChrome = async (port) => {
-  log.info(`connect chrome-remote-interface to port ${port}`)
   const client = await chromeRemoteInterface({ port })
   const { DOM, Page } = client
   await Page.enable()
@@ -28,7 +22,6 @@ const connectToChrome = async (port) => {
 }
 
 const getComponentBox = async (client) => {
-  log.info('get element bounding box')
   const { DOM } = client
   const { root } = await DOM.getDocument()
   const { nodeId } = await DOM.querySelector({
@@ -45,12 +38,14 @@ const getComponentBox = async (client) => {
   }
 }
 
-const captureScreenshot = async (client, componentBox) => {
-  log.info('capture element')
-  const { Page } = client
+const captureScreenshot = async (client, metrics) => {
+  const { Page, Emulation } = client
+  // set emulation metrics
+  if (metrics) Emulation.setDeviceMetricsOverride(metrics)
+  // get component coordinates
+  const componentBox = await getComponentBox(client)
+  // capture screenshot
   const { data } = await Page.captureScreenshot({
-    format: FORMAT,
-    quality: 100,
     clip: componentBox,
     fromSurface: true,
   })
@@ -58,22 +53,26 @@ const captureScreenshot = async (client, componentBox) => {
 }
 
 const saveCapture = async (data) => {
-  log.info('save screenshot')
   const buffer = Buffer.from(data, 'base64')
-  await fs.writeFileAsync(`output.${FORMAT}`, buffer)
+  await fs.writeFileAsync('output.png', buffer)
 }
 
-const capture = () => async (dispatch, getState) => {
+/**
+ * Capture a screenshot of the tested component
+ * @param {*} metrics see https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride
+ */
+const capture = metrics => async (dispatch, getState) => {
   const { PORT } = reducers.config.get()(getState())
-
+  const url = `http://localhost:${PORT}`
   let chrome
   let client
   try {
-    chrome = await launchChrome(`http://localhost:${PORT}`)
+    log.info(`launch chrome headless on ${url}`)
+    chrome = await launchChrome(url)
     client = await connectToChrome(chrome.port)
-    const componentBox = await getComponentBox(client)
-    const image = await captureScreenshot(client, componentBox)
+    const image = await captureScreenshot(client, metrics)
     await saveCapture(image)
+    log.info('screenshot captured')
   } catch (ex) {
     log.error(ex)
   } finally {
