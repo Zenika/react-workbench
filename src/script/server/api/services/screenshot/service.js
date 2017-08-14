@@ -16,6 +16,12 @@ const launchChrome = async (url) => {
 const connectToChrome = async (port) => {
   const client = await chromeRemoteInterface({ port })
   const { DOM, Page } = client
+
+  // check chrome version
+  const version = await chromeRemoteInterface.Version({ port })
+  log.info(version.Browser)
+  log.info(version['Protocol-Version'])
+
   await Page.enable()
   await DOM.enable()
   return client
@@ -40,15 +46,12 @@ const getComponentBox = async (client) => {
 
 const captureScreenshot = async (client, metrics) => {
   const { Page, Emulation } = client
-  // set emulation metrics
-  if (metrics) Emulation.setDeviceMetricsOverride(metrics)
-  // get component coordinates
+  // set screen / device metrics
+  if (metrics) await Emulation.setDeviceMetricsOverride(metrics)
+  // get component bounding box
   const componentBox = await getComponentBox(client)
-  // capture screenshot
-  const { data } = await Page.captureScreenshot({
-    clip: componentBox,
-    fromSurface: true,
-  })
+  // capture component screenshot
+  const { data } = await Page.captureScreenshot({ clip: componentBox })
   return data
 }
 
