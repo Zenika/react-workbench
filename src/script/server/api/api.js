@@ -36,7 +36,15 @@ const connect = app => (dispatch, getState) => {
   // - documentation
   app.get(genPath(doc), errorHandler(req => doc.generate(req.query.format)))
   // - screenshot
-  app.get(genPath(screenshot), errorHandler(() => screenshot.capture()))
+  app.get(
+    genPath(screenshot),
+    errorHandler((req, res) => {
+      const image = screenshot.capture(req.query)
+      res.set('Content-Type', 'image/png')
+      res.set('Content-Length', image.length)
+      return image
+    })
+  )
 }
 
 module.exports = connect

@@ -1,6 +1,6 @@
 const chromeLauncher = require('chrome-launcher')
 const chromeRemoteInterface = require('chrome-remote-interface')
-const fs = require('fs')
+const isEmpty = require('lodash/isEmpty')
 const log = require('loglevel')
 
 const reducers = require('../../../../redux/reducers')
@@ -51,17 +51,12 @@ const getComponentBox = async (client) => {
 const captureScreenshot = async (client, metrics) => {
   const { Page, Emulation } = client
   // set screen / device metrics
-  if (metrics) await Emulation.setDeviceMetricsOverride(metrics)
+  if (!isEmpty(metrics)) await Emulation.setDeviceMetricsOverride(metrics)
   // get component bounding box
   const componentBox = await getComponentBox(client)
   // capture component screenshot
   const { data } = await Page.captureScreenshot({ clip: componentBox })
-  return data
-}
-
-const saveCapture = async (data) => {
-  const buffer = Buffer.from(data, 'base64')
-  await fs.writeFileAsync('output.png', buffer)
+  return Buffer.from(data, 'base64')
 }
 
 /**
@@ -78,14 +73,14 @@ const capture = metrics => async (dispatch, getState) => {
     chrome = await launchChrome(url)
     client = await connectToChrome(chrome.port)
     const image = await captureScreenshot(client, metrics)
-    await saveCapture(image)
-    log.info('screenshot captured')
+    return image
   } catch (ex) {
     log.error(ex)
   } finally {
     if (client) client.close()
     if (chrome) await chrome.kill()
   }
+  return undefined
 }
 
 module.exports = {
