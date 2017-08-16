@@ -1,3 +1,3 @@
-const service = require('./service')
+const service = require('./docgen')
 
 module.exports = service

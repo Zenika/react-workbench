@@ -1,3 +1,6 @@
+const reducers = require('../../../../../redux/reducers')
+const docgen = require('../docgen')
+
 const generateTitle = name => `# ${name}`
 
 const generateDescription = (description = '') => `> ${description}`
@@ -21,10 +24,15 @@ const generateProps = (props) => {
   return ''
 }
 
-module.exports = (name, doc) => `
+module.exports = () => async (dispatch, getState) => {
+  const doc = await docgen()(dispatch, getState)
+  const { name } = reducers.component.get()(getState())
+
+  return `
 ${generateTitle(name)}
 
 ${generateDescription(doc.description)}
 
 ${generateProps(doc.props)}
 `
+}
