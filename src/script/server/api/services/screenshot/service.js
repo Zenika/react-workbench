@@ -16,6 +16,7 @@ const launchChrome = async (url) => {
 const connectToChrome = async (port) => {
   // check chrome version
   const versionInfo = await chromeRemoteInterface.Version({ port })
+  log.info(`chrome version found : ${versionInfo.Browser}`)
   const versionNumber = versionInfo.Browser.match(/\d+/g)[0] // HeadlessChrome/62.0.3185.0
   if (versionNumber < 62) {
     throw Error(
