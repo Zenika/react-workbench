@@ -2,7 +2,7 @@ const { State } = require('markup-it')
 const markdown = require('markup-it/lib/markdown')
 const html = require('markup-it/lib/html')
 
-module.exports = source => async () => {
+module.exports = source => () => {
   const stateMd = State.create(markdown)
   const document = stateMd.deserializeToDocument(source)
 
