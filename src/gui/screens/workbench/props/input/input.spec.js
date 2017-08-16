@@ -74,10 +74,8 @@ describe('component/props/input', () => {
       it('should render a textfield', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'string' } },
-              },
+            props: {
+              foo: { type: { name: 'string' } },
             },
           },
           model: { foo: undefined },
@@ -87,10 +85,8 @@ describe('component/props/input', () => {
       it('should render a textfield with value', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'string' } },
-              },
+            props: {
+              foo: { type: { name: 'string' } },
             },
           },
           model: { foo: 'foo' },
@@ -100,10 +96,8 @@ describe('component/props/input', () => {
       it(`should trigger dispatch ${UPDATE_PROP} when value was changed`, () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'string' } },
-              },
+            props: {
+              foo: { type: { name: 'string' } },
             },
           },
           model: { foo: 'foo' },
@@ -127,10 +121,8 @@ describe('component/props/input', () => {
       it('should render a checkbox', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'bool' } },
-              },
+            props: {
+              foo: { type: { name: 'bool' } },
             },
           },
           model: { foo: undefined },
@@ -140,10 +132,8 @@ describe('component/props/input', () => {
       it('should render a checkbox with value', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'bool' } },
-              },
+            props: {
+              foo: { type: { name: 'bool' } },
             },
           },
           model: { foo: true },
@@ -153,10 +143,8 @@ describe('component/props/input', () => {
       it(`should trigger dispatch ${UPDATE_PROP} when value was changed`, () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'bool' } },
-              },
+            props: {
+              foo: { type: { name: 'bool' } },
             },
           },
           model: { foo: false },
@@ -180,10 +168,8 @@ describe('component/props/input', () => {
       it('should render a textfield', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'array' } },
-              },
+            props: {
+              foo: { type: { name: 'array' } },
             },
           },
           model: { foo: undefined },
@@ -193,10 +179,8 @@ describe('component/props/input', () => {
       it('should render a textfield with value', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'array' } },
-              },
+            props: {
+              foo: { type: { name: 'array' } },
             },
           },
           model: { foo: ['item1', 'item2'] },
@@ -209,10 +193,8 @@ describe('component/props/input', () => {
       it('should render a textfield', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'object' } },
-              },
+            props: {
+              foo: { type: { name: 'object' } },
             },
           },
           model: { foo: undefined },
@@ -222,10 +204,8 @@ describe('component/props/input', () => {
       it('should render a textfield with value', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'object' } },
-              },
+            props: {
+              foo: { type: { name: 'object' } },
             },
           },
           model: { foo: { item: 'value' } },
@@ -238,10 +218,8 @@ describe('component/props/input', () => {
       it('should render a textfield', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'func' } },
-              },
+            props: {
+              foo: { type: { name: 'func' } },
             },
           },
           model: { foo: undefined },
@@ -251,10 +229,8 @@ describe('component/props/input', () => {
       it('should render a textfield with value', () => {
         const store = createStore(() => ({
           docgen: {
-            data: {
-              props: {
-                foo: { type: { name: 'func' } },
-              },
+            props: {
+              foo: { type: { name: 'func' } },
             },
           },
           model: { foo: '() => {}' },

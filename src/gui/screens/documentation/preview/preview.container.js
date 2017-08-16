@@ -1,18 +1,18 @@
 import { connect } from 'react-redux'
 import loader from 'hoc-react-loader'
-
-import documentation, { fetchDocumentation } from '../../../redux/documentation'
-import Preview from './preview'
+import { html } from '../../../redux'
+import { fetch } from '../../../redux/api'
+import Component from './preview'
 
 const mapState = state => ({
-  loaded: documentation.isInitialized(state),
-  html: documentation.get()(state),
+  loaded: html.isInitialized(state),
+  html: html.get()(state),
 })
 
 const mapDispatch = dispatch => ({
-  load: () => dispatch(fetchDocumentation('html')),
+  load: () => dispatch(fetch.html()),
 })
 
-const loadable = loader()(Preview)
+const loadable = loader()(Component)
 
 export default connect(mapState, mapDispatch)(loadable)

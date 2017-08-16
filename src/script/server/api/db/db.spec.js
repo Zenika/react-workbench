@@ -10,9 +10,7 @@ const db = require('./db')
 
 const getState = () => ({
   project: {
-    data: {
-      path: '/a/path',
-    },
+    path: '/a/path',
   },
 })
 

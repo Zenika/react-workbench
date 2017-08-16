@@ -1,12 +1,6 @@
 import { createSelector } from 'reselect'
-import docgen from './docgen'
+import { docgen } from '../store'
 
-const getDocgen = state => docgen.get()(state) || {}
-
-const getProps = createSelector(getDocgen, data => data.props || {})
-
-const getPropsKeys = createSelector(getProps, props => Object.keys(props))
-
-const getProp = name => createSelector(getProps, props => props[name])
-
-export { getDocgen, getProps, getPropsKeys, getProp }
+const getProps = state => docgen.get()(state).props
+export const getPropsKeys = createSelector(getProps, p => Object.keys(p))
+export const getProp = name => createSelector(getProps, p => p[name])
