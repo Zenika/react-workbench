@@ -69,6 +69,9 @@ describe('services/screenshot', () => {
       width: 800,
       height: 600,
     }
-    await screenshot.capture(metrics)(undefined, getState)
+    const data = await screenshot.capture(metrics)(undefined, getState)
+
+    // asserts
+    expect(data).toMatchSnapshot()
   })
 })
