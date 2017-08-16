@@ -5,7 +5,8 @@ const log = require('loglevel')
 
 const reducers = require('../../../../redux/reducers')
 
-const launchChrome = async (url) => {
+const getChrome = async (url) => {
+  log.info(`launch chrome headless on ${url}`)
   const chrome = await chromeLauncher.launch({
     startingUrl: url,
     chromeFlags: ['--disable-gpu', '--headless'],
@@ -13,7 +14,7 @@ const launchChrome = async (url) => {
   return chrome
 }
 
-const connectToChrome = async (port) => {
+const getClient = async (port) => {
   // check chrome version
   const versionInfo = await chromeRemoteInterface.Version({ port })
   log.info(`chrome version found : ${versionInfo.Browser}`)
@@ -49,7 +50,7 @@ const getComponentBox = async (client) => {
   }
 }
 
-const captureScreenshot = async (client, metrics) => {
+const getImage = async (client, metrics) => {
   const { Page, Emulation } = client
   // set screen / device metrics
   if (!isEmpty(metrics)) await Emulation.setDeviceMetricsOverride(metrics)
@@ -66,18 +67,15 @@ const captureScreenshot = async (client, metrics) => {
  */
 const capture = metrics => async (dispatch, getState) => {
   const { PORT } = reducers.config.get()(getState())
-  const url = `http://localhost:${PORT}`
   let chrome
   let client
   try {
-    log.info(`launch chrome headless on ${url}`)
-    chrome = await launchChrome(url)
-    client = await connectToChrome(chrome.port)
-    const image = await captureScreenshot(client, metrics)
-    return image
+    chrome = await getChrome(`http://localhost:${PORT}`)
+    client = await getClient(chrome.port)
+    return await getImage(client, metrics)
   } finally {
-    client.close()
-    await chrome.kill()
+    if (client) client.close()
+    if (chrome) await chrome.kill()
   }
 }
 

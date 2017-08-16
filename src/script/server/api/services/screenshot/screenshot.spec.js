@@ -27,7 +27,7 @@ const CRI = require('chrome-remote-interface')
 
 CRI.Version = jest.fn(async () => ({ Browser: 'HeadlessChrome/62.0.3185.0' }))
 
-const screenshot = require('./service')
+const screenshot = require('./screenshot')
 
 const getState = () => ({
   config: {
