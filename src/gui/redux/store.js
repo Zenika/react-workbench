@@ -6,7 +6,7 @@ import thunk from 'redux-thunk'
 import router from './router'
 import model from './model'
 
-export const docgen = simpleObject({ defaultData: {}, name: 'docgen' })
+export const docgen = simpleObject({ defaultData: { props: {} }, name: 'docgen' })
 const documentation = 'documentation'
 export const readme = simpleObject({ path: documentation, name: 'readme' })
 export const html = simpleObject({ path: documentation, name: 'html' })
