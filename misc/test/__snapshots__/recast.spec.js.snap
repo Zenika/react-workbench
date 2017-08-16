@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`tests/recast parse should take an array string containing javascript code and join it 1`] = `
+NodePath {
+  "param": "const React = require(\\"React\\")
+const React = require(\\"React\\")",
+}
+`;
+
+exports[`tests/recast parse should take one string containing javascript code 1`] = `
+NodePath {
+  "param": "const React = require(\\"React\\")",
+}
+`;

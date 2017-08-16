@@ -25,7 +25,8 @@ export default {
       namedExports: {
         'node_modules/react-dom/index.js': ['render'],
         'node_modules/react/react.js': ['Children', 'Component', 'createElement'],
-        'node_modules/trampss-redux-factory/index.js': ['simpleObject'],
+        'node_modules/trampss-redux-factory/index.js': ['simpleObject', 'keyValue'],
+        'node_modules/trampss-redux-factory/helpers/index.js': ['mapAction', 'mapPayload'],
       },
     }),
   ],

@@ -81,11 +81,11 @@ exports[`component/props/input input.container.js model with type bool should re
     </small>
   </label>
   <input
-    checked={undefined}
+    checked={false}
     id="foo"
     onChange={[Function]}
     type="checkbox"
-    value={undefined}
+    value={false}
   />
 </div>
 `;
@@ -201,11 +201,11 @@ exports[`component/props/input input.container.js model with type object should 
     </small>
   </label>
   <input
-    checked={undefined}
+    checked="{}"
     id="foo"
     onChange={[Function]}
     type="text"
-    value={undefined}
+    value="{}"
   />
 </div>
 `;
