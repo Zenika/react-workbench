@@ -1,6 +1,6 @@
 /* eslint-env jest */
 const recast = require('recast')
-const { parse } = require('misc/recast')
+const { parse } = require('misc/test/recast')
 
 const indexResolver = require('./indexResolver')
 
