@@ -146,10 +146,11 @@ describe('server/api/models/docgen', () => {
     await service()(...toRedux('/foo/bar/test'))
 
     // asserts
-    expect(fs.readFileAsync.mock.calls.length).toBe(1)
+    expect(fs.readFileAsync.mock.calls.length).toBe(2)
     expect(fs.readFileAsync.mock.calls[0][0]).toBe('/foo/bar/test.js')
-    expect(docgen.parse.mock.calls.length).toBe(1)
+    expect(docgen.parse.mock.calls.length).toBe(2)
     expect(docgen.parse.mock.calls[0][1]).toEqual('componentResolver')
+    expect(docgen.parse.mock.calls[1][1]).toEqual('componentResolver')
   })
 
   it('should resolve component in an index path when it is called', async () => {
@@ -163,7 +164,7 @@ describe('server/api/models/docgen', () => {
     await service()(...toRedux('/foo/bar/test/index'))
 
     // asserts
-    expect(fs.readFileAsync.mock.calls.length).toBe(1)
+    expect(fs.readFileAsync.mock.calls.length).toBe(2)
     expect(fs.readFileAsync.mock.calls[0][0]).toBe('/foo/bar/test/index.js')
   })
 
