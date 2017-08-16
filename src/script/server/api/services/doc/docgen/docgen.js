@@ -1,7 +1,7 @@
 const fs = require('fs')
 const p = require('path')
 const docgen = require('react-docgen')
-
+const reducers = require('../../../../../redux/reducers')
 const { indexResolver, componentResolver } = require('./resolvers')
 
 const resolvePath = async (path) => {
@@ -27,7 +27,8 @@ const resolve = async (componentPath) => {
   const file = await fs.readFileAsync(resolvedPath, 'utf-8')
 
   try {
-    return docgen.parse(file, isIndex ? indexResolver : componentResolver)
+    const doc = docgen.parse(file, isIndex ? indexResolver : componentResolver)
+    return doc && doc.length > 0 && doc[0]
   } catch (ex) {
     if (ex.path) {
       const newPath = await resolvePath(p.resolve(componentPath, isIndex ? '.' : '..', ex.path))
@@ -39,6 +40,8 @@ const resolve = async (componentPath) => {
   }
 }
 
-module.exports = {
-  resolve,
+module.exports = () => async (dispatch, getState) => {
+  const { path } = reducers.component.get()(getState())
+
+  return resolve(path.absolute.full)
 }

@@ -1,8 +1,10 @@
 const connect = require('./connect')
-const readme = require('./readme')
+const preview = require('./preview')
 const props = require('./props')
+const readme = require('./readme')
 
 module.exports = (app, basePath) => ({
-  readme: connect(app, basePath)(readme),
+  preview: connect(app, basePath)(preview),
   props: connect(app, basePath)(props),
+  readme: connect(app, basePath)(readme),
 })

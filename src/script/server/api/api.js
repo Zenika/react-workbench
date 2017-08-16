@@ -6,8 +6,9 @@ const connect = app => (dispatch, getState) => {
   // config
   const { API_BASE_CONTEXT } = reducers.config.get()(getState())
 
-  // use json for api
+  // bodyparsing
   app.use(API_BASE_CONTEXT, bodyParser.json())
+  app.use(API_BASE_CONTEXT, bodyParser.text())
 
   // connects interfaces
   interfaces(app, `${API_BASE_CONTEXT}/`)

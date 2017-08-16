@@ -3,7 +3,7 @@ const doc = require('../services/doc')
 const get = {
   method: 'get',
   path: 'props',
-  handler: async () => doc.generate('docgen'),
+  handler: () => doc.docgen(),
 }
 
 module.exports = {
