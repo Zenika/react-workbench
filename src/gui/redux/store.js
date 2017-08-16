@@ -5,8 +5,8 @@ import { simpleObject } from 'trampss-redux-factory'
 import thunk from 'redux-thunk'
 import router from './router'
 import model from './model'
-import docgen from './docgen'
 
+export const docgen = simpleObject({ defaultData: {}, name: 'docgen' })
 const documentation = 'documentation'
 export const readme = simpleObject({ path: documentation, name: 'readme' })
 export const html = simpleObject({ path: documentation, name: 'html' })

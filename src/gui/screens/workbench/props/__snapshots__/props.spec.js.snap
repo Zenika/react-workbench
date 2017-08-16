@@ -8,7 +8,14 @@ exports[`component/props props.container.js should map redux model into properti
     }
   }
   style={Object {}}
-/>
+>
+  <input
+    name="foo"
+  />
+  <input
+    name="bar"
+  />
+</div>
 `;
 
 exports[`component/props props.jsx should render by default 1`] = `

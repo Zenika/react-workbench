@@ -17,11 +17,9 @@ const toRedux = path => [
   // getState
   () => ({
     component: {
-      data: {
-        path: {
-          absolute: {
-            full: path,
-          },
+      path: {
+        absolute: {
+          full: path,
         },
       },
     },
