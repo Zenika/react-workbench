@@ -75,13 +75,10 @@ const capture = metrics => async (dispatch, getState) => {
     client = await connectToChrome(chrome.port)
     const image = await captureScreenshot(client, metrics)
     return image
-  } catch (ex) {
-    log.error(ex)
   } finally {
-    if (client) client.close()
-    if (chrome) await chrome.kill()
+    client.close()
+    await chrome.kill()
   }
-  return undefined
 }
 
 module.exports = {
