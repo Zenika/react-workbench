@@ -1,18 +1,19 @@
 import { connect } from 'react-redux'
 import loader from 'hoc-react-loader'
 import router from 'hoc-little-router'
-import docgen, { fetchDocgen } from '../../redux/docgen'
-import Workbench from './workbench'
+import { docgen } from '../../redux'
+import { fetch } from '../../redux/api'
+import Component from './workbench'
 
 const mapState = state => ({
   loaded: docgen.isInitialized(state),
 })
 
 const mapDispatch = dispatch => ({
-  load: () => dispatch(fetchDocgen()),
+  load: () => dispatch(fetch.docgen()),
 })
 
-const loadable = loader()(Workbench)
+const loadable = loader()(Component)
 const routed = router('WORKBENCH', { absolute: true })(loadable)
 
 export default connect(mapState, mapDispatch)(routed)
