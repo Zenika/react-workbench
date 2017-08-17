@@ -63,6 +63,22 @@ describe('services/screenshot', () => {
     expect(error).toBe(true)
   })
 
+  it('should throw an error when chrome is not launched', async () => {
+    // mocks
+    chromeLauncher.launch.mockImplementationOnce(jest.fn(async () => undefined))
+
+    // calls
+    let error = false
+    try {
+      await screenshot.capture()(undefined, getState)
+    } catch (ex) {
+      error = true
+    }
+
+    // asserts
+    expect(error).toBe(true)
+  })
+
   it('should take resolution metrics', async () => {
     // calls
     const metrics = {
