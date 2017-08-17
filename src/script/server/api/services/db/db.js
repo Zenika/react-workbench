@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-const reducers = require('../../../redux/reducers')
+const reducers = require('../../../../redux/reducers')
 
 const init = name => (dispatch, getState) => {
   const projectPath = path.resolve(reducers.project.get()(getState()).path, '.workbench')

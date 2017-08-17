@@ -1,13 +1,13 @@
 /* eslint-env jest */
 
-jest.mock('../../db', () => {
+jest.mock('../db', () => {
   const read = jest.fn(async () => undefined)
   const write = jest.fn(async () => undefined)
 
   return () => ({ read, write })
 })
 
-const db = require('../../db')
+const db = require('../db')
 const service = require('./service')
 
 describe('server/model/state', () => {

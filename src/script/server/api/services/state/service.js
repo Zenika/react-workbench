@@ -1,5 +1,5 @@
 const { NAME } = require('./constants')
-const db = require('../../db')
+const db = require('../db')
 
 const create = async (state) => {
   await db(NAME).write(state)
