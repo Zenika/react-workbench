@@ -1,7 +1,7 @@
 const express = require('express')
 const log = require('loglevel')
 const reducers = require('../redux/reducers')
-const { bundle } = require('./bundle')
+const bundle = require('./bundle')
 const api = require('./api')
 
 const start = () => (dispatch, getState) => {
@@ -18,7 +18,7 @@ const start = () => (dispatch, getState) => {
   bundle(app)
 
   // serve api
-  api.connect(app)
+  api(app)
 
   // listen
   app.listen(PORT, () => {
