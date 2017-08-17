@@ -32,7 +32,6 @@ describe('redux/connect', () => {
       expect(store.dispatch.mock).toMatchSnapshot()
       expect(connected.func2(2, 'first')).toMatchSnapshot()
       expect(store.dispatch.mock).toMatchSnapshot()
-
     })
   })
 })
