@@ -61,6 +61,26 @@ const getImage = async (client, metrics) => {
   return Buffer.from(data, 'base64')
 }
 
+const timeout = ms => new Promise(resolve => setTimeout(resolve, ms))
+
+const isComponentLoaded = async (client) => {
+  const { Runtime } = client
+  const { result } = await Runtime.evaluate({ expression: 'window.isComponentLoaded' })
+  return result && result.type === 'boolean' && result.value
+}
+
+const getImageFallback = async (client, metrics, attemp = 1) => {
+  const isLoaded = await isComponentLoaded(client)
+  if (isLoaded) {
+    return getImage(client, metrics)
+  } else if (attemp <= 10) {
+    log.info(`attemp number ${attemp}`)
+    await timeout(100 * attemp)
+    return getImageFallback(client, metrics, attemp + 1)
+  }
+  throw Error('Unable to capture screenshot, component is unavailable')
+}
+
 /**
  * Capture a screenshot of the tested component
  * @param {*} metrics see https://chromedevtools.github.io/devtools-protocol/tot/Emulation/#method-setDeviceMetricsOverride
@@ -72,7 +92,7 @@ const capture = metrics => async (dispatch, getState) => {
   try {
     chrome = await getChrome(`http://localhost:${PORT}`)
     client = await getClient(chrome.port)
-    return await getImage(client, metrics)
+    return await getImageFallback(client, metrics)
   } finally {
     if (client) client.close()
     if (chrome) await chrome.kill()
