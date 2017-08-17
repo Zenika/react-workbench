@@ -46,7 +46,7 @@ const getComponentBox = async (client) => {
     y: model.content[1],
     width: model.width,
     height: model.height,
-    scale: 1,
+    scale: 2,
   }
 }
 

@@ -3,24 +3,27 @@ jest.mock('chrome-launcher', () => ({
   launch: jest.fn(async () => ({ kill: jest.fn(async () => undefined) })),
 }))
 
-jest.mock('chrome-remote-interface', () =>
-  jest.fn(async () => ({
-    DOM: {
-      enable: jest.fn(),
-      getDocument: jest.fn(async () => ({ root: 'root' })),
-      querySelector: jest.fn(async () => ({ nodeId: 'nodeId' })),
-      getBoxModel: jest.fn(async () => ({ model: { content: [1, 2] } })),
-    },
-    Page: {
-      enable: jest.fn(),
-      captureScreenshot: jest.fn(async () => ({ data: 'data' })),
-    },
-    Emulation: {
-      setDeviceMetricsOverride: jest.fn(),
-    },
-    close: jest.fn(),
-  }))
-)
+const mockCRI = (isComponentLoaded = true) => jest.fn(async () => ({
+  DOM: {
+    enable: jest.fn(),
+    getDocument: jest.fn(async () => ({ root: 'root' })),
+    querySelector: jest.fn(async () => ({ nodeId: 'nodeId' })),
+    getBoxModel: jest.fn(async () => ({ model: { content: [1, 2] } })),
+  },
+  Page: {
+    enable: jest.fn(),
+    captureScreenshot: jest.fn(async () => ({ data: 'data' })),
+  },
+  Emulation: {
+    setDeviceMetricsOverride: jest.fn(),
+  },
+  Runtime: {
+    evaluate: jest.fn(async () => ({ result: { type: 'boolean', value: isComponentLoaded } })),
+  },
+  close: jest.fn(),
+}))
+
+jest.mock('chrome-remote-interface', () => mockCRI())
 
 const chromeLauncher = require('chrome-launcher')
 const CRI = require('chrome-remote-interface')
@@ -38,6 +41,10 @@ const getState = () => ({
 })
 
 describe('services/screenshot', () => {
+  beforeEach(() => {
+    CRI.mockImplementation(mockCRI())
+  })
+
   it('should launch chrome and return screenshot data', async () => {
     // calls
     const data = await screenshot.capture()(undefined, getState)
@@ -77,6 +84,16 @@ describe('services/screenshot', () => {
 
     // asserts
     expect(error).toBe(true)
+  })
+
+  it.skip('should try other attemps if component not loaded before capture it', async () => {
+    // mocks
+    CRI.mockImplementationOnce(mockCRI(false)).mockImplementationOnce(mockCRI(true))
+    // calls
+    await screenshot.capture()(undefined, getState)
+
+    // asserts
+    expect(CRI.mock.instances).toBe(true)
   })
 
   it('should take resolution metrics', async () => {
