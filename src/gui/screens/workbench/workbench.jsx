@@ -10,7 +10,7 @@ import WrappedComponent from '../../component.container'
 const Workbench = ({ className }) => {
   return (
     <div className={merge(styles.layout, className)}>
-      <div className={styles.content}>
+      <div id="component" className={styles.content}>
         <WrappedComponent />
       </div>
       <Tabs className={styles.sidebar}>
