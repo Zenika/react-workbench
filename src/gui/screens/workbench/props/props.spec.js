@@ -22,7 +22,7 @@ describe('component/props', () => {
 
   describe('props.container.js', () => {
     it('should map redux model into properties array', () => {
-      const store = createStore(() => ({ docgen: { data: { foo: {}, bar: {} } } }))
+      const store = createStore(() => ({ docgen: { props: { foo: {}, bar: {} } } }))
       const container = renderer.create(
         <Provider store={store}>
           <PropsContainer />
