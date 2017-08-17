@@ -2,9 +2,10 @@ const path = require('path')
 const fs = require('fs')
 const reducers = require('../../../../redux/reducers')
 
-const init = name => (dispatch, getState) => {
-  const projectPath = path.resolve(reducers.project.get()(getState()).path, '.workbench')
-  const filePath = `${projectPath}/${name}.json`
+const init = () => (dispatch, getState) => {
+  const component = reducers.component.get()(getState())
+  const projectPath = component.path.absolute.workbench
+  const filePath = path.resolve(projectPath, `${component.name}.json`)
 
   const createDir = async () => {
     try {

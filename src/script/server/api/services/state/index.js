@@ -1,4 +1,3 @@
-const { NAME } = require('./constants')
-const service = require('./service')
+const state = require('./state')
 
-module.exports = { NAME, ...service }
+module.exports = state

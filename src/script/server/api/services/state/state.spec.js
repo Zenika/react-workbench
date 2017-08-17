@@ -8,7 +8,7 @@ jest.mock('../db', () => {
 })
 
 const db = require('../db')
-const service = require('./service')
+const service = require('./state')
 
 describe('server/model/state', () => {
   describe('create', () => {
