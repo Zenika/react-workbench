@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`redux/connect connect should connect a function 1`] = `
+Object {
+  "a": "state",
+  "arg1": "first",
+  "arg2": 2,
+  "dispatch": undefined,
+}
+`;
+
+exports[`redux/connect connect should connect a function 2`] = `
+Object {
+  "calls": Array [
+    Array [
+      "action",
+    ],
+  ],
+  "instances": Array [
+    undefined,
+  ],
+}
+`;
+
+exports[`redux/connect connectAll should connect all fields 1`] = `
+Object {
+  "a": "state",
+  "arg1": "first",
+  "arg2": 2,
+  "dispatch": undefined,
+}
+`;
+
+exports[`redux/connect connectAll should connect all fields 2`] = `
+Object {
+  "calls": Array [
+    Array [
+      "action",
+    ],
+  ],
+  "instances": Array [
+    undefined,
+  ],
+}
+`;
+
+exports[`redux/connect connectAll should connect all fields 3`] = `
+Object {
+  "a": "state",
+  "arg1": 2,
+  "arg2": "first",
+  "dispatch": undefined,
+}
+`;
+
+exports[`redux/connect connectAll should connect all fields 4`] = `
+Object {
+  "calls": Array [
+    Array [
+      "action",
+    ],
+    Array [
+      "action",
+    ],
+  ],
+  "instances": Array [
+    undefined,
+    undefined,
+  ],
+}
+`;
