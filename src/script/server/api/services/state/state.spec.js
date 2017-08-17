@@ -2,9 +2,9 @@
 
 jest.mock('../../db', () => {
   const read = jest.fn(async () => undefined)
-  const append = jest.fn(async () => undefined)
+  const write = jest.fn(async () => undefined)
 
-  return () => ({ read, append })
+  return () => ({ read, write })
 })
 
 const db = require('../../db')
@@ -20,8 +20,8 @@ describe('server/model/state', () => {
       service.create(state)
 
       // asserts
-      expect(db().append.mock.calls.length).toBe(1)
-      expect(db().append.mock.calls[0]).toEqual([state])
+      expect(db().write.mock.calls.length).toBe(1)
+      expect(db().write.mock.calls[0]).toEqual([state])
     })
   })
 
@@ -54,7 +54,7 @@ describe('server/model/state', () => {
       // asserts
       expect(db().read.mock.calls.length).toBe(1)
       expect(db().read.mock.calls[0]).toEqual([])
-      expect(states).toEqual([])
+      expect(states).toEqual({})
     })
   })
 })

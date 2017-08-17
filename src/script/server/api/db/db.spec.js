@@ -50,7 +50,7 @@ describe('server/api/db', () => {
       // asserts
       expect(data).toBeDefined()
       expect(fs.mkdirAsync.mock.calls.length).toBe(1)
-      expect(fs.mkdirAsync.mock.calls[0][0]).toBe('/a/path')
+      expect(fs.mkdirAsync.mock.calls[0][0]).toBe('/a/path/.workbench')
     })
 
     it('should pass when configuration directory exists', async () => {
@@ -76,7 +76,7 @@ describe('server/api/db', () => {
       expect(data).toBeDefined()
       expect(data).toEqual(content)
       expect(fs.writeFileAsync.mock.calls.length).toBe(1)
-      expect(fs.writeFileAsync.mock.calls[0][0]).toBe(`/a/path/${name}.json`)
+      expect(fs.writeFileAsync.mock.calls[0][0]).toBe(`/a/path/.workbench/${name}.json`)
       expect(fs.writeFileAsync.mock.calls[0][1]).toBe(JSON.stringify(data))
     })
 
@@ -125,7 +125,7 @@ describe('server/api/db', () => {
       expect(data).toBeDefined()
       expect(data).toEqual(['foo'])
       expect(fs.readFileAsync.mock.calls.length).toBe(1)
-      expect(fs.readFileAsync.mock.calls[0][0]).toBe(`/a/path/${name}.json`)
+      expect(fs.readFileAsync.mock.calls[0][0]).toBe(`/a/path/.workbench/${name}.json`)
     })
 
     it('should return "undefined" if configuration file doesn\'t exists', async () => {
