@@ -13,6 +13,7 @@ module.exports = fileName => async (dispatch) => {
       absolute: {
         dir,
         full: path.resolve(dir, name),
+        workbench: path.resolve(dir, '.workbench'),
       },
     },
   }))
