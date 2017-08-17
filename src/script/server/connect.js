@@ -29,4 +29,8 @@ const connectAll = (app, subroute = '') => object => (
     )
 )
 
-module.exports = connectAll
+const connectServices = (app, subroute) => (services) => {
+  services.forEach(service => connectAll(app, subroute)(service.api))
+}
+
+module.exports = connectServices

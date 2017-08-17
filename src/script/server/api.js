@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser')
 const { reducers, connect } = require('../redux')
-const connectResource = require('./connect')
+const connectServices = require('./connect')
 const debug = require('./debug')
 const preview = require('./preview')
 const props = require('./props')
@@ -17,12 +17,14 @@ const api = app => (dispatch, getState) => {
   app.use(API_BASE_CONTEXT, bodyParser.text())
 
   // connects interfaces
-  connectResource(app, API_BASE_CONTEXT)(debug.api)
-  connectResource(app, API_BASE_CONTEXT)(preview.api)
-  connectResource(app, API_BASE_CONTEXT)(props.api)
-  connectResource(app, API_BASE_CONTEXT)(readme.api)
-  connectResource(app, API_BASE_CONTEXT)(screenshot.api)
-  connectResource(app, API_BASE_CONTEXT)(state.api)
+  connectServices(app, API_BASE_CONTEXT)([
+    debug,
+    preview,
+    props,
+    readme,
+    screenshot,
+    state,
+  ])
 }
 
 module.exports = connect(api)
