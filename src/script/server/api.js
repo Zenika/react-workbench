@@ -5,6 +5,7 @@ const debug = require('./debug')
 const preview = require('./preview')
 const props = require('./props')
 const readme = require('./readme')
+const screenshot = require('./screenshot')
 const state = require('./state')
 
 const api = app => (dispatch, getState) => {
@@ -20,6 +21,7 @@ const api = app => (dispatch, getState) => {
   connectResource(app, API_BASE_CONTEXT)(preview.api)
   connectResource(app, API_BASE_CONTEXT)(props.api)
   connectResource(app, API_BASE_CONTEXT)(readme.api)
+  connectResource(app, API_BASE_CONTEXT)(screenshot.api)
   connectResource(app, API_BASE_CONTEXT)(state.api)
 }
 

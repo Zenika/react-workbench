@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`services/screenshot should launch chrome and return screenshot data 1`] = `
+Object {
+  "data": Array [
+    117,
+    171,
+    90,
+  ],
+  "type": "Buffer",
+}
+`;
+
+exports[`services/screenshot should take resolution metrics 1`] = `
+Object {
+  "data": Array [
+    117,
+    171,
+    90,
+  ],
+  "type": "Buffer",
+}
+`;
