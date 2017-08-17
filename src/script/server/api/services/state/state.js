@@ -12,7 +12,7 @@ const create = async (state) => {
 }
 
 const read = async () => {
-  return await db().read(getFileName()) || {}
+  return (await db().read(getFileName())) || {}
 }
 
 module.exports = {
