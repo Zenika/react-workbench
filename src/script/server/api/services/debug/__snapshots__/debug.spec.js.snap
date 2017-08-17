@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`services/debug get should return debug informations 1`] = `
+Object {
+  "redux": Object {
+    "some": "redux informations",
+  },
+}
+`;
