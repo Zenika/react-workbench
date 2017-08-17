@@ -10,7 +10,6 @@ const db = require('./db')
 
 const getState = () => ({
   component: {
-    name: 'aComponent.jsx',
     path: {
       absolute: {
         workbench: '/a/path/.workbench',
@@ -48,7 +47,7 @@ describe('server/api/db', () => {
 
     it('should create the configuration directory', async () => {
       // calls
-      const data = await db()(undefined, getState).write(content)
+      const data = await db()(undefined, getState).write('fileName.jsx', content)
 
       // asserts
       expect(data).toBeDefined()
@@ -64,7 +63,7 @@ describe('server/api/db', () => {
       }))
 
       // calls
-      const data = await db()(undefined, getState).write(content)
+      const data = await db()(undefined, getState).write('fileName.jsx', content)
 
       // asserts
       expect(data).toBeDefined()
@@ -73,7 +72,7 @@ describe('server/api/db', () => {
 
     it('should write data into the directory', async () => {
       // calls
-      const data = await db()(undefined, getState).write(content)
+      const data = await db()(undefined, getState).write('aComponent.jsx.json', content)
 
       // asserts
       expect(data).toBeDefined()
@@ -85,7 +84,7 @@ describe('server/api/db', () => {
 
     it('should init an empty configuration when given data are undefined', async () => {
       // calls
-      const data = await db()(undefined, getState).write(undefined)
+      const data = await db()(undefined, getState).write('fileName.jsx', undefined)
 
       // asserts
       expect(data).toBeDefined()
@@ -119,7 +118,7 @@ describe('server/api/db', () => {
       fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
 
       // calls
-      const data = await db()(undefined, getState).read()
+      const data = await db()(undefined, getState).read('aComponent.jsx.json')
 
       // asserts
       expect(data).toBeDefined()
@@ -136,7 +135,7 @@ describe('server/api/db', () => {
       }))
 
       // calls
-      const data = await db()(undefined, getState).read()
+      const data = await db()(undefined, getState).read('fileName.json')
 
       // asserts
       expect(data).toBeUndefined()
@@ -169,7 +168,7 @@ describe('server/api/db', () => {
 
     it('should return an empty configuration if doesn\'t exists and nothing to append', async () => {
       // calls
-      const result = await db('testedComponent.jsx')(undefined, getState).append(undefined)
+      const result = await db()(undefined, getState).append('fileName.jsx', undefined)
 
       // asserts
       expect(result).toBeDefined()
@@ -181,7 +180,7 @@ describe('server/api/db', () => {
       fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "foo" ]'))
 
       // calls
-      const result = await db('testedComponent.jsx')(undefined, getState).append(undefined)
+      const result = await db()(undefined, getState).append('testedComponent.jsx', undefined)
 
       // asserts
       expect(result).toBeDefined()
@@ -190,7 +189,7 @@ describe('server/api/db', () => {
 
     it('should append & write content to an empty configuration', async () => {
       // calls
-      const result = await db('testedComponent.jsx')(undefined, getState).append(content)
+      const result = await db()(undefined, getState).append('testedComponent.jsx', content)
 
       // asserts
       expect(result).toBeDefined()
@@ -202,7 +201,7 @@ describe('server/api/db', () => {
       fs.readFileAsync.mockImplementation(jest.fn(async () => '[ "baz" ]'))
 
       // calls
-      const result = await db('testedComponent.jsx')(undefined, getState).append(content)
+      const result = await db()(undefined, getState).append('testedComponent.jsx', content)
 
       // asserts
       expect(result).toBeDefined()

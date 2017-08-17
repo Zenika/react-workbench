@@ -5,7 +5,8 @@ const reducers = require('../../../../redux/reducers')
 const init = () => (dispatch, getState) => {
   const component = reducers.component.get()(getState())
   const projectPath = component.path.absolute.workbench
-  const filePath = path.resolve(projectPath, `${component.name}.json`)
+
+  const getFilePath = fileName => path.resolve(projectPath, fileName)
 
   const createDir = async () => {
     try {
@@ -15,20 +16,20 @@ const init = () => (dispatch, getState) => {
     }
   }
 
-  const write = async (data = []) => {
+  const write = async (fileName, data = []) => {
     await createDir()
 
-    await fs.writeFileAsync(filePath, JSON.stringify(data))
+    await fs.writeFileAsync(getFilePath(fileName), JSON.stringify(data))
 
     return data
   }
 
-  const read = async () => {
+  const read = async (fileName) => {
     await createDir()
 
     let content
     try {
-      const fileContent = await fs.readFileAsync(filePath)
+      const fileContent = await fs.readFileAsync(getFilePath(fileName))
       if (fileContent) {
         content = JSON.parse(fileContent)
       }
@@ -39,12 +40,12 @@ const init = () => (dispatch, getState) => {
     return content
   }
 
-  const append = async (data = []) => {
+  const append = async (fileName, data = []) => {
     await createDir()
 
-    const content = (await read()) || []
+    const content = (await read(fileName)) || []
     const all = content.concat(data)
-    await write(all)
+    await write(fileName, all)
 
     return all
   }

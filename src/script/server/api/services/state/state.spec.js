@@ -21,7 +21,6 @@ describe('server/model/state', () => {
 
       // asserts
       expect(db().write.mock.calls.length).toBe(1)
-      expect(db().write.mock.calls[0]).toEqual([state])
     })
   })
 
@@ -43,7 +42,6 @@ describe('server/model/state', () => {
 
       // asserts
       expect(db().read.mock.calls.length).toBe(1)
-      expect(db().read.mock.calls[0]).toEqual([])
       expect(states).toBe(mockStates)
     })
 
@@ -53,7 +51,6 @@ describe('server/model/state', () => {
 
       // asserts
       expect(db().read.mock.calls.length).toBe(1)
-      expect(db().read.mock.calls[0]).toEqual([])
       expect(states).toEqual({})
     })
   })
