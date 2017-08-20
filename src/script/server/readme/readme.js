@@ -17,7 +17,7 @@ const get = () => async (dispatch, getState) => {
   }
 
   // generate readme markdown
-  return markdown.generate(component.name)
+  return markdown.generate()
 }
 
 module.exports = {

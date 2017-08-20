@@ -2,9 +2,7 @@
 
 exports[`service/readme should generate component markdown if README.md file doesnt exist 1`] = `
 Array [
-  Array [
-    "foo",
-  ],
+  Array [],
 ]
 `;
 

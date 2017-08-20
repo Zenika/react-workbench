@@ -1,3 +1,4 @@
+const { reducers } = require('../../../redux')
 const { service } = require('../../props')
 
 const generateTitle = name => `# ${name}`
@@ -23,7 +24,9 @@ const generateProps = (props) => {
   return ''
 }
 
-const generate = async (name) => {
+const generate = () => async (dispatch, getState) => {
+  const { name } = reducers.component.get()(getState())
+
   const docgen = await service.get()
 
   return `
@@ -37,6 +40,4 @@ ${generateProps(docgen.props)}
 
 module.exports = {
   generate,
-  generateDescription,
-  generateProps,
 }
