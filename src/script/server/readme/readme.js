@@ -1,40 +1,23 @@
+const path = require('path')
+const fs = require('fs')
+
 const { reducers } = require('../../redux')
-const { service } = require('../props')
-
-const generateTitle = name => `# ${name}`
-
-const generateDescription = (description = '') => `> ${description}`
-
-const generateProp = (name, prop) => {
-  return `${name}|${prop.required}|${prop.type.name}|${prop.description}\n`
-}
-
-const generateProps = (props) => {
-  if (props) {
-    const table = Object.keys(props)
-      .reduce((a, b) => {
-        return `${a}${generateProp(b, props[b])}`
-      }, '')
-    return `
-      props|required|type|description
-      -----|--------|----|-----------
-      ${table}
-    `
-  }
-  return ''
-}
+const markdown = require('./markdown')
 
 const get = () => async (dispatch, getState) => {
-  const doc = await service()
-  const { name } = reducers.component.get()(getState())
+  const component = reducers.component.get()(getState())
 
-  return `
-${generateTitle(name)}
+  // return README.md content
+  const readmePath = path.resolve(component.path.absolute.dir, 'README.md')
+  try {
+    const content = await fs.readFileAsync(readmePath, 'utf8')
+    return content
+  } catch (ex) {
+    if (ex.errno !== -2) throw ex // -2 is file not found
+  }
 
-${generateDescription(doc.description)}
-
-${generateProps(doc.props)}
-`
+  // generate readme markdown
+  return markdown.generate()
 }
 
 module.exports = {
