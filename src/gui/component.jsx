@@ -21,8 +21,6 @@ class WrappedComponent extends React.Component {
 
     this.component = component
 
-    // this.props.setState(component.state)
-
     // observe component setState
     const setState = component.setState
     component.setState = ((o) => { // eslint-disable-line no-param-reassign
