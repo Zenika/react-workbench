@@ -1,5 +1,5 @@
 import sagas from './intents'
-import { unhandledErrors } from '../redux/store'
+import { unhandledErrors } from '../redux/reducers'
 
 export default store => function* () {
   function* errorHandlingSagas() {

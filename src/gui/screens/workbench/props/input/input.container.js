@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import props, { getComponentValue } from '../../../../redux/props'
+import props, { getComponentValue } from '../../../../redux/component/props'
 import { getProp } from '../../../../redux/docgen'
 import Input from './input'
 

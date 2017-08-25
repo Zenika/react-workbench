@@ -1,6 +1,6 @@
 /* eslint-env jest */
 import { createStore, combineReducers } from 'redux'
-import { docgen } from '../store'
+import { docgen } from '../../reducers'
 import props from './props'
 import * as selectors from './props.selectors'
 

@@ -1,6 +1,6 @@
 import { keyValue } from 'trampss-redux-factory'
 import { mapAction, mapPayload } from 'trampss-redux-factory/helpers'
-import { docgenToProps, convertFromGuiValue } from '../utils/docgen.js'
+import { docgenToProps, convertFromGuiValue } from '../../utils/docgen.js'
 
 // Middleware transforming DOCGEN action to PROPS action
 const docgenMapper = (action) => {

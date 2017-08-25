@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect'
 
 import props from './props'
-import { convertToGuiValue } from '../utils/docgen'
+import { convertToGuiValue } from '../../utils/docgen'
 
 const getPropsData = state => props.get()(state)
 

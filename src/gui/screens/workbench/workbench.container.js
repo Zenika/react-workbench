@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import loader from 'hoc-react-loader'
 import router from 'hoc-little-router'
-import { docgen } from '../../redux'
+import { docgen } from '../../redux/reducers'
 import { fetch } from '../../redux/api'
 import Component from './workbench'
 

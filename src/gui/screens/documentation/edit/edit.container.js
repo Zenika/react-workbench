@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import loader from 'hoc-react-loader'
-import { readme } from '../../../redux'
+import { readme } from '../../../redux/documentation'
 import { fetch } from '../../../redux/api'
 import Component from './edit'
 

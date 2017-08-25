@@ -1,6 +1,6 @@
 import { put, select } from 'redux-saga/effects'
 import { state as uiStore } from '../../redux/ui'
-import { state as store } from '../../redux/store'
+import { state as store } from '../../redux/component'
 
 export function* setUiState(state) {
   yield put(uiStore.set(JSON.stringify(state, null, 2)))
