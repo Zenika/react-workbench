@@ -1,16 +1,16 @@
 import { createSelector } from 'reselect'
 
-import model from './model'
+import props from './props'
 import { convertToGuiValue } from '../utils/docgen'
 
-const getModelData = state => model.get()(state)
+const getPropsData = state => props.get()(state)
 
-const getModelArray = state => model.getAsArray(state)
+const getPropsAsArray = state => props.getAsArray(state)
 
 const getComponentValue = (name, type) =>
-  createSelector(getModelData, data => convertToGuiValue(data[name].value, type))
+  createSelector(getPropsData, data => convertToGuiValue(data[name].value, type))
 
-const getComponentProps = createSelector(getModelArray, array =>
+const getComponentProps = createSelector(getPropsAsArray, array =>
   array.map(p => ({ [p.name]: p.value })).reduce((acc, curr) => ({ ...acc, ...curr }), {})
 )
 

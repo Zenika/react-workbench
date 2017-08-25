@@ -9,7 +9,7 @@ import snap from 'misc/test/snap'
 import Input from './input'
 import InputContainer from './input.container'
 import { docgen } from '../../../../redux'
-import model from '../../../../redux/model'
+import propsStore from '../../../../redux/props'
 
 describe('component/props/input', () => {
   describe('input.jsx', () => {
@@ -68,7 +68,7 @@ describe('component/props/input', () => {
       expect(tree).toMatchSnapshot()
     }
 
-    const reducers = combineReducers({ docgen, component: combineReducers({ model }) })
+    const reducers = combineReducers({ docgen, component: combineReducers({ props: propsStore }) })
 
     describe('model with type string', () => {
       it('should render a textfield', () => {
@@ -120,7 +120,7 @@ describe('component/props/input', () => {
 
         expect(store.dispatch.mock.calls.length).toBe(1)
         expect(store.dispatch.mock.calls[0]).toEqual([
-          model.update({ name: 'foo', value: 'baz', type: 'string' }),
+          propsStore.update({ name: 'foo', value: 'baz', type: 'string' }),
         ])
       })
     })
@@ -175,7 +175,7 @@ describe('component/props/input', () => {
 
         expect(store.dispatch.mock.calls.length).toBe(1)
         expect(store.dispatch.mock.calls[0]).toEqual([
-          model.update({ name: 'foo', value: false, type: 'bool' }),
+          propsStore.update({ name: 'foo', value: false, type: 'bool' }),
         ])
       })
     })

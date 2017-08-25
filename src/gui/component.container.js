@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { getComponentProps } from './redux/model'
+import { getComponentProps } from './redux/props'
 import { state as stateStore } from './redux'
 import Component from './component'
 

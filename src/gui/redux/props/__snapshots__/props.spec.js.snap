@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`gui/redux/model reducer should convert gui values to model values 1`] = `
+exports[`gui/redux/props reducer should convert gui values to props values 1`] = `
 Object {
   "array": Array [
     Object {
@@ -23,7 +23,7 @@ Object {
 }
 `;
 
-exports[`gui/redux/model reducer should transform SET_DOCGEN to SET_MODEL action 1`] = `
+exports[`gui/redux/props reducer should transform SET_DOCGEN to SET_PROPS action 1`] = `
 Object {
   "array": Array [
     Object {

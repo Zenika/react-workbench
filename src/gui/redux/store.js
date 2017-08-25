@@ -4,7 +4,7 @@ import { initializeCurrentLocation } from 'redux-little-router'
 import { simpleObject } from 'trampss-redux-factory'
 import thunk from 'redux-thunk'
 import router from './router'
-import model from './model'
+import props from './props'
 
 export const docgen = simpleObject({ defaultData: { props: {} }, name: 'docgen' })
 const documentation = 'documentation'
@@ -21,7 +21,7 @@ const store = createStore(
       html,
     }),
     component: combineReducers({
-      model,
+      props,
       state,
     }),
     router: router.reducer,

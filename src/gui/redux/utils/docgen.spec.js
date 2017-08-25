@@ -1,5 +1,5 @@
 /* eslint-env jest */
-import { convertDocgenValue, docgenToModel, convertToGuiValue, convertFromGuiValue } from './docgen'
+import { convertDocgenValue, docgenToProps, convertToGuiValue, convertFromGuiValue } from './docgen'
 
 describe('gui/redux/utils', () => {
   describe('convert docgen to model structure', () => {
@@ -13,7 +13,7 @@ describe('gui/redux/utils', () => {
         },
       }
 
-      expect(docgenToModel(docgen)).toMatchSnapshot()
+      expect(docgenToProps(docgen)).toMatchSnapshot()
     })
   })
   describe('convert docgen prop value to model value', () => {
