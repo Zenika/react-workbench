@@ -68,9 +68,11 @@ describe('component/props/input', () => {
       expect(tree).toMatchSnapshot()
     }
 
+    const reducers = combineReducers({ docgen, component: combineReducers({ model }) })
+
     describe('model with type string', () => {
       it('should render a textfield', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -81,7 +83,7 @@ describe('component/props/input', () => {
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -95,7 +97,7 @@ describe('component/props/input', () => {
         snapshotContainer('foo', store)
       })
       it('should trigger dispatch an update when value was changed', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -125,7 +127,7 @@ describe('component/props/input', () => {
 
     describe('model with type bool', () => {
       it('should render a checkbox', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -136,7 +138,7 @@ describe('component/props/input', () => {
         snapshotContainer('foo', store)
       })
       it('should render a checkbox with value', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -150,7 +152,7 @@ describe('component/props/input', () => {
         snapshotContainer('foo', store)
       })
       it('should trigger dispatch an update when value was changed', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -180,7 +182,7 @@ describe('component/props/input', () => {
 
     describe('model with type array', () => {
       it('should render a textfield', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -191,7 +193,7 @@ describe('component/props/input', () => {
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -208,7 +210,7 @@ describe('component/props/input', () => {
 
     describe('model with type object', () => {
       it('should render a textfield', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -219,7 +221,7 @@ describe('component/props/input', () => {
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -236,7 +238,7 @@ describe('component/props/input', () => {
 
     describe('model with type function', () => {
       it('should render a textfield', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {
@@ -247,7 +249,7 @@ describe('component/props/input', () => {
         snapshotContainer('foo', store)
       })
       it('should render a textfield with value', () => {
-        const store = createStore(combineReducers({ docgen, model }))
+        const store = createStore(reducers)
         store.dispatch(
           docgen.set({
             props: {

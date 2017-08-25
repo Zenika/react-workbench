@@ -4,12 +4,14 @@ import { docgen } from '../store'
 import model from './model'
 import * as selectors from './model.selectors'
 
+const reducers = combineReducers({ component: combineReducers({ model }), docgen })
+
 describe('gui/redux/model', () => {
   describe('reducer', () => {
     let store
 
     beforeEach(() => {
-      store = createStore(combineReducers({ model, docgen }))
+      store = createStore(reducers)
     })
 
     it('should transform SET_DOCGEN to SET_MODEL action', () => {
@@ -26,7 +28,7 @@ describe('gui/redux/model', () => {
       )
 
       // check if model state is updated
-      expect(store.getState().model).toMatchSnapshot()
+      expect(store.getState().component.model).toMatchSnapshot()
     })
 
     it('should convert gui values to model values', () => {
@@ -45,7 +47,7 @@ describe('gui/redux/model', () => {
       store.dispatch(model.update({ name: 'foo', value: 'bar', type: 'string' }))
 
       // check if model is updated
-      expect(store.getState().model).toMatchSnapshot()
+      expect(store.getState().component.model).toMatchSnapshot()
     })
   })
 
@@ -53,7 +55,7 @@ describe('gui/redux/model', () => {
     let store
 
     beforeEach(() => {
-      store = createStore(combineReducers({ model }))
+      store = createStore(reducers)
     })
 
     it('should get component value in model state', () => {

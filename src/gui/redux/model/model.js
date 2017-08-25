@@ -24,4 +24,4 @@ const middlewares = {
   pre: [mapAction(docgenMapper), mapPayload(/UPDATE_MODEL/)(updateMapper)],
 }
 
-export default keyValue(middlewares)({ key: 'name', name: 'model' })
+export default keyValue(middlewares)({ path: 'component', key: 'name', name: 'model' })

@@ -10,7 +10,7 @@ export const docgen = simpleObject({ defaultData: { props: {} }, name: 'docgen' 
 const documentation = 'documentation'
 export const readme = simpleObject({ path: documentation, name: 'readme' })
 export const html = simpleObject({ path: documentation, name: 'html' })
-export const state = simpleObject({ name: 'state' })
+export const state = simpleObject({ path: 'component', name: 'state' })
 
 // initialize redux store
 const store = createStore(
@@ -20,9 +20,11 @@ const store = createStore(
       readme,
       html,
     }),
-    model,
+    component: combineReducers({
+      model,
+      state,
+    }),
     router: router.reducer,
-    state,
   }),
   composeWithDevTools(router.enhancer, applyMiddleware(thunk, router.middleware))
 )
