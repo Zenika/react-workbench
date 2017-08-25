@@ -19,7 +19,9 @@ class WrappedComponent extends React.Component {
   wrapComponentState = (component) => {
     if (!component || !component.state) return
 
+    // first connexion
     this.component = component
+    this.props.setState(component.state)
 
     // observe component setState
     const setState = component.setState
