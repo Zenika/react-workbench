@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`saga/component/state setComponentState should set component state 1`] = `
+Array [
+  Object {
+    "raw": Object {
+      "done": false,
+      "value": Object {
+        "@@redux-saga/IO": true,
+        "SELECT": Object {
+          "args": Array [],
+          "selector": [Function],
+        },
+      },
+    },
+    "value": "{ \\"some\\": \\"state\\", \\"with\\": { \\"nested\\": \\"infos\\" } }",
+  },
+  Object {
+    "done": false,
+    "value": Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "payload": Object {
+            "some": "state",
+            "with": Object {
+              "nested": "infos",
+            },
+          },
+          "type": "@trampss/SET_STATE",
+        },
+        "channel": null,
+      },
+    },
+  },
+  Object {
+    "done": true,
+    "value": undefined,
+  },
+]
+`;
+
+exports[`saga/component/state setUiState should set UI state 1`] = `
+Array [
+  Object {
+    "done": false,
+    "value": Object {
+      "@@redux-saga/IO": true,
+      "PUT": Object {
+        "action": Object {
+          "payload": "{
+  \\"some\\": \\"state\\",
+  \\"with\\": {
+    \\"nested\\": \\"infos\\"
+  }
+}",
+          "type": "@trampss/SET_UISTATE",
+        },
+        "channel": null,
+      },
+    },
+  },
+  Object {
+    "done": true,
+    "value": undefined,
+  },
+]
+`;

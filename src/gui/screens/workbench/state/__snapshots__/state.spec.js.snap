@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`workbench/state container should map dispatch 1`] = `
+Object {
+  "onChange": [Function],
+  "setState": [Function],
+}
+`;
+
+exports[`workbench/state container should map dispatch 2`] = `
+Array [
+  Array [
+    Object {
+      "payload": "input value",
+      "type": "@trampss/SET_UISTATE",
+    },
+  ],
+  Array [
+    Object {
+      "type": "UI_CLICK_SET_STATE",
+    },
+  ],
+]
+`;
+
+exports[`workbench/state container should map state 1`] = `
+Object {
+  "state": "some state",
+}
+`;
+
+exports[`workbench/state graphical should have a default behaviour 1`] = `
+<div
+  className={
+    Object {
+      "data-css-10lnnxw": "",
+    }
+  }
+  style={Object {}}
+>
+  <button
+    onClick={undefined}
+  >
+    set
+  </button>
+  <textarea
+    className={
+      Object {
+        "data-css-n9fe5c": "",
+      }
+    }
+    onChange={undefined}
+    value={undefined}
+  />
+</div>
+`;
+
+exports[`workbench/state graphical should print props 1`] = `
+<div
+  className={
+    Object {
+      "data-css-19n021x": "",
+    }
+  }
+  style={
+    Object {
+      "backgroundColor": "red",
+    }
+  }
+>
+  <button
+    onClick={[Function]}
+  >
+    set
+  </button>
+  <textarea
+    className={
+      Object {
+        "data-css-n9fe5c": "",
+      }
+    }
+    onChange={[Function]}
+    value={undefined}
+  />
+</div>
+`;
