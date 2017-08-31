@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { merge } from 'glamor'
-import Props from './props'
-import styles from './workbench.styles'
-
 import { Tabs, Tab } from '../../components/tabs'
 import WrappedComponent from '../../component.container'
+import Props from './props'
+import State from './state'
+import styles from './workbench.styles'
 
 const Workbench = ({ className }) => {
   return (
@@ -15,7 +15,7 @@ const Workbench = ({ className }) => {
       </div>
       <Tabs className={styles.sidebar}>
         <Tab tabKey="props" title="props"><Props /></Tab>
-        <Tab tabKey="state" title="state">Not implemented yet.</Tab>
+        <Tab tabKey="state" title="state"><State /></Tab>
       </Tabs>
     </div>
   )

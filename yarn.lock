@@ -4215,6 +4215,10 @@ redux-little-router@^14.2.0:
     recompose "^0.23.5"
     url-pattern "^1.0.3"
 
+redux-saga@^0.15.6:
+  version "0.15.6"
+  resolved "https://registry.yarnpkg.com/redux-saga/-/redux-saga-0.15.6.tgz#8638dc522de6c6c0a496fe8b2b5466287ac2dc4d"
+
 redux-thunk@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
@@ -4915,6 +4919,10 @@ tr46@~0.0.3:
 trampss-redux-factory@^3.5.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/trampss-redux-factory/-/trampss-redux-factory-3.5.0.tgz#b47dd624d2d17e89d4768162b14bf5b20ec7bd5d"
+
+trampss-redux-saga-tester@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/trampss-redux-saga-tester/-/trampss-redux-saga-tester-1.0.0.tgz#84d4ecf4e6fdd3b929efed605e1ceebbde3a1d56"
 
 trim-newlines@^1.0.0:
   version "1.0.0"

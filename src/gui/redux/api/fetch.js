@@ -1,4 +1,5 @@
-import { readme, html, docgen } from '../store'
+import { docgen } from '../reducers'
+import { readme, html } from '../documentation'
 
 const ownFetch = (reducer, type) => (...fetchArgs) => async (dispatch) => {
   dispatch(reducer.reset())

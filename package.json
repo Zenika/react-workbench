@@ -54,6 +54,7 @@
     "redux": "^3.6.0",
     "redux-devtools-extension": "^2.13.2",
     "redux-little-router": "^14.2.0",
+    "redux-saga": "^0.15.6",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "slate": "^0.20.6",
@@ -163,7 +164,8 @@
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-watch": "^4.0.0"
+    "rollup-watch": "^4.0.0",
+    "trampss-redux-saga-tester": "^1.0.0"
   },
   "engines": {
     "node": ">8.0.0"

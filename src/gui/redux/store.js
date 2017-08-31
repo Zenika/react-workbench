@@ -1,29 +1,21 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import { initializeCurrentLocation } from 'redux-little-router'
-import { simpleObject } from 'trampss-redux-factory'
+import createSagaMiddleware from 'redux-saga'
 import thunk from 'redux-thunk'
+import sagas from '../sagas'
 import router from './router'
-import model from './model'
+import reducers from './reducers'
 
-export const docgen = simpleObject({ defaultData: { props: {} }, name: 'docgen' })
-const documentation = 'documentation'
-export const readme = simpleObject({ path: documentation, name: 'readme' })
-export const html = simpleObject({ path: documentation, name: 'html' })
+const sagaMiddleware = createSagaMiddleware()
 
 // initialize redux store
 const store = createStore(
-  combineReducers({
-    docgen,
-    [documentation]: combineReducers({
-      readme,
-      html,
-    }),
-    model,
-    router: router.reducer,
-  }),
-  composeWithDevTools(router.enhancer, applyMiddleware(thunk, router.middleware))
+  reducers,
+  composeWithDevTools(router.enhancer, applyMiddleware(thunk, sagaMiddleware, router.middleware))
 )
+
+sagaMiddleware.run(sagas(store))
 
 // initialize routing
 const initialLocation = store.getState().router

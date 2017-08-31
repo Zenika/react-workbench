@@ -11,7 +11,7 @@ const convertDocgenValue = (value, type) => {
   }
 }
 
-const docgenToModel = (docgen) => {
+const docgenToProps = (docgen) => {
   return Object.keys(docgen.props || {}).map((key) => {
     const prop = docgen.props[key]
     const type = prop.type && prop.type.name
@@ -48,4 +48,4 @@ const convertFromGuiValue = (value, type) => {
   }
 }
 
-export { convertDocgenValue, docgenToModel, convertToGuiValue, convertFromGuiValue }
+export { convertDocgenValue, docgenToProps, convertToGuiValue, convertFromGuiValue }
