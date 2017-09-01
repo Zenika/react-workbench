@@ -6,6 +6,13 @@ const get = {
   handler: () => service.get(),
 }
 
+const save = {
+  method: 'post',
+  path: 'readme',
+  handler: req => service.save(req.body),
+}
+
 module.exports = {
   get,
+  save,
 }
