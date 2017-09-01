@@ -1,11 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`service/readme should generate component markdown if README.md file doesnt exist 1`] = `
+exports[`service/readme get readme file should generate component markdown if README.md file doesnt exist 1`] = `
 Array [
   Array [],
 ]
 `;
 
-exports[`service/readme should generate component markdown if README.md file doesnt exist 2`] = `"MARKDOWN CONTENT"`;
+exports[`service/readme get readme file should generate component markdown if README.md file doesnt exist 2`] = `"MARKDOWN CONTENT"`;
 
-exports[`service/readme should return README.md file content if exists 1`] = `"README CONTENT"`;
+exports[`service/readme get readme file should return README.md file content if exists 1`] = `"README CONTENT"`;
+
+exports[`service/readme save readme file should save README.md file with given content 1`] = `
+Array [
+  Array [
+    "/foo/bar/baz/README.md",
+    "content",
+  ],
+]
+`;
