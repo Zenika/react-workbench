@@ -5,11 +5,11 @@ import { Tabs, Tab } from '../../../components/tabs'
 import Props from './props'
 import State from './state'
 
-const Sidebar = ({ style, className, states, onStateNameChange, onSave }) => {
+const Sidebar = ({ style, className, states, onStateChange, onStateNameChange, onSave }) => {
   return (
     <div style={style} className={className}>
       <div>
-        <select>
+        <select onChange={onStateChange}>
           {states.map(state => <option key={state} value={state}>{state}</option>)}
         </select>
         <input type="text" onChange={onStateNameChange} />
@@ -29,6 +29,7 @@ Sidebar.propTypes = {
   className: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   states: PropTypes.arrayOf(PropTypes.string),
   onStateNameChange: PropTypes.func,
+  onStateChange: PropTypes.func,
   onSave: PropTypes.func,
 }
 
@@ -38,6 +39,7 @@ Sidebar.defaultProps = {
   states: [],
   onStateNameChange: undefined,
   onSave: undefined,
+  onStateChange: undefined,
 }
 
 export default onlyUpdateForPropTypes(Sidebar)
