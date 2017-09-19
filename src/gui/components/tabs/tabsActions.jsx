@@ -9,7 +9,7 @@ const TabsActions = ({ actions, className }) => {
     return null
   }
   return (
-    <div className={merge(styles.actions, className)}>
+    <div className={merge(styles.layout, className)}>
       {actions}
     </div>
   )
