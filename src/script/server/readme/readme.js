@@ -20,6 +20,14 @@ const get = () => async (dispatch, getState) => {
   return markdown.generate()
 }
 
+const save = content => async (dispatch, getState) => {
+  const component = reducers.component.get()(getState())
+  const readmePath = path.resolve(component.path.absolute.dir, 'README.md')
+
+  await fs.writeFileAsync(readmePath, content)
+}
+
 module.exports = {
   get,
+  save,
 }
