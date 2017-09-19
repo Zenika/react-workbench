@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`server/model/state list should handle empty directory 1`] = `Array []`;
+
+exports[`server/model/state list should handle empty directory 2`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`server/model/state list should returns all files content 1`] = `
+Array [
+  "content file 1",
+  "content file 2",
+]
+`;
+
+exports[`server/model/state list should returns all files content 2`] = `
+Array [
+  Array [],
+]
+`;
+
+exports[`server/model/state list should returns all files content 3`] = `
+Array [
+  Array [
+    "file 1",
+  ],
+  Array [
+    "file 2",
+  ],
+]
+`;

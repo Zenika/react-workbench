@@ -1,8 +1,9 @@
 /* eslint-env jest */
 jest.mock('fs', () => ({
-  mkdirAsync: jest.fn(async () => undefined),
-  writeFileAsync: jest.fn(async () => undefined),
-  readFileAsync: jest.fn(async () => '[]'),
+  mkdirAsync: jest.fn(),
+  writeFileAsync: jest.fn(),
+  readFileAsync: jest.fn(),
+  readdirAsync: jest.fn(),
 }))
 
 const fs = require('fs')
@@ -23,10 +24,12 @@ describe('server/api/db', () => {
     fs.mkdirAsync.mockClear()
     fs.writeFileAsync.mockClear()
     fs.readFileAsync.mockClear()
+    fs.readdirAsync.mockClear()
 
-    fs.mkdirAsync.mockImplementation(jest.fn(async () => undefined))
-    fs.writeFileAsync.mockImplementation(jest.fn(async () => undefined))
-    fs.readFileAsync.mockImplementation(jest.fn(async () => undefined))
+    fs.mkdirAsync.mockImplementation(jest.fn())
+    fs.writeFileAsync.mockImplementation(jest.fn())
+    fs.readFileAsync.mockImplementation(jest.fn())
+    fs.readdirAsync.mockImplementation(jest.fn())
   })
 
   describe('init', () => {
@@ -206,6 +209,51 @@ describe('server/api/db', () => {
       // asserts
       expect(result).toBeDefined()
       expect(result).toEqual(['baz', 'foo', 'bar'])
+    })
+
+    describe('list', () => {
+      it('should list read all files in a directory', async () => {
+        // mocks
+        fs.readdirAsync.mockImplementation(jest.fn(() => ['file 1', 'file 2']))
+
+        // calls
+        const result = await db()(undefined, getState).list()
+
+        // asserts
+        expect(result).toMatchSnapshot()
+        expect(fs.readdirAsync.mock.calls).toMatchSnapshot()
+      })
+
+      it('should handle an empty directory', async () => {
+        // mocks
+        fs.readdirAsync.mockImplementation(jest.fn(() => []))
+
+        // calls
+        const result = await db()(undefined, getState).list()
+
+        // asserts
+        expect(result).toMatchSnapshot()
+        expect(fs.readdirAsync.mock.calls).toMatchSnapshot()
+      })
+
+      it('should throw the underlaying fs exception', async () => {
+        // mocks
+        fs.readdirAsync.mockImplementation(jest.fn(() => {
+          throw new Error('fs readdir error')
+        }))
+
+        // calls
+        let error = false
+        try {
+          await db()(undefined, getState).list()
+        } catch (ex) {
+          error = ex
+        }
+
+        // asserts
+        expect(error).toMatchSnapshot()
+        expect(fs.readdirAsync.mock.calls).toMatchSnapshot()
+      })
     })
   })
 })
