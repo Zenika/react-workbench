@@ -31,9 +31,6 @@ const layout = css({
     padding: '1em 1em',
     border: '.01em solid #dfe2e5',
   },
-  '& table tbody': {
-    fontSize: '1em',
-  },
   '& table tbody tr td': {
     padding: '.8em',
     border: '.01em solid #dfe2e5',
