@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { state as stateStore } from '../../../redux/ui'
+import { state as stateStore } from '../../../../redux/ui'
 import Component from './state'
 
 export const mapState = state => ({ state: stateStore.get()(state) })

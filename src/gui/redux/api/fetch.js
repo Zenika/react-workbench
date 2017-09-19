@@ -1,4 +1,4 @@
-import { docgen } from '../reducers'
+import { docgen, states } from '../reducers'
 import { readme, html } from '../documentation'
 
 const ownFetch = (reducer, type) => (...fetchArgs) => async (dispatch) => {
@@ -24,4 +24,5 @@ export default {
     ))
   },
   docgen: () => ownFetch(docgen, 'json')('/api/props'),
+  states: () => ownFetch(states, 'json')('/api/state'),
 }

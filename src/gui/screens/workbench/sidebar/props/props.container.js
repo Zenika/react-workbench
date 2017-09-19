@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import Props from './props'
-import { getPropsKeys } from '../../../redux/docgen'
+import { getPropsKeys } from '../../../../redux/docgen'
 
 const mapState = state => ({
   properties: getPropsKeys(state),

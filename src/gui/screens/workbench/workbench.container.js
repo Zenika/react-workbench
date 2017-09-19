@@ -10,7 +10,10 @@ const mapState = state => ({
 })
 
 const mapDispatch = dispatch => ({
-  load: () => dispatch(fetch.docgen()),
+  load: () => {
+    dispatch(fetch.docgen())
+    dispatch(fetch.states())
+  },
 })
 
 const loadable = loader()(Component)

@@ -6,6 +6,7 @@ import router from './router'
 import ui from './ui'
 
 export const docgen = simpleObject({ defaultData: { props: {} }, name: 'docgen' })
+export const states = keyValue({ key: 'name', name: 'states' })
 export const unhandledErrors = keyValue({ key: 'timestamp', name: 'unhandledErrors' })
 
 export default combineReducers({
@@ -13,6 +14,7 @@ export default combineReducers({
   docgen,
   documentation,
   router: router.reducer,
+  states,
   ui,
   unhandledErrors,
 })
