@@ -8,6 +8,8 @@ const layout = css({
 const content = css({
   overflow: 'auto',
   padding: '1em',
+  height: '100%',
+  width: '100%',
 })
 
 const sidebar = css({
