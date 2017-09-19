@@ -9,6 +9,7 @@
     "Fabien JUIF <fabien.juif@gmail.com>"
   ],
   "scripts": {
+    "qual": "run-p lint test",
     "ci": "run-p lint coveralls",
     "lint:js": "eslint --ext js,jsx src",
     "lint": "npm-run-all --parallel lint:*",
