@@ -76,5 +76,23 @@ describe('service/readme', () => {
       // asserts
       expect(fs.writeFileAsync.mock.calls).toMatchSnapshot()
     })
+
+    it('should throw the underlaying fs exception', async () => {
+      // mocks
+      fs.writeFileAsync.mockImplementation(jest.fn(() => {
+        throw new Error('fs fails to write file')
+      }))
+
+      // calls
+      let error = false
+      try {
+        await readme.save('content')(undefined, getState)
+      } catch (ex) {
+        error = ex
+      }
+
+      // assert
+      expect(error).toMatchSnapshot()
+    })
   })
 })

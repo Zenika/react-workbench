@@ -18,3 +18,5 @@ Array [
   ],
 ]
 `;
+
+exports[`service/readme save readme file should throw the underlaying fs exception 1`] = `[Error: fs fails to write file]`;
