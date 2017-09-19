@@ -9,9 +9,9 @@ const generateDescription = (description = '') => `
 > ${description}
 `
 
-const generateProp = (name, prop) => {
-  const defaultValue = prop.defaultValue ? prop.defaultValue.value : ''
-  return `\`${name}\` | ${prop.required} | \`${prop.type.name}\` | \`${defaultValue}\` | ${prop.description} \n`
+const generateProp = (name, { required, defaultValue, type, description }) => {
+  const defVal = defaultValue ? `\`${defaultValue.value}\`` : ''
+  return `\`${name}\` | ${required} | \`${type.name}\` | ${defVal} | ${description || '&nbsp;'} \n`
 }
 
 const generateProps = (props) => {
