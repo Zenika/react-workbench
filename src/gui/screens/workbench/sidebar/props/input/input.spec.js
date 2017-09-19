@@ -8,8 +8,8 @@ import { mount } from 'enzyme'
 import snap from 'misc/test/snap'
 import Input from './input'
 import InputContainer from './input.container'
-import { docgen } from '../../../../redux/reducers'
-import propsStore from '../../../../redux/component/props'
+import { docgen } from '../../../../../redux/reducers'
+import propsStore from '../../../../../redux/component/props'
 
 describe('component/props/input', () => {
   describe('input.jsx', () => {
