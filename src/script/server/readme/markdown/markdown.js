@@ -3,10 +3,15 @@ const { service } = require('../../props')
 
 const generateTitle = name => `# ${name}`
 
-const generateDescription = (description = '') => `> ${description}`
+const generateDescription = (description = '') => `
+## description
+
+> ${description}
+`
 
 const generateProp = (name, prop) => {
-  return `${name}|${prop.required}|${prop.type.name}|${prop.description}\n`
+  const defaultValue = prop.defaultValue ? prop.defaultValue.value : ''
+  return `\`${name}\` | ${prop.required} | \`${prop.type.name}\` | \`${defaultValue}\` | ${prop.description} \n`
 }
 
 const generateProps = (props) => {
@@ -16,10 +21,12 @@ const generateProps = (props) => {
         return `${a}${generateProp(b, props[b])}`
       }, '')
     return `
-      props|required|type|description
-      -----|--------|----|-----------
-      ${table}
-    `
+## properties
+
+props | required | type | default | description
+------|----------|------|---------|-------------
+${table}
+`
   }
   return ''
 }
