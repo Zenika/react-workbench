@@ -16,6 +16,12 @@ const init = () => (dispatch, getState) => {
     }
   }
 
+  const list = async () => {
+    await createDir()
+
+    return fs.readdirAsync(projectPath)
+  }
+
   const write = async (fileName, data = []) => {
     await createDir()
 
@@ -54,6 +60,7 @@ const init = () => (dispatch, getState) => {
     read,
     write,
     append,
+    list,
   }
 }
 
