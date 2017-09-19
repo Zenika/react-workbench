@@ -1,16 +1,57 @@
 /* eslint-env jest */
 
 jest.mock('../db', () => {
-  const read = jest.fn(async () => undefined)
-  const write = jest.fn(async () => undefined)
+  const read = jest.fn()
+  const write = jest.fn()
+  const list = jest.fn()
 
-  return () => ({ read, write })
+  return () => ({ read, write, list })
 })
 
 const db = require('../db')
 const service = require('./state')
 
 describe('server/model/state', () => {
+  beforeEach(() => {
+    db().read.mockReset()
+    db().write.mockReset()
+    db().list.mockReset()
+
+    db().read.mockRestore()
+    db().write.mockRestore()
+    db().list.mockRestore()
+  })
+
+  describe('list', () => {
+    it('should handle empty directory', async () => {
+      // data & mocks
+      db().list.mockImplementation(jest.fn(() => []))
+
+      // calls
+      const result = await service.list()()
+
+      // asserts
+      expect(result).toMatchSnapshot()
+      expect(db().list.mock.calls).toMatchSnapshot()
+    })
+
+    it('should returns all files content', async () => {
+      // data & mocks
+      db().list.mockImplementation(jest.fn(() => ['file 1', 'file 2']))
+      db().read
+        .mockReturnValueOnce('content file 1')
+        .mockReturnValueOnce('content file 2')
+
+      // calls
+      const result = await service.list()()
+
+      // asserts
+      expect(result).toMatchSnapshot()
+      expect(db().list.mock.calls).toMatchSnapshot()
+      expect(db().read.mock.calls).toMatchSnapshot()
+    })
+  })
+
   describe('create', () => {
     it('should append a new state', () => {
       // data
@@ -25,11 +66,6 @@ describe('server/model/state', () => {
   })
 
   describe('read', () => {
-    beforeEach(() => {
-      db().read.mockReset()
-      db().read.mockRestore()
-    })
-
     it('should read states', async () => {
       // data
       const mockStates = ['state1', 'state2']

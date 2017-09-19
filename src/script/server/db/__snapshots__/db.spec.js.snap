@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`server/api/db append list should handle an empty directory 1`] = `Array []`;
+
+exports[`server/api/db append list should handle an empty directory 2`] = `
+Array [
+  Array [
+    "/a/path/.workbench",
+  ],
+]
+`;
+
+exports[`server/api/db append list should list read all files in a directory 1`] = `
+Array [
+  "file 1",
+  "file 2",
+]
+`;
+
+exports[`server/api/db append list should list read all files in a directory 2`] = `
+Array [
+  Array [
+    "/a/path/.workbench",
+  ],
+]
+`;
+
+exports[`server/api/db append list should throw the underlaying fs exception 1`] = `[Error: fs readdir error]`;
+
+exports[`server/api/db append list should throw the underlaying fs exception 2`] = `
+Array [
+  Array [
+    "/a/path/.workbench",
+  ],
+]
+`;
